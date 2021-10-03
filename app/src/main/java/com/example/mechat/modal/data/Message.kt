@@ -9,4 +9,5 @@ class Message
     }
     var text: String? = null
     var timestamp: Long = System.currentTimeMillis()
+    var senderName: String?= null
 }
