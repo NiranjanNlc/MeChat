@@ -1,4 +1,4 @@
-package com.example.mechat.modal.data
+package com.example.mechat.modal
 
 class Message
 {
