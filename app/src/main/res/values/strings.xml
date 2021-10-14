@@ -2,4 +2,6 @@
     <string name="app_name">MeChat</string>
     <string name="enter_text_to_send">Enter text to send...</string>
     <string name="blank" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
