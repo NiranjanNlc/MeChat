@@ -7,6 +7,6 @@ import com.example.mechat.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.channel_choser)
+        setContentView(R.layout.main_screen)
     }
 }
