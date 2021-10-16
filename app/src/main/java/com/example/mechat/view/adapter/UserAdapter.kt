@@ -7,12 +7,13 @@ import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.UserAdapter.*
 
 class UserAdapter constructor(val context : Context, val itemClickListener: ItemClickListener):
-    ListAdapter<Users, UserListViewHolder>(COMPARATOR)
+    ListAdapter<Users,UserListViewHolder>(COMPARATOR)
 {
 
     interface ItemClickListener{
@@ -59,7 +60,7 @@ class UserAdapter constructor(val context : Context, val itemClickListener: Item
         val userItems = getItem(position)
         println( " see thid " + userItems.strMeal)
         holder.bind(userItems)
-        Glide.with(context).load(userItems.strMealThumb).into(holder.items.browserCellImage)
+        Glide.with(context).load(userItems.strMealThumb).into(holder.items.profileImage)
         holder.items.executePendingBindings()
     }
 
