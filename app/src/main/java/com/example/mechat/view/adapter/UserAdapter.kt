@@ -3,9 +3,8 @@ package com.example.mechat.view.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DiffUtil.ItemCallback
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mechat.databinding.UserItemsBinding
@@ -13,7 +12,8 @@ import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.UserAdapter.*
 
 class UserAdapter constructor(val context : Context, val itemClickListener: ItemClickListener):
-    ListAdapter<Users,UserListViewHolder>(COMPARATOR)
+  ListAdapter<Users, UserListViewHolder>(COMPARATOR)
+//   ListAdapter<Users,UserAdapter.UserListViewHolder>(COMPARATOR)
 {
 
     interface ItemClickListener{
@@ -58,10 +58,9 @@ class UserAdapter constructor(val context : Context, val itemClickListener: Item
     override fun onBindViewHolder(holder: UserListViewHolder, position: Int)
     {
         val userItems = getItem(position)
-        println( " see thid " + userItems.strMeal)
+        println( " see thid " + userItems.profilePic.toString())
         holder.bind(userItems)
-        Glide.with(context).load(userItems.strMealThumb).into(holder.items.profileImage)
+        Glide.with(context).load(userItems.profilePic).into(holder.items.profileImage)
         holder.items.executePendingBindings()
     }
-
 }
