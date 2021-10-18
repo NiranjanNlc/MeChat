@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/drawable/ic_launcher_background.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/layout/activity_welecom.xml" value="0.11927083333333334" />
         <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/layout/channel_choser.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/layout/channel_info.xml" value="0.11354166666666667" />
