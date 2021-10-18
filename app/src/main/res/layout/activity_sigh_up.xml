@@ -17,7 +17,7 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:layout_gravity="center">
-
+        >
 
         <ImageView
             android:id="@+id/imageView"
@@ -68,6 +68,23 @@
                 android:minHeight="48dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:inputType="textPersonName"
+            android:text="Alrady Have an Accpint ???" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1FD1C2"
+            app:backgroundTint="#1FD1C2"
+            android:text="Sighn Up "
+            android:textColor="@color/white"/>
+    </LinearLayout>
 </LinearLayout>
