@@ -13,9 +13,9 @@ class WelecomActivity : AppCompatActivity()
     private lateinit var adapter: PagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
         val fragmentManager1 = supportFragmentManager
-
         adapter =  OurViewPageAdapter(fragmentManager1,1)
         binding1.viewPager.adapter=adapter
         binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding1.tabView))
