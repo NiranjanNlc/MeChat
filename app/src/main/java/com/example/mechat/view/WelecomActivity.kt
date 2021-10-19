@@ -1,9 +1,11 @@
 package com.example.mechat.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mechat.databinding.MainScreenBinding
+import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.OurViewPageAdapter
 import com.google.android.material.tabs.TabLayout
 
@@ -13,6 +15,11 @@ class WelecomActivity : AppCompatActivity()
     private lateinit var adapter: PagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (FirebaseUtils.firebaseUser == null)
+        {
+            startActivity(Intent(this, Login::class.java))
+            }
+
         binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
         val fragmentManager1 = supportFragmentManager
