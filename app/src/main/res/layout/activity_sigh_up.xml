@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Your Name "
-                android:text="@={' '+viewModal.user.userName}"/>
+                android:text="@={viewModal.userName}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -56,7 +56,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:id="@+id/username"
-                android:text="@={' '+viewModal.user.mail}"
+                android:text="@={viewModal.mail}"
                 android:layout_height="wrap_content"
                 android:hint="Email " />
 
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="@={' '+viewModal.user.password}"
+                android:text="@={viewModal.password}"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:minHeight="48dp" />

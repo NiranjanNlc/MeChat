@@ -40,7 +40,7 @@ class SighUpActivity : AppCompatActivity()
 
     private fun signUp()
     {
-        if(viewModal.sighnUp())
+        if(viewModal.sighnUp()!!)
         {
             toast("created account successfully !")
             startActivity(Intent(this, WelecomActivity::class.java))

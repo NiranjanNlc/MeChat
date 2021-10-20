@@ -8,12 +8,17 @@ import com.example.mechat.modal.data.Users
 
 class AuthenciationViewModal: ViewModel()
 {
-    var user : LiveData<Users> =MutableLiveData<Users>()
+    lateinit var user :  Users
+    var mail= MutableLiveData<String>()
+    var userName = MutableLiveData<String>()
+    var password = MutableLiveData<String>()
+
     init{
 
     }
     fun sighnUp(): Boolean?
     {
-       return user.value?.let { FireBaseService.sighnUpUser(it) }
+        user= Users(userName =userName.toString(),mail = mail.toString(),password =password.toString() )
+       return FireBaseService.sighnUpUser(user)
     }
 }
