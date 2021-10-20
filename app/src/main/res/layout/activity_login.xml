@@ -64,5 +64,16 @@
             app:backgroundTint="#1FD1C2"
             android:text="Login"
             android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/sighnUpOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="end"
+            android:gravity="end"
+            android:inputType="textPersonName"
+            android:text="Register new accpunt" />
     </LinearLayout>
 </LinearLayout>

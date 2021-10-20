@@ -27,5 +27,11 @@ class Login : AppCompatActivity() {
                     }
                 }
         }
+        binding.sighnUpOption.setOnClickListener {
+            toast("created account successfully !")
+            startActivity(Intent(this, SighUpActivity::class.java))
+            finish()
+        }
+
     }
 }
