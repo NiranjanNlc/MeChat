@@ -20,6 +20,8 @@ object FireBaseService {
                     success = true
                 } else {
                     Log.d(" FAilure ", " could not cretate user at givrn ")
+                    Log.d(" FAilure ", "${user.mail}")
+
                     success = false
                 }
 

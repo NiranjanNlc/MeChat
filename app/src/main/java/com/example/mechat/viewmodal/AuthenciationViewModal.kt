@@ -18,7 +18,7 @@ class AuthenciationViewModal: ViewModel()
     }
     fun sighnUp(): Boolean?
     {
-        user= Users(userName =userName.toString(),mail = mail.toString(),password =password.toString() )
+        user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
        return FireBaseService.sighnUpUser(user)
     }
 }

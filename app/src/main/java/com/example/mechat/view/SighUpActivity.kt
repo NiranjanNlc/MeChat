@@ -3,6 +3,7 @@ package com.example.mechat.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.mechat.R
 import com.example.mechat.databinding.ActivitySighUpBinding
 import com.example.mechat.modal.data.Users
@@ -24,6 +25,7 @@ class SighUpActivity : AppCompatActivity()
         /*create a user*/
 
         binding.button2.setOnClickListener{
+            Log.d(" butttom of sighnup  ", " pressed")
             signUp( )
         }
 
