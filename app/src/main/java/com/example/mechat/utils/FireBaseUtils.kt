@@ -9,5 +9,5 @@ import com.google.firebase.ktx.Firebase
 object FirebaseUtils {
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-    val database = Firebase.database.reference
+    val database = Firebase.database.getReferenceFromUrl("https://mechat-181d7-default-rtdb.firebaseio.com/")
 }
