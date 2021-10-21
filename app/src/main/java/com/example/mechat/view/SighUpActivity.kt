@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.DataBindingUtil
 import com.example.mechat.R
 import com.example.mechat.databinding.ActivitySighUpBinding
 import com.example.mechat.modal.data.Users
@@ -19,11 +20,12 @@ class SighUpActivity : AppCompatActivity()
     private lateinit var viewModal:AuthenciationViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySighUpBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sigh_up)
+      //  binding = ActivitySighUpBinding.inflate(layoutInflater)
+      //  setContentView(binding.root)
         viewModal  = ViewModalFactory().create(AuthenciationViewModal ::class.java)
         /*create a user*/
-
+        binding.viewModal = viewModal
         binding.button2.setOnClickListener{
             Log.d(" butttom of sighnup  ", " pressed")
             signUp( )
