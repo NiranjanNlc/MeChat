@@ -46,8 +46,8 @@ class SighUpActivity : AppCompatActivity()
     {
         if(viewModal.sighnUp()!!)
         {
-            toast("created account successfully !")
-            startActivity(Intent(this, WelecomActivity::class.java))
+            toast("created account successfully under given condition !")
+            startActivity(Intent(this, Login ::class.java))
             finish()
         }
     }

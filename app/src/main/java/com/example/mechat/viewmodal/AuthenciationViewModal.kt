@@ -11,7 +11,7 @@ class AuthenciationViewModal: ViewModel()
 {
     lateinit var user :  Users
     var mail= MutableLiveData<String>("niranjannlc10@gmail.com")
-    var userName = MutableLiveData<String>(" NirnjN")
+    var userName = MutableLiveData<String>(" ]NirnjN")
     var password = MutableLiveData<String>("123456")
 
     init{
