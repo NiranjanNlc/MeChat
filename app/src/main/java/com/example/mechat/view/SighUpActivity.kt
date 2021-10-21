@@ -44,7 +44,9 @@ class SighUpActivity : AppCompatActivity()
 
     private fun signUp()
     {
-        if(viewModal.sighnUp()!!)
+        val autheenciation =viewModal.sighnUp()
+        Log.d(" sucess authenciation" , autheenciation.toString())
+        if(autheenciation == true)
         {
             toast("created account successfully under given condition !")
             startActivity(Intent(this, Login ::class.java))

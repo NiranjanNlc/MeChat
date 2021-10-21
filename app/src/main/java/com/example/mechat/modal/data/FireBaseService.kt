@@ -8,6 +8,7 @@ import com.example.mechat.utils.FirebaseUtils.database
 
 object FireBaseService {
     fun writeNewUser(user: Users) {
+        Log.d("Writing new user  " , " Niranjan sucess ")
         database.child("users").child(user.userId).setValue(user)
     }
 
@@ -15,6 +16,7 @@ object FireBaseService {
         var success: Boolean =false;
         FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(user.mail, user.password)
             .addOnCompleteListener { task ->
+                Log.d(" hellp authencaition " , " Niranjan sucess ")
                 if (task.isSuccessful) {
                     writeNewUser(user)
                     success = true
@@ -23,7 +25,6 @@ object FireBaseService {
                     Log.d(" FAilure ", "${user.mail}")
                     success = false
                 }
-
             }
     return success
 }
