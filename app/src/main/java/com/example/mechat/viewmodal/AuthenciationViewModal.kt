@@ -19,7 +19,7 @@ class AuthenciationViewModal: ViewModel()
             userName.value= " Niranjan "
             password.value ="123456"
     }
-    fun sighnUp(): Boolean?
+    fun sighnUp(): Boolean
     {
 
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )

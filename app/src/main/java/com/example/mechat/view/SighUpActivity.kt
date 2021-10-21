@@ -35,18 +35,18 @@ class SighUpActivity : AppCompatActivity()
 
     override fun onStart() {
         super.onStart()
-        val user: FirebaseUser? = firebaseAuth.currentUser
-        user?.let {
-            startActivity(Intent(this, WelecomActivity::class.java))
-            toast("welcome back")
-        }
+//        val user: FirebaseUser? = firebaseAuth.currentUser
+//        user?.let {
+//            startActivity(Intent(this, WelecomActivity::class.java))
+//            toast("welcome back")
+//        }
     }
 
     private fun signUp()
     {
         val autheenciation =viewModal.sighnUp()
-        Log.d(" sucess authenciation" , autheenciation.toString())
-        if(autheenciation == true)
+        Log.i(" sucess authenciation" , autheenciation.toString())
+        if(autheenciation)
         {
             toast("created account successfully under given condition !")
             startActivity(Intent(this, Login ::class.java))
