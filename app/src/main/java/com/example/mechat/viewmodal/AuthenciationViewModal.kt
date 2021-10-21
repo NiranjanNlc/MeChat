@@ -13,17 +13,18 @@ class AuthenciationViewModal: ViewModel()
     var mail= MutableLiveData<String>("niranjannlc10@gmail.com")
     var userName = MutableLiveData<String>(" ]NirnjN")
     var password = MutableLiveData<String>("123456")
+    var sighnUpStatus = FireBaseService.success
 
     init{
             mail.value = "niranjannlc10@gmail.com0"
             userName.value= " Niranjan "
             password.value ="123456"
     }
-    fun sighnUp(): Boolean
+    fun sighnUp()
     {
 
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
-       return FireBaseService.sighnUpUser(user)
+        FireBaseService.sighnUpUser(user)
     }
 }
