@@ -7,11 +7,17 @@ import com.example.mechat.R
 import com.example.mechat.databinding.ActivityLoginBinding
 import com.example.mechat.utils.Extensions.toast
 import com.example.mechat.utils.FirebaseUtils
+import com.example.mechat.utils.FirebaseUtils.firebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class Login : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (FirebaseUtils.firebaseUser != null)
+        {
+            startActivity(Intent(this, WelecomActivity::class.java))
+        }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.button2.setOnClickListener {
@@ -33,5 +39,13 @@ class Login : AppCompatActivity() {
             finish()
         }
 
+    }
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = firebaseAuth.currentUser
+        user?.let {
+            startActivity(Intent(this, WelecomActivity::class.java))
+            toast("welcome back")
+        }
     }
 }

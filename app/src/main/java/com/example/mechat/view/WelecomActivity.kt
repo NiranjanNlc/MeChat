@@ -15,11 +15,6 @@ class WelecomActivity : AppCompatActivity()
     private lateinit var adapter: PagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (FirebaseUtils.firebaseUser == null)
-        {
-            startActivity(Intent(this, Login::class.java))
-            }
-
         binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
         val fragmentManager1 = supportFragmentManager
