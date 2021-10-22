@@ -28,9 +28,16 @@ class SighUpActivity : AppCompatActivity()
         binding.viewModal = viewModal
         binding.button2.setOnClickListener{
             Log.d(" butttom of sighnup  ", " pressed")
-            signUp( )
+            viewModal.sighnUp()
         }
+        viewModal.processStatus.observe(this,{
 
+           if (it)
+           {
+               Log.i("process ", "suveeded ")
+               checksignUpStaus(it)
+           }
+        })
     }
 
     override fun onStart() {
@@ -42,15 +49,26 @@ class SighUpActivity : AppCompatActivity()
 //        }
     }
 
-    private fun signUp()
+    private fun checksignUpStaus(procee:Boolean)
     {
-        viewModal.sighnUp()
+
         Log.i(" sucess authenciation" , viewModal.sighnUpStatus.value.toString())
-        if(viewModal.sighnUpStatus.value == true)
-        {
-            toast("created account successfully under given condition !")
-            startActivity(Intent(this, Login ::class.java))
-            finish()
+        viewModal.sighnUpStatus.observe(this,{
+            Log.d(" value " , " $it and $procee")
+           if(it && procee) {
+               toast("created account successfully under given condition !")
+               startActivity(Intent(this, Login::class.java))
+               finish()
+           }
+            else if (it or procee)
+           {
+            //   checksignUpStaus(procee)
+           //   toast("step 1")
+           }
+            else
+           {
+               toast(" eroor occurred ")
+           }
+           })
         }
-    }
 }

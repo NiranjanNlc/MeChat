@@ -14,6 +14,7 @@ class AuthenciationViewModal: ViewModel()
     var userName = MutableLiveData<String>(" ]NirnjN")
     var password = MutableLiveData<String>("123456")
     var sighnUpStatus = FireBaseService.success
+     var processStatus = FireBaseService.process
 
     init{
             mail.value = "niranjannlc10@gmail.com0"
@@ -26,5 +27,9 @@ class AuthenciationViewModal: ViewModel()
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
         FireBaseService.sighnUpUser(user)
+    }
+    fun getAuthStatus(): MutableLiveData<Boolean>
+    {
+        return FireBaseService.success;
     }
 }
