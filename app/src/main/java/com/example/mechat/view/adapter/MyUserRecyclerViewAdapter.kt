@@ -1,21 +1,18 @@
-package com.example.mechat.view.fragment
+package com.example.mechat.view.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.mechat.R
-
-import com.example.mechat.view.fragment.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.mechat.view.fragment.databinding.FragmentUserBinding
+import com.example.mechat.databinding.FragmentUserBinding
+import com.example.mechat.view.fragment.placeholder.PlaceholderContent
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
 class MyUserRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: List<PlaceholderContent.PlaceholderItem>
 ) : RecyclerView.Adapter<MyUserRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

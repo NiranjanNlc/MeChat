@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mechat.R
+import com.example.mechat.view.adapter.MyUserRecyclerViewAdapter
 import com.example.mechat.view.fragment.placeholder.PlaceholderContent
 
 /**
