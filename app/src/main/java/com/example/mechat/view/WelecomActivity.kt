@@ -17,11 +17,14 @@ class WelecomActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
+        val tabLayout = binding1.tabView
+        tabLayout.addTab(tabLayout.newTab().setText("Chat "))
+        tabLayout.addTab(tabLayout.newTab().setText("Profile "))
         val fragmentManager1 = supportFragmentManager
         adapter =  OurViewPageAdapter(fragmentManager1,1)
         binding1.viewPager.adapter=adapter
-        binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding1.tabView))
-        binding1.tabView.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+        binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
                     binding1.viewPager.currentItem = tab.position
