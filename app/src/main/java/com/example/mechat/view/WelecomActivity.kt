@@ -35,6 +35,7 @@ class WelecomActivity : AppCompatActivity()
 
             override fun onTabReselected(tab: TabLayout.Tab?)
             {
+
             }
 
         })
