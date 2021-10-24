@@ -19,9 +19,9 @@ class WelecomActivity : AppCompatActivity()
         setContentView(binding1.root)
         val tabLayout = binding1.tabView
         tabLayout.addTab(tabLayout.newTab().setText("Chat "))
-        tabLayout.addTab(tabLayout.newTab().setText("Profile "))
+        tabLayout.addTab(tabLayout.newTab().setText("UserList "))
         val fragmentManager1 = supportFragmentManager
-        adapter =  OurViewPageAdapter(fragmentManager1,1)
+        adapter =  OurViewPageAdapter(fragmentManager1,binding1.tabView.tabCount)
         binding1.viewPager.adapter=adapter
         binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
