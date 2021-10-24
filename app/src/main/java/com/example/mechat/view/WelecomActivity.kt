@@ -2,17 +2,22 @@ package com.example.mechat.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mechat.databinding.MainScreenBinding
 import com.example.mechat.view.adapter.TabViewPageAdapter
+import com.example.mechat.viewmodal.UserListViewModal
+import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.android.material.tabs.TabLayout
 
 class WelecomActivity : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: PagerAdapter
+    private lateinit var viewModal: UserListViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
         val tabLayout = binding1.tabView
@@ -40,7 +45,14 @@ class WelecomActivity : AppCompatActivity()
             }
 
         })
-
+            setUpAdapter()
+    }
+    private fun setUpAdapter()
+    {
+        viewModal.userList.observe(this, {
+            print(it)
+            Log.i(" vlaues reterived ", it.toString())
+        })
     }
 
 }

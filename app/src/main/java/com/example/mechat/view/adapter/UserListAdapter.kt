@@ -36,12 +36,8 @@ class UserListAdapter(
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentUserBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
+//        val idView: TextView = binding.itemNumber
+//        val contentView: TextView = binding.content
     }
 
 }
