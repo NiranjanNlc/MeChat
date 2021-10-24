@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.mechat.databinding.FragmentUserBinding
-import com.example.mechat.view.fragment.placeholder.PlaceholderContent
+import com.example.mechat.modal.data.Users
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyUserRecyclerViewAdapter(
-    private val values: List<PlaceholderContent.PlaceholderItem>
-) : RecyclerView.Adapter<MyUserRecyclerViewAdapter.ViewHolder>() {
+class UserListAdapter(
+    private val values: List<Users>
+) : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -29,8 +29,8 @@ class MyUserRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+//        holder.idView.text = item.
+//        holder.contentView.text = item.content
     }
 
     override fun getItemCount(): Int = values.size

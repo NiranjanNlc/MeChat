@@ -1,12 +1,10 @@
 package com.example.mechat.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mechat.databinding.MainScreenBinding
-import com.example.mechat.utils.FirebaseUtils
-import com.example.mechat.view.adapter.OurViewPageAdapter
+import com.example.mechat.view.adapter.TabViewPageAdapter
 import com.google.android.material.tabs.TabLayout
 
 class WelecomActivity : AppCompatActivity()
@@ -21,7 +19,7 @@ class WelecomActivity : AppCompatActivity()
         tabLayout.addTab(tabLayout.newTab().setText("Chat "))
         tabLayout.addTab(tabLayout.newTab().setText("UserList "))
         val fragmentManager1 = supportFragmentManager
-        adapter =  OurViewPageAdapter(fragmentManager1,binding1.tabView.tabCount)
+        adapter =  TabViewPageAdapter(fragmentManager1,binding1.tabView.tabCount)
         binding1.viewPager.adapter=adapter
         binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{

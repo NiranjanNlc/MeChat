@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
-import com.example.mechat.view.adapter.UserAdapter.*
+import com.example.mechat.view.adapter.ChatListAdapter.*
 
-class UserAdapter constructor(val context : Context, val itemClickListener: ItemClickListener):
+class ChatListAdapter constructor(val context : Context, val itemClickListener: ItemClickListener):
   ListAdapter<Users, UserListViewHolder>(COMPARATOR)
-//   ListAdapter<Users,UserAdapter.UserListViewHolder>(COMPARATOR)
+//   ListAdapter<Users,ChatListAdapter.UserListViewHolder>(COMPARATOR)
 {
 
     interface ItemClickListener{
