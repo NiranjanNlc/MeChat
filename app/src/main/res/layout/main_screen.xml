@@ -8,7 +8,8 @@
         android:id="@+id/tabView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="@color/colorPrimary"
+        android:background="#00a294"
+        app:tabTextColor="@android:color/background_light"
         app:tabIndicatorColor="@color/colorAccent">
 
     </com.google.android.material.tabs.TabLayout>
