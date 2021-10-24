@@ -1,13 +1,12 @@
-package com.example.mechat.modal.data
+package com.example.mechat.modal.repo
 
-import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mechat.utils.Extensions.toast
+import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.utils.FirebaseUtils.database
 
-object FireBaseService {
+object AuthenciationService {
     var success= MutableLiveData<Boolean>(false);
      var process = MutableLiveData<Boolean>(false)
     fun writeNewUser(user: Users) {

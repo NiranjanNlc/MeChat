@@ -1,10 +1,9 @@
 package com.example.mechat.viewmodal
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mechat.modal.data.FireBaseService
+import com.example.mechat.modal.repo.AuthenciationService
 import com.example.mechat.modal.data.Users
 
 class AuthenciationViewModal: ViewModel()
@@ -13,8 +12,8 @@ class AuthenciationViewModal: ViewModel()
     var mail= MutableLiveData<String>("niranjannlc10@gmail.com")
     var userName = MutableLiveData<String>(" ]NirnjN")
     var password = MutableLiveData<String>("123456")
-    var sighnUpStatus = FireBaseService.success
-     var processStatus = FireBaseService.process
+    var sighnUpStatus = AuthenciationService.success
+     var processStatus = AuthenciationService.process
 
     init{
             mail.value = "niranjannlc10@gmail.com0"
@@ -26,10 +25,10 @@ class AuthenciationViewModal: ViewModel()
 
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
-        FireBaseService.sighnUpUser(user)
+        AuthenciationService.sighnUpUser(user)
     }
     fun getAuthStatus(): MutableLiveData<Boolean>
     {
-        return FireBaseService.success;
+        return AuthenciationService.success;
     }
 }

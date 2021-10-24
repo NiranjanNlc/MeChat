@@ -9,6 +9,9 @@ class ViewModalFactory :ViewModelProvider.Factory
         if (modelClass.isAssignableFrom(AuthenciationViewModal::class.java)) {
             return AuthenciationViewModal()as T
         }
+        else if (modelClass.isAssignableFrom(UserListViewModal::class.java)) {
+            return UserListViewModal()as T
+        }
         throw IllegalArgumentException("Unknown class name")
     }
     }
