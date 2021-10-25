@@ -14,10 +14,8 @@ class WelecomActivity : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: PagerAdapter
-    private lateinit var viewModal: UserListViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         binding1 = MainScreenBinding.inflate(layoutInflater)
         setContentView(binding1.root)
         val tabLayout = binding1.tabView
@@ -44,14 +42,6 @@ class WelecomActivity : AppCompatActivity()
 
             }
 
-        })
-            // setUpAdapter()
-    }
-    private fun setUpAdapter()
-    {
-        viewModal.userList.observe(this, {
-            print(it)
-            Log.i(" vlaues reterived ", it.toString())
         })
     }
 

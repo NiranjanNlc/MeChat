@@ -17,6 +17,7 @@ import com.firebase.ui.auth.data.model.User
 class UserFragment : Fragment() {
 
     private lateinit var binding: FragmentUserListBinding
+    private lateinit var viewModal: UserListViewModal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +27,28 @@ class UserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?
+    {
         return inflater.inflate(R.layout.fragment_user_list, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
+        setUpAdapter()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
        // viewModal.userList.observe()
      //   lifecycle.removeObserver(viewLifecycleOwner)
     }
+    private fun setUpAdapter()
+    {
+        viewModal.userList.observe(viewLifecycleOwner, {
+            print(it)
+            Log.i(" vlaues reterived ", it.toString())
+        })
+    }
+
 }

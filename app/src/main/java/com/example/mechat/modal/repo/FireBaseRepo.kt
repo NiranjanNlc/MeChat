@@ -14,11 +14,14 @@ object FireBaseRepo
      var userList = MutableLiveData<List<Users>>()
     fun getUserList()
     {
-        val myTopPostsQuery = FirebaseUtils.database.child("user").orderByChild("username")
+        val myTopPostsQuery = FirebaseUtils.database.child("users").orderByChild("userName")
         myTopPostsQuery.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot)
             {
-             userList.value = snapshot.getValue() as List<Users>?
+                val list = snapshot.children.map { it.getValue(Users::class.java)!! }
+                Log.d("TAG", "Value is: $list")
+                Log.i(" user list 00", snapshot.getValue().toString())
+             userList.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {
