@@ -17,6 +17,7 @@ class Login : AppCompatActivity() {
         if (FirebaseUtils.firebaseUser != null)
         {
             startActivity(Intent(this, WelecomActivity::class.java))
+            finish()
         }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -46,6 +47,7 @@ class Login : AppCompatActivity() {
         user?.let {
             startActivity(Intent(this, WelecomActivity::class.java))
             toast("welcome back")
+            finish()
         }
     }
 }

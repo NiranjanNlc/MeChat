@@ -18,7 +18,7 @@ object FireBaseRepo
         myTopPostsQuery.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot)
             {
-             userList.value = snapshot.children as List<Users>?
+             userList.value = snapshot.getValue() as List<Users>?
             }
 
             override fun onCancelled(error: DatabaseError) {
