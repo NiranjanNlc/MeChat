@@ -6,11 +6,12 @@ import android.util.Log
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mechat.databinding.MainScreenBinding
 import com.example.mechat.view.adapter.TabViewPageAdapter
+import com.example.mechat.view.adapter.UserListAdapter
 import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.android.material.tabs.TabLayout
 
-class WelecomActivity : AppCompatActivity()
+class WelecomActivity : AppCompatActivity(), UserListAdapter.ItemClickListener
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: PagerAdapter
@@ -43,6 +44,10 @@ class WelecomActivity : AppCompatActivity()
             }
 
         })
+    }
+
+    override fun onItemClick(position: String) {
+        Log.i(" item ", " Clicked ............")
     }
 
 }

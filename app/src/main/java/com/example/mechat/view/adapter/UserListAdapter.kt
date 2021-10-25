@@ -1,6 +1,7 @@
 package com.example.mechat.view.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -14,8 +15,7 @@ import com.example.mechat.modal.data.Users
  * TODO: Replace the implementation with code for your data type.
  */
 class UserListAdapter(
-    val context: Context,
-    val itemClickListener: ChatListAdapter.ItemClickListener)
+    val context: Context)
 : ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
 
 {
@@ -27,11 +27,12 @@ class UserListAdapter(
     {
         init {
             items.root.setOnClickListener{
-                items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
+//                items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
             }
         }
         fun bind(user: Users)
         {
+            Log.i(" binding " , user.toString())
             items.userItems = user
 
         }

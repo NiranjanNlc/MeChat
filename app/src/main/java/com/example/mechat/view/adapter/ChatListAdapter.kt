@@ -28,7 +28,7 @@ class ChatListAdapter constructor(val context : Context, val itemClickListener: 
             }
 
         fun bind(userItems: Users) {
-            items.userChats= userItems
+            items.userItems= userItems
         }
 
     }

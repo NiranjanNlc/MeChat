@@ -17,7 +17,8 @@ import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.firebase.ui.auth.data.model.User
 
-class UserFragment : Fragment() {
+class UserFragment : Fragment(),
+    UserListAdapter.ItemClickListener {
 
     private lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
@@ -75,20 +76,26 @@ class UserFragment : Fragment() {
         viewModal.userList.observe(viewLifecycleOwner, {
             print(it)
             Log.i(" vlaues reterived ", it.toString())
-            if(!it.isEmpty())
-                adapter.submitList(viewModal.userList.value)
-                print("")
+            if(!it.isEmpty()) {
+                adapter.submitList(it)
+                print(" hello nepoal " ,)
+            }
         })
     }
 
     private fun bindData()
     {
+       adapter = UserListAdapter(requireContext())
         // already binf by the view and data binding
     }
 
     private fun initialiseSampleViewModal()
     {
 //        sample viewmodal initialised above only
+    }
+
+    override fun onItemClick(position: String) {
+        Log.i(" item clicked ", " yess big yesss ")
     }
 
 }
