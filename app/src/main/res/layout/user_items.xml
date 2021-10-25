@@ -2,7 +2,7 @@
 <layout>
     <data>
         <variable
-            name="userChats"
+            name="userItems"
             type="com.example.mechat.modal.data.Users" />
     </data>
 
@@ -34,7 +34,7 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="@{userItems.userName}"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="16dp"/>
