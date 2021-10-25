@@ -45,7 +45,7 @@ class WelecomActivity : AppCompatActivity()
             }
 
         })
-            setUpAdapter()
+            // setUpAdapter()
     }
     private fun setUpAdapter()
     {

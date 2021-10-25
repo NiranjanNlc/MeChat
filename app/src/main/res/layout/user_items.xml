@@ -6,48 +6,38 @@
             type="com.example.mechat.modal.data.Users" />
     </data>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:src="@drawable/avatar"
-        app:civ_border_width="2dp"
-        android:padding="2dp"
-        android:layout_margin="4dp"
-        app:civ_border_color="#FF000000"/>
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/avatar"
+            app:civ_border_width="2dp"
+            android:padding="2dp"
+            android:layout_margin="4dp"
+            app:civ_border_color="#FF000000"/>
 
-        <TextView
-            android:id="@+id/username"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ChannelName"
-            android:padding="16dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/lastMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LastMessage"
-            android:gravity="bottom"
-            android:paddingTop="8dp"
-            android:paddingBottom="0dp"
-            android:layout_gravity="bottom"/>
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:padding="16dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
 </layout>

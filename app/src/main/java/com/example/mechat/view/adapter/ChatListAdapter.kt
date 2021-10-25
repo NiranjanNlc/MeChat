@@ -24,7 +24,6 @@ class ChatListAdapter constructor(val context : Context, val itemClickListener: 
         init {
             items.root.setOnClickListener {
 
-
             }
             }
 

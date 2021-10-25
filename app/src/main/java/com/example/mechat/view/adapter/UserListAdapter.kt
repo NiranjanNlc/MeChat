@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.mechat.databinding.FragmentUserBinding
+import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
 
 /**
@@ -18,7 +18,7 @@ class UserListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentUserBinding.inflate(
+            UserItemsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -35,7 +35,7 @@ class UserListAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentUserBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: UserItemsBinding) : RecyclerView.ViewHolder(binding.root) {
 //        val idView: TextView = binding.itemNumber
 //        val contentView: TextView = binding.content
     }

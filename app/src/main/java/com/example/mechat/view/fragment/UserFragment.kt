@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.example.mechat.R
-import com.example.mechat.databinding.FragmentUserBinding
 import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.viewmodal.AuthenciationViewModal
 import com.example.mechat.viewmodal.UserListViewModal
