@@ -1,6 +1,7 @@
 package com.example.mechat.view.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
+import com.example.mechat.view.ChatDetailActivity
+import com.example.mechat.view.WelecomActivity
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
@@ -20,14 +23,13 @@ class UserListAdapter(
 
 {
 
-
     inner class UserListViewHolderr(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root)
     {
-        init {
-            items.root.setOnClickListener{
-//                items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
-            }
-        }
+//        init {
+//            items.root.setOnClickListener{
+////                items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
+//            }
+//        }
         fun bind(user: Users)
         {
             Log.i(" binding " , user.toString())
@@ -63,6 +65,13 @@ class UserListAdapter(
         val user = getItem(position)
         println( " see thid " + user)
         holder.bind(user)
-        holder.items.executePendingBindings()    
+        holder.items.executePendingBindings()
+        holder.itemView.setOnClickListener {
+            var i = Intent(context, ChatDetailActivity ::class.java)
+            i.putExtra("userId",user.userId)
+            i.putExtra("userName",user.userName)
+            i.putExtra("userProfile",user.profilePic)
+            context.startActivity(i)
+        }
     }
 }
