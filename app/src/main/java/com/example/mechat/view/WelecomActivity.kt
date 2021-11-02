@@ -11,7 +11,7 @@ import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.android.material.tabs.TabLayout
 
-class WelecomActivity : AppCompatActivity(), UserListAdapter.ItemClickListener
+class WelecomActivity : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: PagerAdapter
@@ -46,8 +46,5 @@ class WelecomActivity : AppCompatActivity(), UserListAdapter.ItemClickListener
         })
     }
 
-    override fun onItemClick(position: String) {
-        Log.i(" item ", " Clicked ............")
-    }
 
 }

@@ -19,9 +19,7 @@ class UserListAdapter(
 : ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
 
 {
-    interface ItemClickListener{
-        fun onItemClick(position: String)
-    }
+
 
     inner class UserListViewHolderr(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root)
     {
