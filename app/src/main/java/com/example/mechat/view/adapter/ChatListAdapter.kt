@@ -11,21 +11,12 @@ import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.ChatListAdapter.*
 
-class ChatListAdapter constructor(val context : Context, val itemClickListener: ItemClickListener):
+class ChatListAdapter constructor(val context : Context ):
   ListAdapter<Users, UserListViewHolder>(COMPARATOR)
 //   ListAdapter<Users,ChatListAdapter.UserListViewHolder>(COMPARATOR)
 {
 
-    interface ItemClickListener{
-        fun onItemClick(position: String)
-    }
-
     inner  class UserListViewHolder(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root) {
-        init {
-            items.root.setOnClickListener {
-
-            }
-            }
 
         fun bind(userItems: Users) {
             items.userItems= userItems
