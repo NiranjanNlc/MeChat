@@ -15,8 +15,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recievermessage"
         android:layout_margin="8dp"
+        android:inputType="textLongMessage|textMultiLine"
+        android:maxHeight="384dp"
+        android:minHeight="48dp"
+        android:text="@string/recievermessage"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +28,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="12:20 am"
         android:layout_margin="4dp"
+        android:inputType="textLongMessage|textMultiLine"
+        android:text="12:20 am"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
