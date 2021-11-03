@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechat.modal.Message
+import com.example.mechat.utils.FirebaseUtils
 
-class DetailChatAdapter(context: Context , messages :List<Message>):
+class DetailChatAdapter(context: Context , var messages :List<Message>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     val recieverViewType : Int = 2;
@@ -24,7 +25,11 @@ class DetailChatAdapter(context: Context , messages :List<Message>):
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+    override fun getItemViewType(position: Int): Int
+    {
+        if(messages[position].uid.equals(FirebaseUtils.firebaseUser?.uid))
+            return senderViewType
+        else
+        return recieverViewType
     }
 }
