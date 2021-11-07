@@ -22,28 +22,22 @@ class UserFragment : Fragment() {
     private lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
     private lateinit var adapter : UserListAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View?
     {
-        binding = FragmentUserListBinding.inflate(layoutInflater)
         return inflater.inflate(R.layout.fragment_user_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentUserListBinding.inflate(layoutInflater)
         viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         bindData()
+        setUpAdapter()
         initRecyclerView()
         observeChange()
-        setUpAdapter()
     }
 
     override fun onDestroy() {
@@ -55,16 +49,18 @@ class UserFragment : Fragment() {
     {
         viewModal.userList.observe(viewLifecycleOwner, {
             print(it)
-            Log.i(" vlaues reterived ", it.toString())
-            if(!it.isEmpty())
-              print("")
+            Log.i("Valuees,setUp adapter", it.toString())
+            Log.i("it vlaues testing ",(it.isEmpty().toString()))
+            if(!(it.isEmpty())) {
+                print(" Niranjan lamichhane nlc is born on nijgadh ")
+            }
         })
 
     }
     private fun initRecyclerView()
     {
-        print(" recycler view initiated")
-        binding.list.layoutManager = LinearLayoutManager(requireContext()) as RecyclerView.LayoutManager?
+        println(" recycler view initiated")
+        binding.list.layoutManager = LinearLayoutManager(activity)
         binding.list.setHasFixedSize(true)
         binding.list.adapter=   adapter
         adapter.submitList(viewModal.userList.value)
@@ -73,12 +69,10 @@ class UserFragment : Fragment() {
     private fun observeChange()
     {
         viewModal.userList.observe(viewLifecycleOwner, {
-            print(it)
+            println(it)
             Log.i(" vlaues reterived ", it.toString())
-            if(!it.isEmpty()) {
                 adapter.submitList(it)
-                print(" hello nepoal " ,)
-            }
+                println(" hello nepoal " ,)
         })
     }
 
@@ -88,9 +82,6 @@ class UserFragment : Fragment() {
         // already binf by the view and data binding
     }
 
-    private fun initialiseSampleViewModal()
-    {
-//        sample viewmodal initialised above only
-    }
+    private fun initialiseSampleViewModal() {} //\* sample viewmodal initialised above only */
 
 }
