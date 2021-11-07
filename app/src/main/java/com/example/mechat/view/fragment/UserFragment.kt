@@ -17,8 +17,7 @@ import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.firebase.ui.auth.data.model.User
 
-class UserFragment : Fragment(),
-    UserListAdapter.ItemClickListener {
+class UserFragment : Fragment() {
 
     private lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
@@ -92,10 +91,6 @@ class UserFragment : Fragment(),
     private fun initialiseSampleViewModal()
     {
 //        sample viewmodal initialised above only
-    }
-
-    override fun onItemClick(position: String) {
-        Log.i(" item clicked ", " yess big yesss ")
     }
 
 }
