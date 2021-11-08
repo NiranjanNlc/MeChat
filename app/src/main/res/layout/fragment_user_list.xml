@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.mechat.viewmodal.UserListViewModal" />
+    </data>
 <androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,6 +15,8 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:context=".view.fragment.UserFragment"
     tools:listitem="@layout/user_items" />
+
+</layout>

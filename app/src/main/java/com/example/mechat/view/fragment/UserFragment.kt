@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,8 +33,8 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentUserListBinding.inflate(layoutInflater)
         viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
+        binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
         bindData()
         setUpAdapter()
         initRecyclerView()
@@ -53,6 +54,7 @@ class UserFragment : Fragment() {
             Log.i("it vlaues testing ",(it.isEmpty().toString()))
             if(!(it.isEmpty())) {
                 print(" Niranjan lamichhane nlc is born on nijgadh ")
+                adapter.submitList(it)
             }
         })
 
@@ -60,8 +62,8 @@ class UserFragment : Fragment() {
     private fun initRecyclerView()
     {
         println(" recycler view initiated")
-        binding.list.layoutManager = LinearLayoutManager(activity)
-        binding.list.setHasFixedSize(true)
+      //  binding.list.layoutManager = LinearLayoutManager(activity)
+        binding.list.setHasFixedSize(false)
         binding.list.adapter=   adapter
         adapter.submitList(viewModal.userList.value)
     }
@@ -79,6 +81,8 @@ class UserFragment : Fragment() {
     private fun bindData()
     {
        adapter = UserListAdapter(requireContext())
+        binding.viewmodel = viewModal
+        binding.lifecycleOwner = this
         // already binf by the view and data binding
     }
 
