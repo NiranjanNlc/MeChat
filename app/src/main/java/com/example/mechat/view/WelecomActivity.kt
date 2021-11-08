@@ -2,30 +2,25 @@ package com.example.mechat.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.viewpager.widget.PagerAdapter
 import com.example.mechat.databinding.MainScreenBinding
 import com.example.mechat.view.adapter.TabViewPageAdapter
-import com.example.mechat.view.adapter.UserListAdapter
-import com.example.mechat.viewmodal.UserListViewModal
-import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.android.material.tabs.TabLayout
 
 class WelecomActivity : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
-    private lateinit var adapter: PagerAdapter
+    private lateinit var adapter: TabViewPageAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding1 = MainScreenBinding.inflate(layoutInflater)
-        setContentView(binding1.root)
+        val view = binding1.root
+        setContentView(view)
         val tabLayout = binding1.tabView
-        tabLayout.addTab(tabLayout.newTab().setText("Chat "))
-        tabLayout.addTab(tabLayout.newTab().setText("UserList "))
-        val fragmentManager1 = supportFragmentManager
-        adapter =  TabViewPageAdapter(fragmentManager1,binding1.tabView.tabCount)
-        binding1.viewPager.adapter=adapter
-        binding1.viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+        val viewPager = binding1.viewPager
+        adapter =  TabViewPageAdapter(supportFragmentManager,lifecycle)
+        viewPager.adapter= adapter
+        //tabLayout.setupWithViewPager(binding1.viewPager)
+        // viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab != null) {
