@@ -5,18 +5,30 @@
             name="viewmodel"
             type="com.example.mechat.viewmodal.UserListViewModal" />
     </data>
+    <FrameLayout
+        android:id="@+id/userList"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.WelecomActivity">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=" Nirsnjan Lamichhane "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 <androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
     android:name="com.example.mechat.view.fragment.UserFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".view.fragment.UserFragment"
+    tools:context=".view.WelecomActivity"
     tools:listitem="@layout/user_items" />
-
+    </FrameLayout>
 </layout>

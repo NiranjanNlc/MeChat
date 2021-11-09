@@ -2,9 +2,11 @@ package com.example.mechat.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.mechat.databinding.MainScreenBinding
 import com.example.mechat.view.adapter.TabViewPageAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class WelecomActivity : AppCompatActivity()
 {
@@ -19,11 +21,11 @@ class WelecomActivity : AppCompatActivity()
         val viewPager = binding1.viewPager
         adapter =  TabViewPageAdapter(supportFragmentManager,lifecycle)
         viewPager.adapter= adapter
-        //tabLayout.setupWithViewPager(binding1.viewPager)
-        // viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if (tab != null) {
+                if (tab != null)
+                {
+                    Log.i(" clicked ", " ${tab.text}")
                     binding1.viewPager.currentItem = tab.position
                 }
             }

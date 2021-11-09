@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/drawable/outgoing_bubble.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10364583333333334" />
         <entry key="app/src/main/res/layout/channel_choser.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_user_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_screen.xml" value="0.153125" />
         <entry key="app/src/main/res/layout/message_list.xml" value="0.1" />

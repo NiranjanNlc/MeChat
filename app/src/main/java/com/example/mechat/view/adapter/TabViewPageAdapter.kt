@@ -1,15 +1,13 @@
 package com.example.mechat.view.adapter
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.*
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.mechat.R
 import com.example.mechat.view.fragment.ChatFragment
 import com.example.mechat.view.fragment.UserFragment
 
-class TabViewPageAdapter(fm: FragmentManager, val lifecycle: Lifecycle) :
+class TabViewPageAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
     FragmentStateAdapter(fm,lifecycle)
 {
      val  NUM_TABS = 3
@@ -24,7 +22,13 @@ class TabViewPageAdapter(fm: FragmentManager, val lifecycle: Lifecycle) :
                 return ChatFragment()
             }
 
-            else -> return UserFragment()
+            else ->
+            {
+                val  descriptionFragment = UserFragment();
+//                 val  transaction =fm.beginTransaction();
+//                transaction.add(R.id.userList, descriptionFragment ).commit()
+                return descriptionFragment
+            }
         }
     }
 }

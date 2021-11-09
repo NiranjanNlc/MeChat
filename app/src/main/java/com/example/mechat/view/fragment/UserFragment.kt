@@ -23,18 +23,12 @@ class UserFragment : Fragment() {
     private lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
     private lateinit var adapter : UserListAdapter
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View?
-    {
-        return inflater.inflate(R.layout.fragment_user_list, container, false)
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
+        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         bindData()
         setUpAdapter()
         initRecyclerView()
