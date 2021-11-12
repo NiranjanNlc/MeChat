@@ -27,6 +27,7 @@ class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.i(" in the ", " user list ")
         binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
         viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
         bindData()
