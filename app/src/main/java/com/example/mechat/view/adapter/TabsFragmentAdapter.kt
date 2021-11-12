@@ -4,9 +4,8 @@ import android.util.Log
 import androidx.fragment.app.*
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.mechat.R
-import com.example.mechat.view.fragment.ChatFragment
-import com.example.mechat.view.fragment.UserFragment
+import com.example.mechat.view.fragment.ChatListFragment
+import com.example.mechat.view.fragment.UserListFragment
 
 class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
     FragmentStateAdapter(fm,lifecycle)
@@ -24,12 +23,12 @@ class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
                 //  val homeFragment: HomeFragment = HomeFragment()
 
                 Log.i(" poition ", " chatt ")
-                return ChatFragment()
+                return ChatListFragment()
             }
 
             2 ->
             {
-                val  descriptionFragment = UserFragment();
+                val  descriptionFragment = UserListFragment();
 
                 Log.i(" poition ", " userlist  ..........")
 //                 val  transaction =fm.beginTransaction();
@@ -38,7 +37,7 @@ class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
             }
             else ->
             {
-                return ChatFragment()
+                return ChatListFragment()
             }
         }
     }

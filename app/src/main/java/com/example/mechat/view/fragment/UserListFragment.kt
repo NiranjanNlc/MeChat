@@ -18,7 +18,7 @@ import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.firebase.ui.auth.data.model.User
 
-class UserFragment : Fragment() {
+class UserListFragment : Fragment() {
 
     private lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
