@@ -11,6 +11,7 @@ class UserListViewModal: ViewModel()
     var userList = FireBaseRepo.userList
 
     init{
+        userList = FireBaseRepo.userList
         FireBaseRepo.getUserList()
     }
 

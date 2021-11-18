@@ -25,11 +25,11 @@ class UserListAdapter(
 
     inner class UserListViewHolderr(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root)
     {
-//        init {
-//            items.root.setOnClickListener{
-////                items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
-//            }
-//        }
+        init {
+            items.root.setOnClickListener{
+          //      items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
+            }
+        }
         fun bind(user: Users)
         {
             Log.i(" binding " , user.toString())

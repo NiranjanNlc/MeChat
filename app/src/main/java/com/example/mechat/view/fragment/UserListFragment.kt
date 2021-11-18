@@ -6,21 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mechat.R
 import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.view.adapter.UserListAdapter
-import com.example.mechat.viewmodal.AuthenciationViewModal
 import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
-import com.firebase.ui.auth.data.model.User
 
 class UserListFragment : Fragment() {
-
-    private lateinit var binding: FragmentUserListBinding
+   private  lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
     private lateinit var adapter : UserListAdapter
 
@@ -30,18 +25,21 @@ class UserListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.i(" in the ", " user list ")
-        binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
-        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
-        bindData()
-        setUpAdapter()
-        initRecyclerView()
-        observeChange()
+        binding = FragmentUserListBinding.inflate(layoutInflater,container,false)
+    //    binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
+ //       bindData()
+//        setUpAdapter()
+//        initRecyclerView()
+//        observeChange()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initialiseSampleViewModal()
+        setUpAdapter()
+        initRecyclerView()
+    //    observeChange()
     }
 
     override fun onDestroy() {
@@ -51,44 +49,37 @@ class UserListFragment : Fragment() {
     }
     private fun setUpAdapter()
     {
-        viewModal.userList.observe(viewLifecycleOwner, {
-            print(it)
-            Log.i("Valuees,setUp adapter", it.toString())
-            Log.i("it vlaues testing ",(it.isEmpty().toString()))
-            if(!(it.isEmpty())) {
-                print(" Niranjan lamichhane nlc is born on nijgadh ")
-                adapter.submitList(it)
-            }
-        })
-
+        adapter = UserListAdapter(requireContext())
     }
     private fun initRecyclerView()
     {
         println(" recycler view initiated")
-      //  binding.list.layoutManager = LinearLayoutManager(activity)
-        binding.list.setHasFixedSize(false)
+        binding.list.layoutManager = LinearLayoutManager(activity)
+        binding.list.setHasFixedSize(true)
         binding.list.adapter=   adapter
+        println(viewModal.userList.value)
         adapter.submitList(viewModal.userList.value)
     }
 
     private fun observeChange()
     {
-        viewModal.userList.observe(viewLifecycleOwner, {
+        viewModal.userList.observe(viewLifecycleOwner, Observer
+        {
             println(it)
             Log.i(" vlaues reterived ", it.toString())
-                adapter.submitList(it)
+               // adapter.submitList(it)
                 println(" hello nepoal " ,)
         })
+        viewModal.userList.observe(viewLifecycleOwner, {
+            print(it)
+            Log.i("Valuees,setUp adapter", it.toString())
+            Log.i("it vlaues testing ",(it.isEmpty().toString()))
+                print(" Niranjan lamichhane nlc is born on nijgadh ")
+                adapter.submitList(it)
+        })
     }
-
-    private fun bindData()
+    private fun initialiseSampleViewModal()
     {
-       adapter = UserListAdapter(requireContext())
-        binding.viewmodel = viewModal
-        binding.lifecycleOwner = this
-        // already binf by the view and data binding
+        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
     }
-
-    private fun initialiseSampleViewModal() {} //\* sample viewmodal initialised above only */
-
 }

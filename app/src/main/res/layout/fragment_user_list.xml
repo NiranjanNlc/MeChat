@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        <variable
-            name="viewmodel"
-            type="com.example.mechat.viewmodal.UserListViewModal" />
-    </data>
-    <FrameLayout
-        android:id="@+id/userList"
+
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.WelecomActivity">
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=" Niranjan ,,,,,njan Lamichhane "
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        android:id="@+id/userLsit"
+        android:layout_width= "match_parent"
+        android:layout_height="wrap_content">
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Niranjan  Ashmita "-->
+<!--        />-->
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/list"
     android:name="com.example.mechat.view.fragment.UserFragment"
@@ -27,8 +19,5 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    tools:context=".view.WelecomActivity"
     tools:listitem="@layout/user_items" />
-    </FrameLayout>
-</layout>
+</FrameLayout>

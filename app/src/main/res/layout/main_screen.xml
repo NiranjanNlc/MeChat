@@ -20,7 +20,8 @@
         app:tabIndicatorColor="@color/colorAccent"
         app:tabTextColor="@android:color/background_light"
         android:layout_gravity="center_horizontal"
-        app:tabGravity="fill" >
+        app:tabGravity="fill"
+        app:tabMode="fixed">
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
