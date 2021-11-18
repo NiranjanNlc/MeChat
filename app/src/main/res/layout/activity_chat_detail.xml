@@ -59,10 +59,10 @@
                 android:id="@+id/imageView5"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_margin="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_margin="8dp"
                 app:srcCompat="@drawable/videocall" />
 
             <ImageView
@@ -75,6 +75,15 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/call" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Niranjan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 

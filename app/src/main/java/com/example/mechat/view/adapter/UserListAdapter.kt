@@ -70,7 +70,7 @@ class UserListAdapter(
             var i = Intent(context, ChatDetailActivity ::class.java)
             i.putExtra("userId",user.userId)
             i.putExtra("userName",user.userName)
-            i.putExtra("userProfile",user.profilePic)
+            i.putExtra("userProfile",user.userName)
             context.startActivity(i)
         }
     }
