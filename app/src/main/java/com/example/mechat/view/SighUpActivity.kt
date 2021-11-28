@@ -31,7 +31,6 @@ class SighUpActivity : AppCompatActivity()
             viewModal.sighnUp()
         }
         viewModal.processStatus.observe(this,{
-
            if (it)
            {
                Log.i("process ", "suveeded ")
