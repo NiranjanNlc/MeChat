@@ -18,7 +18,6 @@ class ChatDetailActivity : AppCompatActivity() {
          var recieverId =intent.getStringExtra("userId")
          var userName = intent.getStringExtra("username")
         Log.i(" intent ", " $senderId was  $recieverId  thus $userName")
-        binding.username.text = recieverId
-
+        binding.username.text = "Niranjan Lamichhane "
     }
 }
