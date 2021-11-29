@@ -1,18 +1,16 @@
 package com.example.mechat.viewmodal
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mechat.modal.data.Users
-import com.example.mechat.modal.repo.FireBaseRepo
+import com.example.mechat.modal.repo.UserListService
 
 class UserListViewModal: ViewModel()
 {
 
-    var userList = FireBaseRepo.userList
+    var userList = UserListService.userList
 
     init{
-        userList = FireBaseRepo.userList
-        FireBaseRepo.getUserList()
+        userList = UserListService.userList
+        UserListService.getUserList()
     }
 
 }

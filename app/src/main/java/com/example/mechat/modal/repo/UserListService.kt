@@ -8,7 +8,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-object FireBaseRepo
+object UserListService
 {
 
      var userList = MutableLiveData<List<Users>>()
