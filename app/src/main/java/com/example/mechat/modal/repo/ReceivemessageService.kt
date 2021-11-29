@@ -2,58 +2,31 @@ package com.example.mechat.modal.repo
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import com.example.mechat.modal.data.ChatMessage
+import com.example.mechat.utils.FirebaseUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 object ReceivemessageService
 {
-    private fun listenForMessages() {
-
-        val fromId = FirebaseAuth.getInstance().uid ?: return
-        val toId = toUser.uid
-        val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
-
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.d(TAG, "database error: " + databaseError.message)
+    var chatmessgaes = MutableLiveData<List<ChatMessage>>()
+    fun getMessageList( fromId : String , toId : String )
+    {
+        val myTopPostsQuery = FirebaseUtils.database.child("/user-messages/$fromId/$toId").orderByChild("timeStamp")
+        myTopPostsQuery.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot)
+            {
+                val list = snapshot.children.map { it.getValue(ChatMessage::class.java)!! }
+                Log.d("TAG", "Value is: $list")
+                Log.i(" messageist 00", snapshot.getValue().toString())
+                chatmessgaes.value = list
             }
 
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d(TAG, "has children: " + dataSnapshot.hasChildren())
-                if (!dataSnapshot.hasChildren()) {
-
-                }
-            }
-        })
-
-        ref.addChildEventListener(object : ChildEventListener {
-            override fun onCancelled(databaseError: DatabaseError) {
-            }
-
-            override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String?) {
-            }
-
-            override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
-            }
-
-            override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                dataSnapshot.getValue(ChatMessage::class.java)?.let {
-                    if (it.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = LatestMessagesActivity.currentUser ?: return
-                        adapter.add(ChatFromItem(it.text, currentUser, it.timestamp))
-                    } else {
-                        adapter.add(ChatToItem(it.text, toUser, it.timestamp))
-                    }
-                }
-                recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
-
-            }
-
-            override fun onChildRemoved(dataSnapshot: DataSnapshot) {
+            override fun onCancelled(error: DatabaseError) {
+                Log.i(" error database ", error.details)
             }
 
         })
-
     }
-
 }
