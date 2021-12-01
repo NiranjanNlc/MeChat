@@ -25,8 +25,11 @@ class ChatDetailActivity : AppCompatActivity()
         binding.viewmodal = viewModal
          var senderId = FirebaseUtils.firebaseUser?.uid
          var recieverId =intent.getStringExtra("userId")
-         var userName = intent.getStringExtra("username")
+         var userName = intent.getStringExtra("userName")
         Log.i(" intent ", " $senderId was  $recieverId  thus $userName")
-       // binding.username.text = "Niranjan Lamichhane "
+        binding.username.text = userName
+//        binding.viewmodal.recieverId.value = recieverId
+//        binding.viewmodal.senderId.value = senderId
+        viewModal.setSenderReceiver( senderId, recieverId)
     }
 }

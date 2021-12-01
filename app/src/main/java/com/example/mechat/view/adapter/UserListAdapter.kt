@@ -68,6 +68,7 @@ class UserListAdapter(
         holder.items.executePendingBindings()
         holder.itemView.setOnClickListener {
             var i = Intent(context, ChatDetailActivity ::class.java)
+            println(" Our user here $user.toString()")
             i.putExtra("userId",user.userId)
             i.putExtra("userName",user.userName)
             i.putExtra("userProfile",user.userName)
