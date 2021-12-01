@@ -37,10 +37,12 @@ class ChatDetailViewModal : ViewModel()
 
     private fun performSendMessage() {
         if (_messageInput.value.isNullOrEmpty()) {
+            println(" empty string ...........")
              return
         }
         val fromId = senderId
         val toId = recieverId
+        println(" performing sending message ................")
         SendMessageService.sendMessage(fromId.value.toString(), toId.value.toString(), _messageInput.value.toString())
     }
     }

@@ -132,9 +132,10 @@
             android:layout_weight="1"
             android:padding="8dp"
             android:onClick="@{(view) -> viewmodal.sendMessage()}"
-            android:clickable="@{viewmodal._messageInput.toString().length()>0}"
             app:srcCompat="@drawable/send" />
     </LinearLayout>
+<!--    android:clickable="@{viewmodal._messageInput.toString().length()>0}"-->
+
 
 </RelativeLayout>
 </layout>
