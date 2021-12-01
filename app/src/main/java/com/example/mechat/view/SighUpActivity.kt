@@ -9,10 +9,12 @@ import com.example.mechat.R
 import com.example.mechat.databinding.ActivitySighUpBinding
 import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.Extensions.toast
+import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.utils.FirebaseUtils.firebaseAuth
 import com.example.mechat.viewmodal.AuthenciationViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 
 class SighUpActivity : AppCompatActivity()
 {
@@ -56,6 +58,7 @@ class SighUpActivity : AppCompatActivity()
             Log.d(" value " , " $it and $procee")
            if(it && procee) {
                toast("created account successfully under given condition !")
+               FirebaseUtils.firebaseAuth.signOut()
                startActivity(Intent(this, Login::class.java))
                finish()
            }
