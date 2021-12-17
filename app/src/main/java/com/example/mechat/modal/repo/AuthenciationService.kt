@@ -8,8 +8,9 @@ import com.example.mechat.utils.FirebaseUtils.database
 
 object AuthenciationService {
     var success= MutableLiveData<Boolean>(false);
-     var process = MutableLiveData<Boolean>(false)
-    fun writeNewUser(user: Users) {
+     var  process = MutableLiveData<Boolean>(false)
+    fun writeNewUser(user: Users)
+    {
         FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
     }
 
@@ -19,12 +20,12 @@ object AuthenciationService {
                     if (task.isSuccessful)
                     {
                         writeNewUser(user)
-                        process.value =true
+                     //   process.value =true
                         success.value = true
                     } else {
                         Log.d(" FAilure ", " could not cretate user at givrn ")
                         Log.d(" FAilure ", "${user.mail}")
-                        process.value =true
+                       // process.value =true
                         success.value = false
                     }
                 }
