@@ -1,5 +1,6 @@
 package com.example.mechat.modal.repo
 
+import kotlinx.coroutines.Dispatchers
 import org.junit.Assert.*
 
 import org.junit.After
@@ -8,36 +9,15 @@ import org.junit.Test
 
 class AuthenciationServiceTest {
 
-    @Before
-    fun setUp()
-    {
-    }
-
-    @After
-    fun tearDown() {
-    }
-
-    @Test
-    fun getSuccess() {
-    }
-
-    @Test
-    fun setSuccess() {
-    }
-
-    @Test
-    fun getProcess() {
-    }
-
-    @Test
-    fun setProcess() {
-    }
-
     @Test
     fun writeNewUser() {
     }
 
     @Test
-    fun sighnUpUser() {
+    fun sighnUpUser()
+    {
+        viewModelScope.launch(Dispatchers.IO) {
+
+        }
     }
 }
