@@ -22,7 +22,6 @@ class AuthenciationViewModal: ViewModel()
     }
     fun sighnUp()
     {
-
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
         AuthenciationService.sighnUpUser(user)

@@ -15,6 +15,7 @@ class SplashActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          print(" $FirebaseUtils.firebaseUser  user in your town ...")
+        FirebaseUtils.firebaseAuth.signOut()
         if(FirebaseUtils.firebaseUser!= null)
         {
              i = Intent(this, WelecomActivity::class.java)
