@@ -15,12 +15,19 @@ object AuthenciationService {
     var success= MutableLiveData<Boolean>(false);
      var  process = MutableLiveData<Boolean>(false)
      private lateinit  var result : AuthResult
-    suspend fun writeNewUser(user: Users)
+    suspend fun writeNewUser(user: Users):Boolean
     {
-        FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
-            ?.await()
-        success.value=true
-        process.value= true
+        return try{
+            val data =  FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
+                ?.await()
+            println(data.toString())
+            success.value=true
+            process.value= true
+            return true
+        }catch (e : Exception){
+            return false
+        }
+
     }
 
     fun sighnUpUser(user: Users)

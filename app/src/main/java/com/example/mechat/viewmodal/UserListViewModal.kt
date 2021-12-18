@@ -10,7 +10,7 @@ class UserListViewModal: ViewModel()
 
     init{
         userList = UserListService.userList
-        UserListService.getUserList()
+        UserListService.getListOfUser()
     }
 
 }

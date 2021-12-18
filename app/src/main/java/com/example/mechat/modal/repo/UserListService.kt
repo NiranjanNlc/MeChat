@@ -7,11 +7,14 @@ import com.example.mechat.utils.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.DocumentSnapshot
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 object UserListService
 {
-
-     var userList = MutableLiveData<List<Users>>()
+    var userList = MutableLiveData<List<Users>>()
     fun getUserList()
     {
         val myTopPostsQuery = FirebaseUtils.database.child("users").orderByChild("userName")
@@ -21,7 +24,7 @@ object UserListService
                 val list = snapshot.children.map { it.getValue(Users::class.java)!! }
                 Log.d("TAG", "Value is: $list")
                 Log.i(" user list 00", snapshot.getValue().toString())
-             userList.value = list
+                userList.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -29,5 +32,24 @@ object UserListService
             }
 
         })
+    }
+    suspend fun getUserListFromDb(): Any?
+    {
+        return try{
+            val data =FirebaseUtils.database.child("users").orderByChild("userName").get().await()
+            data.children.map {it.getValue(Users::class.java)!!  }
+        }catch (e : Exception)
+        {
+            null
+        }
+    }
+    fun getListOfUser()
+    {
+        GlobalScope.launch {
+            val list = getUserListFromDb()
+            Log.d("TAG", "Value is: $list")
+            Log.i(" user list 00", list.toString())
+            userList.value = list as List<Users>?
+        }
     }
 }
