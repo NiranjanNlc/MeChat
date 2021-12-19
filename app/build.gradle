@@ -90,5 +90,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0-alpha01"
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0-alpha01"
 
+    //mockito
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+
+
 
 }
