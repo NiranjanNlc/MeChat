@@ -2,20 +2,15 @@ package com.example.mechat.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.i
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.R
 import com.example.mechat.databinding.ActivityChatDetailBinding
-import com.example.mechat.databinding.ActivitySighUpBinding
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.DetailChatAdapter
-import com.example.mechat.viewmodal.AuthenciationViewModal
 import com.example.mechat.viewmodal.ChatDetailViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
-import java.util.logging.Logger
 
 class ChatDetailActivity : AppCompatActivity()
 {
@@ -29,6 +24,14 @@ class ChatDetailActivity : AppCompatActivity()
         binding.viewmodal = viewModal
         setSenderReceiver()
         initializeRecyclerView()
+        onserVeViewModel()
+    }
+
+    private fun onserVeViewModel() {
+        viewModal.messageList.observe(this,{
+            adapter = DetailChatAdapter(this,it)
+            binding.chatMessageList.adapter = adapter
+        })
     }
 
     private fun setSenderReceiver() {

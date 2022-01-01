@@ -3,16 +3,14 @@ package com.example.mechat.view.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechat.databinding.SampleRecieverBinding
 import com.example.mechat.databinding.SampleSenderBinding
-import com.example.mechat.modal.Message
+import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
-import java.util.logging.Logger
 
-class DetailChatAdapter(context: Context , val messages :List<Message>):
+class DetailChatAdapter(context: Context, val messages: List<ChatMessage>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     val recieverViewType : Int = 2;
