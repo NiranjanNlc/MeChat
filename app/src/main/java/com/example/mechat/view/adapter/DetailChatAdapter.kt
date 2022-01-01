@@ -1,6 +1,7 @@
 package com.example.mechat.view.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,9 @@ import com.example.mechat.databinding.SampleRecieverBinding
 import com.example.mechat.databinding.SampleSenderBinding
 import com.example.mechat.modal.Message
 import com.example.mechat.utils.FirebaseUtils
+import java.util.logging.Logger
 
-class DetailChatAdapter(context: Context , var messages :List<Message>):
+class DetailChatAdapter(context: Context , val messages :List<Message>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     val recieverViewType : Int = 2;
@@ -20,7 +22,7 @@ class DetailChatAdapter(context: Context , var messages :List<Message>):
     class SenderViewHolder(var binding: SampleSenderBinding) : RecyclerView.ViewHolder(binding.root)
     {}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if(viewType ==2)
+        if(viewType==2)
         {
             val inflater = LayoutInflater.from(parent.context)
             val binding = SampleRecieverBinding.inflate(inflater)
@@ -35,20 +37,24 @@ class DetailChatAdapter(context: Context , var messages :List<Message>):
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int)
     {
+         val mesge = messages[position]
          if(holder.javaClass == SenderViewHolder::class.java)
          {
-            //code for binding
+             ( holder as ReceiverViewHolder).binding.textView.setText(mesge.text)
          }
         else
          {
-            //code for binding
+             ( holder as ReceiverViewHolder).binding.textView.setText(mesge.text)
          }
     }
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+    override fun getItemCount(): Int
+    {
+        Log.i(" message size ", messages.size.toString())
+        return messages.size
     }
     override fun getItemViewType(position: Int): Int
     {
+        Log.i(" types of view here ",FirebaseUtils.firebaseUser.toString())
         if(messages[position].uid.equals(FirebaseUtils.firebaseUser?.uid))
             return senderViewType
         else

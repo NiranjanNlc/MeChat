@@ -28,8 +28,18 @@ class ChatDetailActivity : AppCompatActivity()
          var userName = intent.getStringExtra("userName")
         Log.i(" intent ", " $senderId was  $recieverId  thus $userName")
         binding.username.text = userName
-//        binding.viewmodal.recieverId.value = recieverId
-//        binding.viewmodal.senderId.value = senderId
+        binding.viewmodal.recieverId.value = recieverId
+        binding.viewmodal.senderId.value = senderId
         viewModal.setSenderReceiver( senderId, recieverId)
+//        binding.sendMessage.setOnClickListener{
+//            sendngMessage()
+//        } performed thorugh view modal ..............
+    }
+
+    private fun sendngMessage()
+    {
+        val messageText = binding.editTextTextMultiLine.text
+        if (messageText.isNotBlank() && messageText.isNotEmpty())
+            viewModal.sendMessage()
     }
 }
