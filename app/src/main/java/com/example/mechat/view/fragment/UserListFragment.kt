@@ -29,14 +29,14 @@ class UserListFragment : Fragment() {
         binding = FragmentUserListBinding.inflate(layoutInflater,container,false)
         initialiseSampleViewModal()
         Log.i(" ddd1" , " user list fragmrnt  ")
+        setUpAdapter()
+        observeChange()
+        initRecyclerView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpAdapter()
-        initRecyclerView()
-        observeChange()
     }
 
     override fun onDestroy() {
