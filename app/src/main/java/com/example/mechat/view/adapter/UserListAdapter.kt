@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -72,7 +73,7 @@ class UserListAdapter(
             i.putExtra("userId",user.userId)
             i.putExtra("userName",user.userName)
             i.putExtra("userProfile",user.userName)
-            context.startActivity(i)
+            startActivity(context,i, null)
         }
     }
 }

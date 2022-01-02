@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.R
 import com.example.mechat.databinding.ActivityChatDetailBinding
+import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.DetailChatAdapter
 import com.example.mechat.viewmodal.ChatDetailViewModal
@@ -23,14 +24,18 @@ class ChatDetailActivity : AppCompatActivity()
         viewModal  = ViewModalFactory().create(ChatDetailViewModal ::class.java)
         binding.viewmodal = viewModal
         setSenderReceiver()
-        initializeRecyclerView()
         onserVeViewModel()
+    }
+
+    private fun initializeAdapter(messages: List<ChatMessage>) {
+        adapter= DetailChatAdapter(this,messages )
     }
 
     private fun onserVeViewModel() {
         viewModal.messageList.observe(this,{
-            adapter = DetailChatAdapter(this,it)
-            binding.chatMessageList.adapter = adapter
+            initializeAdapter(it)
+            //binding.chatMessageList.adapter = adapter
+             initializeRecyclerView()
         })
     }
 
