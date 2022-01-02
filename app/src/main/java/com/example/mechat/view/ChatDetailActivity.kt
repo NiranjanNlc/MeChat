@@ -40,8 +40,8 @@ class ChatDetailActivity : AppCompatActivity()
         var userName = intent.getStringExtra("userName")
         i(" intent ", " $senderId was  $recieverId  thus $userName")
         binding.username.text = userName
-        binding.viewmodal.recieverId.value = recieverId
-        binding.viewmodal.senderId.value = senderId
+        binding.viewmodal?.recieverId?.value = recieverId
+        binding.viewmodal?.senderId?.value = senderId
         viewModal.setSenderReceiver(senderId, recieverId)
     }
 
