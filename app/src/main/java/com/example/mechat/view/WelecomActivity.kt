@@ -33,7 +33,6 @@ class WelecomActivity : AppCompatActivity()
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab)
             {
-
                 Log.i(" tab selected ", tab.position.toString())
                 viewPager.currentItem = tab.position
             }
@@ -51,26 +50,26 @@ class WelecomActivity : AppCompatActivity()
                 adapter.createFragment(position)
             }
         })
-        FirebaseUtils.firebaseUser?.let { getUserDetails( it.uid) }!!
-        Log.i(" tab selected ", FirebaseUtils.firebaseUser?.uid.toString())
+//        FirebaseUtils.firebaseUser?.let { getUserDetails( it.uid) }!!
+      //  Log.i(" tab selected ", FirebaseUtils.firebaseUser?.uid.toString())
     }
 
-    private fun getUserDetails(uid : String){
-        val valueEventListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                users = dataSnapshot.child("$uid").getValue(Users::class.java)!!
-                if (users != null) {
-                    Log.d("TAG users ",users.toString())
-                }
-
-                //Do what you need to do with the value of name
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
-            }
-        }
-            FirebaseUtils.database.child("users").addListenerForSingleValueEvent(valueEventListener)
-    }
+//    private fun getUserDetails(uid : String){
+//        val valueEventListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+////                users = dataSnapshot.child("$uid").getValue(Users::class.java)!!
+////                if (users != null) {
+////                    Log.d("TAG users ",users.toString())
+////                }
+//
+//                //Do what you need to do with the value of name
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                Log.d("TAG", databaseError.getMessage()) //Don't ignore errors!
+//            }
+//        }
+//            FirebaseUtils.database.child("users").addListenerForSingleValueEvent(valueEventListener)
+//    }
 
 }
