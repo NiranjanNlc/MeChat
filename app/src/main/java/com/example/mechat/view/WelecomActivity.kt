@@ -3,24 +3,16 @@ package com.example.mechat.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.mechat.databinding.MainScreenBinding
-import com.example.mechat.modal.data.Users
-import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.TabsFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.google.android.material.tabs.TabLayoutMediator
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
 class WelecomActivity : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: TabsFragmentAdapter
-    private lateinit var users: Users
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding1 = MainScreenBinding.inflate(layoutInflater)
@@ -51,6 +43,5 @@ class WelecomActivity : AppCompatActivity()
                 adapter.createFragment(position)
             }
         })
-
     }
 }

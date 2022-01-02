@@ -28,21 +28,9 @@ class UserListFragment : Fragment() {
         Log.i(" in the ", " user list ")
         binding = FragmentUserListBinding.inflate(layoutInflater,container,false)
         initialiseSampleViewModal()
-        Log.i(" ddd1" , " user list fragmrnt  ")
-        setUpAdapter()
+        Log.i(" ddd1" , "${viewModal.userList.value} ")
         observeChange()
-        initRecyclerView()
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-       // viewModal.userList.observe()
-     //   lifecycle.removeObserver(viewLifecycleOwner)
     }
     private fun setUpAdapter()
     {
@@ -54,32 +42,27 @@ class UserListFragment : Fragment() {
             Log.i( " error for adapeter ", e.message.toString())
         }
     }
-    private fun initRecyclerView()
-    {
+    private fun initRecyclerView() {
         println(" recycler view initiated")
         binding.list.layoutManager = LinearLayoutManager(activity)
         binding.list.setHasFixedSize(true)
-        binding.list.adapter=   adapter
-        println(" usrr list " +viewModal.userList.value)
-        adapter.submitList(viewModal.userList.value)
+        binding.list.adapter = adapter
+        println(" usrr list " + viewModal.userList.value)
     }
 
     private fun observeChange()
     {
         viewModal.userList.observe(viewLifecycleOwner, Observer
         {
+            setUpAdapter()
+            initRecyclerView()
             println(it)
             Log.i(" vlaues reterived ", it.toString())
                adapter.submitList(it)
+                adapter.notifyDataSetChanged()
                 println(" hello nepoal " ,)
         })
-        viewModal.userList.observe(viewLifecycleOwner, {
-            print(it)
-            Log.i("Valuees,setUp adapter", it.toString())
-            Log.i("it vlaues testing ",(it.isEmpty().toString()))
-                print(" Niranjan lamichhane nlc is born on nijgadh ")
-                adapter.submitList(it)
-        })
+
     }
     private fun initialiseSampleViewModal()
     {
