@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:paddingLeft="32dp"
+    android:maxWidth="304dp"
+    android:minWidth="304dp"
     android:background="@drawable/incoming_bubble"
    >
 <!--    android:layout_marginTop="8dp"-->
@@ -19,12 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:inputType="textLongMessage|textMultiLine"
         android:maxHeight="384dp"
-        android:minHeight="48dp"
+        android:minHeight="08dp"
         android:text="@string/recievermessage"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -38,10 +40,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="284dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
