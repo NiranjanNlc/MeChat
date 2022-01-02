@@ -1,17 +1,22 @@
 package com.example.mechat.view
 
+import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log.i
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechat.R
 import com.example.mechat.databinding.ActivityChatDetailBinding
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.DetailChatAdapter
 import com.example.mechat.viewmodal.ChatDetailViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
+import androidx.recyclerview.widget.DividerItemDecoration
+
+import androidx.core.content.ContextCompat
+import com.example.mechat.R
+
 
 class ChatDetailActivity : AppCompatActivity()
 {
@@ -34,7 +39,6 @@ class ChatDetailActivity : AppCompatActivity()
     private fun onserVeViewModel() {
         viewModal.messageList.observe(this,{
             initializeAdapter(it)
-            //binding.chatMessageList.adapter = adapter
              initializeRecyclerView()
         })
     }
@@ -53,6 +57,11 @@ class ChatDetailActivity : AppCompatActivity()
     private fun initializeRecyclerView() {
         binding.chatMessageList.adapter = adapter
         binding.chatMessageList.layoutManager = LinearLayoutManager(this)
+        val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(ContextCompat.getDrawable(baseContext, com.example.mechat.R.drawable.line_divider)!!
+        )
+        binding.chatMessageList.addItemDecoration(divider)
+
     }
 
     private fun sendngMessage()

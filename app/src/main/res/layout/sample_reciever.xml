@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginRight="8dp"
-    android:maxWidth="304dp"
-    android:maxHeight="410dp"
-    android:minHeight="32dp"
-    android:background="@drawable/incoming_bubble">
+    android:background="@drawable/incoming_bubble"
+   >
+<!--    android:layout_marginTop="8dp"-->
+<!--    android:layout_marginRight="8dp"-->
+<!--    android:maxWidth="304dp"-->
+<!--    android:maxHeight="410dp"-->
+<!--    android:minHeight="16dp"-->
+<!--    >-->
 
     <TextView
         android:id="@+id/textView"

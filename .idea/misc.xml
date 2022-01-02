@@ -21,6 +21,7 @@
         <entry key="..\:/Users/ACER/StudioProjects/MeChat/app/src/main/res/mipmap-anydpi-v26/we_chat_round.xml" value="0.2" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/incoming_bubble.xml" value="0.16822916666666668" />
+        <entry key="app/src/main/res/drawable/line_divider.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/outgoing_bubble.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_chat_detail.xml" value="0.128" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1359375" />

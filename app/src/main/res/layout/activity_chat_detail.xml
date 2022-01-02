@@ -98,7 +98,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/sendChat"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        tools:listitem="@layout/sample_reciever"
+
+        android:padding="16dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
