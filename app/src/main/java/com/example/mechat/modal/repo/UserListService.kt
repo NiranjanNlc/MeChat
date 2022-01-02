@@ -36,20 +36,21 @@ object UserListService
     suspend fun getUserListFromDb(): Any?
     {
         return try{
-            val data =FirebaseUtils.database.child("users").orderByChild("userName").get().await()
+            val data =FirebaseUtils.database.child("users").get().await()
+            Log.i(" data manipulated ",data.toString())
             data.children.map {it.getValue(Users::class.java)!!  }
         }catch (e : Exception)
         {
+            println( " eoor encountered during the operation " + e.message)
             null
         }
     }
-    fun getListOfUser()
+    suspend fun getListOfUser()
     {
-        GlobalScope.launch {
             val list = getUserListFromDb()
             Log.d("TAG", "Value is: $list")
             Log.i(" user list 00", list.toString())
             userList.value = list as List<Users>?
-        }
+
     }
 }

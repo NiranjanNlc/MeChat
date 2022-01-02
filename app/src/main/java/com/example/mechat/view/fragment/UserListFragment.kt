@@ -13,9 +13,10 @@ import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.view.adapter.UserListAdapter
 import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
+import java.lang.Exception
 
 class UserListFragment : Fragment() {
-   private  lateinit var binding: FragmentUserListBinding
+    private  lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
     private lateinit var adapter : UserListAdapter
 
@@ -26,20 +27,16 @@ class UserListFragment : Fragment() {
     ): View? {
         Log.i(" in the ", " user list ")
         binding = FragmentUserListBinding.inflate(layoutInflater,container,false)
-    //    binding = DataBindingUtil.setContentView(requireActivity(),R.layout.fragment_user_list)
- //       bindData()
-//        setUpAdapter()
-//        initRecyclerView()
-//        observeChange()
+        initialiseSampleViewModal()
+        Log.i(" ddd1" , " user list fragmrnt  ")
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialiseSampleViewModal()
         setUpAdapter()
         initRecyclerView()
-    //    observeChange()
+        observeChange()
     }
 
     override fun onDestroy() {
@@ -49,7 +46,13 @@ class UserListFragment : Fragment() {
     }
     private fun setUpAdapter()
     {
-        adapter = UserListAdapter(requireContext())
+        try {
+            adapter = UserListAdapter(requireContext())
+        }
+        catch (e:Exception)
+        {
+            Log.i( " error for adapeter ", e.message.toString())
+        }
     }
     private fun initRecyclerView()
     {
@@ -57,7 +60,7 @@ class UserListFragment : Fragment() {
         binding.list.layoutManager = LinearLayoutManager(activity)
         binding.list.setHasFixedSize(true)
         binding.list.adapter=   adapter
-        println(viewModal.userList.value)
+        println(" usrr list " +viewModal.userList.value)
         adapter.submitList(viewModal.userList.value)
     }
 
@@ -67,7 +70,7 @@ class UserListFragment : Fragment() {
         {
             println(it)
             Log.i(" vlaues reterived ", it.toString())
-               // adapter.submitList(it)
+               adapter.submitList(it)
                 println(" hello nepoal " ,)
         })
         viewModal.userList.observe(viewLifecycleOwner, {

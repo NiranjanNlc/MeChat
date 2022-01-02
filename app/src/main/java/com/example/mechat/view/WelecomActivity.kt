@@ -28,7 +28,7 @@ class WelecomActivity : AppCompatActivity()
         setContentView(view)
         val tabLayout = binding1.tabView
         val viewPager = binding1.viewPager
-        adapter = TabsFragmentAdapter(supportFragmentManager, lifecycle)
+        adapter = TabsFragmentAdapter(supportFragmentManager,lifecycle)
         viewPager.adapter = adapter
         tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab)
