@@ -11,6 +11,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
+        android:paddingRight="32dp"
         android:background="@drawable/outgoing_bubble"
         android:maxWidth="304dp"
         android:maxHeight="410dp"
