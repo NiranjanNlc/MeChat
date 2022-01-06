@@ -1,2 +1,2 @@
 # MeChat
-Chat appp for the demo purposes
+One to one secure chat 
