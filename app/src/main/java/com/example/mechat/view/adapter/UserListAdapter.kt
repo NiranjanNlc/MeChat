@@ -14,10 +14,7 @@ import com.example.mechat.modal.data.Users
 import com.example.mechat.view.ChatDetailActivity
 import com.example.mechat.view.WelecomActivity
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
+
 class UserListAdapter(
     val context: Context)
 : ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
@@ -26,11 +23,7 @@ class UserListAdapter(
 
     inner class UserListViewHolderr(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root)
     {
-        init {
-            items.root.setOnClickListener{
-          //      items.userItems?.userName?.let { it1 -> itemClickListener.onItemClick(it1) }
-            }
-        }
+
         fun bind(user: Users)
         {
             Log.i(" binding " , user.toString())
