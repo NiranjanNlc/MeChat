@@ -34,7 +34,7 @@ object AuthenciationService {
     {
         GlobalScope.async{
          result =  FirebaseUtils.firebaseAuth.
-        createUserWithEmailAndPassword(user.mail, user.password).await()
+        createUserWithEmailAndPassword(user.mail!!, user.password).await()
             if (result!=null)
             {
                 writeNewUser(user)
