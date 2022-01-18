@@ -75,10 +75,12 @@ class UserListFragment : Fragment() ,UserListAdapter.onNotesClickListener{
 
     override fun onClick(user: Users) {
         var i = Intent(activity, ChatDetailActivity ::class.java)
+        val bundle = Bundle()
+        bundle.putSerializable("notes", user)
         println(" Our user here $user.toString()")
         i.putExtra("userId",user.userId)
         i.putExtra("userName",user.userName)
         i.putExtra("userProfile",user.userName)
-        startActivity(i,null)
+        startActivity(i,bundle)
     }
 }
