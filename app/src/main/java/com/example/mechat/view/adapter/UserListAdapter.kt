@@ -15,14 +15,22 @@ import com.example.mechat.view.ChatDetailActivity
 import com.example.mechat.view.WelecomActivity
 
 
-class UserListAdapter(
-    val context: Context)
+class UserListAdapter( var clickListener: onNotesClickListener)
 : ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
 
 {
-
-    inner class UserListViewHolderr(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root)
+    public interface onNotesClickListener
     {
+        public fun onClick(user: Users)
+    }
+
+    class UserListViewHolderr(var items: UserItemsBinding,private val clickListener: onNotesClickListener): RecyclerView.ViewHolder(items.root)
+    {
+        init {
+            items.root.setOnClickListener {
+           clickListener.onClick(items.userItems!!)
+            }
+        }
 
         fun bind(user: Users)
         {
@@ -30,7 +38,29 @@ class UserListAdapter(
             items.userItems = user
 
         }
+        companion object {
+            fun from(parent: ViewGroup, clickListener: onNotesClickListener): UserListViewHolderr {
+                val inflater = LayoutInflater.from(parent.context)
+                val binding = UserItemsBinding.inflate(inflater)
+                return UserListViewHolderr(binding,clickListener)
+            }
+        }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolderr {
+        println("On view create ")
+         return UserListViewHolderr.from(parent,clickListener)
+
+    }
+
+    override fun onBindViewHolder(holder: UserListViewHolderr, position: Int)
+    {
+        val user = getItem(position)
+        println( " see thid " + user)
+        holder.bind(user)
+        holder.items.executePendingBindings()
+    }
+
     companion object {
         val COMPARATOR = object : DiffUtil.ItemCallback<Users>() {
             override fun areItemsTheSame(oldItem: Users, newItem: Users): Boolean {
@@ -44,29 +74,5 @@ class UserListAdapter(
             }
         }
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolderr {
-        println("On view create ")
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = UserItemsBinding.inflate(inflater)
-        return UserListViewHolderr(binding)
-
-    }
-
-    override fun onBindViewHolder(holder: UserListViewHolderr, position: Int)
-    {
-        val user = getItem(position)
-        println( " see thid " + user)
-        holder.bind(user)
-        holder.items.executePendingBindings()
-        holder.itemView.setOnClickListener {
-            var i = Intent(context, ChatDetailActivity ::class.java)
-            println(" Our user here $user.toString()")
-            i.putExtra("userId",user.userId)
-            i.putExtra("userName",user.userName)
-            i.putExtra("userProfile",user.userName)
-            startActivity(context,i, null)
-        }
     }
 }

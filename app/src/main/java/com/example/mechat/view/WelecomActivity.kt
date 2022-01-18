@@ -1,11 +1,14 @@
 package com.example.mechat.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.mechat.databinding.MainScreenBinding
+import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.TabsFragmentAdapter
+import com.example.mechat.view.adapter.UserListAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 
