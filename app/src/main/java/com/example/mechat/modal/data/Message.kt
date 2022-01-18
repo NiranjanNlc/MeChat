@@ -3,7 +3,6 @@ package com.example.mechat.modal
 class Message
 {
     constructor() //empty for firebase
-
     constructor(messageText: String){
         text = messageText
     }
