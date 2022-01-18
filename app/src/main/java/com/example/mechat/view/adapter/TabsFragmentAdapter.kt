@@ -19,6 +19,6 @@ class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
         Log.i(" poition ", " $position")
         if(position ===0 )
             return UserListFragment()
-        return UserListFragment()
+        return ChatListFragment()
     }
 }
