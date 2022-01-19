@@ -1,9 +1,8 @@
 package com.example.mechat.view
 
-import android.app.PendingIntent.getActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log.i
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.databinding.ActivityChatDetailBinding
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 
 import androidx.core.content.ContextCompat
 import com.example.mechat.R
+import com.example.mechat.modal.data.Users
 
 
 class ChatDetailActivity : AppCompatActivity()
@@ -28,7 +28,7 @@ class ChatDetailActivity : AppCompatActivity()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_detail)
         viewModal  = ViewModalFactory().create(ChatDetailViewModal ::class.java)
         binding.viewmodal = viewModal
-        setSenderReceiver()
+        setSenderReceiver(intent.extras?.get("receiver") as Users)
         onserVeViewModel()
     }
 
@@ -43,11 +43,12 @@ class ChatDetailActivity : AppCompatActivity()
         })
     }
 
-    private fun setSenderReceiver() {
+    private fun setSenderReceiver(user: Any?) {
         var senderId = FirebaseUtils.firebaseUser?.uid
         var recieverId = intent.getStringExtra("userId")
         var userName = intent.getStringExtra("userName")
-        i(" intent ", " $senderId was  $recieverId  thus $userName")
+        Log.i("Send", " $senderId was  $recieverId  thus $userName")
+        Log.i("Receiver", " Nlc please ${user}")
         binding.username.text = userName
         binding.viewmodal?.recieverId?.value = recieverId
         binding.viewmodal?.senderId?.value = senderId
