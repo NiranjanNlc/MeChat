@@ -38,7 +38,7 @@ class DetailChatAdapter(context: Context, val messages: List<ChatMessage>):
          val mesge = messages[position]
          if(holder.javaClass == SenderViewHolder::class.java)
          {
-             ( holder as ReceiverViewHolder).binding.textView.setText(mesge.text)
+             ( holder as SenderViewHolder).binding.textView.setText(mesge.text)
          }
         else
          {

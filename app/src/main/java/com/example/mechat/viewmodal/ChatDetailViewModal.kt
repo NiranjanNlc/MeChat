@@ -16,7 +16,6 @@ class ChatDetailViewModal : ViewModel()
      //sender and receiver consideration
      var recieverId = MutableLiveData<String>()
     val senderId = MutableLiveData<String>()
-
     //List Of messages
     val messageList = ReceivemessageService.chatmessgaes
 
@@ -44,6 +43,7 @@ class ChatDetailViewModal : ViewModel()
         val toId = recieverId
         println(" performing sending message ................")
         SendMessageService.sendMessage(fromId.value.toString(), toId.value.toString(), _messageInput.value.toString())
+        _messageInput.value = " "
     }
 
     fun setSenderReceiver(senderid: String?, recieverid: String?) {

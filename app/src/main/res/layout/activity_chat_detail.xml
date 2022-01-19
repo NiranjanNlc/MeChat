@@ -4,7 +4,6 @@
         <variable
             name="viewmodal"
             type="com.example.mechat.viewmodal.ChatDetailViewModal" />
-
     </data>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -99,9 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sendChat"
         android:layout_below="@+id/toolbar"
-        tools:listitem="@layout/sample_reciever"
-
         android:padding="16dp">
+
+<!--        tools:listitem="@layout/sample_reciever">-->
 
     </androidx.recyclerview.widget.RecyclerView>
 
