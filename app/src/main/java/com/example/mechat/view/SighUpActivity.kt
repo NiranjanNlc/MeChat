@@ -32,45 +32,40 @@ class SighUpActivity : AppCompatActivity()
             Log.d(" butttom of sighnup  ", " pressed")
             viewModal.sighnUp()
         }
-        viewModal.processStatus.observe(this,{
-           if (it)
-           {
-               Log.i("process ", "suveeded ")
-               checksignUpStaus(it)
-           }
-        })
+//        viewModal.processStatus.observe(this,{
+//           if (it)
+//           {
+//               Log.i("process ", "suveeded ")
+//               checksignUpStaus(it)
+//           }
+//        })
     }
 
     override fun onStart() {
         super.onStart()
-//        val user: FirebaseUser? = firebaseAuth.currentUser
-//        user?.let {
-//            startActivity(Intent(this, WelecomActivity::class.java))
-//            toast("welcome back")
-//        }
+
     }
 
-    private fun checksignUpStaus(procee:Boolean)
-    {
-
-        Log.i(" sucess authenciation" , viewModal.sighnUpStatus.value.toString())
-        viewModal.sighnUpStatus.observe(this,{
-            Log.d(" value " , " $it and $procee")
-           if(it && procee) {
-               toast("created account successfully under given condition !")
-               FirebaseUtils.firebaseAuth.signOut()
-               startActivity(Intent(this, Login::class.java))
-               finish()
-           }
-            else if (it or procee)
-           {
-            //   checksignUpStaus(procee)
-           //   toast("step 1")
-           }
-            else
-           {
-               toast(" eroor occurred ")
-           }
-           })
-        }
+    private fun checksignUpStaus(procee:Boolean) {
+    }
+//        Log.i(" sucess authenciation" , viewModal.sighnUpStatus.value.toString())
+//        viewModal.sighnUpStatus.observe(this,{
+//            Log.d(" value " , " $it and $procee")
+//           if(it && procee) {
+//               toast("created account successfully under given condition !")
+//               FirebaseUtils.firebaseAuth.signOut()
+//               startActivity(Intent(this, Login::class.java))
+//               finish()
+//           }
+//            else if (it or procee)
+//           {
+//            //   checksignUpStaus(procee)
+//           //   toast("step 1")
+//           }
+//            else
+//           {
+//               toast(" eroor occurred ")
+//           }
+//           })
+//        }
 }

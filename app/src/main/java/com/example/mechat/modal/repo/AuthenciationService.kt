@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 object AuthenciationService {
+
     private lateinit  var result : AuthResult
     suspend fun writeNewUser(user: Users):Boolean
     {
@@ -28,11 +29,18 @@ object AuthenciationService {
 
    suspend fun sighnUpUser(user: Users)
     {
-         result =  FirebaseUtils.firebaseAuth.
-        createUserWithEmailAndPassword(user.mail!!, user.password).await()
-            if (result!=null)
+       try {
+           result =  FirebaseUtils.firebaseAuth.
+           createUserWithEmailAndPassword(user.mail!!, user.password).await()
+       }
+       catch (e:Exception)
+       {
+           Log.i("SghnUpErro",e.message.toString())
+       }
+            if (result.user!=null)
             {
                 println(result.toString())
+                user.userId = result.user!!.uid
                 writeNewUser(user)
             }
             else{

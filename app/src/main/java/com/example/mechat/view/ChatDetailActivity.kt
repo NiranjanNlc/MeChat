@@ -30,6 +30,7 @@ class ChatDetailActivity : AppCompatActivity()
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         onserVeViewModel()
+        viewModal.refreshMessgaeList()
     }
 
     private fun initializeAdapter(messages: List<ChatMessage>) {
@@ -38,8 +39,10 @@ class ChatDetailActivity : AppCompatActivity()
 
     private fun onserVeViewModel() {
         viewModal.messageList.observe(this,{
+            setSenderReceiver(intent.extras?.get("receiver") as Users)
             initializeAdapter(it)
              initializeRecyclerView()
+            viewModal.refreshMessgaeList()
         })
     }
 
