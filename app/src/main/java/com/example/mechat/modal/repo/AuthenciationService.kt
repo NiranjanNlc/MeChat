@@ -12,37 +12,31 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 object AuthenciationService {
-    var success= MutableLiveData<Boolean>(false);
-     var  process = MutableLiveData<Boolean>(false)
-     private lateinit  var result : AuthResult
+    private lateinit  var result : AuthResult
     suspend fun writeNewUser(user: Users):Boolean
     {
         return try{
             val data =  FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
                 ?.await()
-            println(data.toString())
-            success.value=true
-            process.value= true
+            println(" dta base result $data.toString()")
             return true
         }catch (e : Exception){
+            println(" Sghnng up excepto ${e.message}")
             return false
         }
-
     }
 
-    fun sighnUpUser(user: Users)
+   suspend fun sighnUpUser(user: Users)
     {
-        GlobalScope.async{
          result =  FirebaseUtils.firebaseAuth.
         createUserWithEmailAndPassword(user.mail!!, user.password).await()
             if (result!=null)
             {
+                println(result.toString())
                 writeNewUser(user)
             }
             else{
                 Log.i(" error ", " could not sighn up ")
             }
-        }
-
     }
 }
