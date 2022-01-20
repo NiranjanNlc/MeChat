@@ -19,6 +19,7 @@ class ChatDetailViewModal : ViewModel()
     }
     fun refreshMessgaeList()
     {
+        println(" ${senderId.value} is sdnding message to ${recieverId.value}")
         ReceivemessageService.getMessageList(senderId.value.toString(),recieverId.value.toString())
     }
     fun sendMessage( )

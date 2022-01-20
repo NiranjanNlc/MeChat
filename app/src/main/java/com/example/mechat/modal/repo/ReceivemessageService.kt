@@ -1,5 +1,6 @@
 package com.example.mechat.modal.repo
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -11,9 +12,12 @@ import com.google.firebase.database.*
 object ReceivemessageService
 {
     var chatmessgaes = MutableLiveData<List<ChatMessage>>()
-    fun getMessageList( fromId : String , toId : String )
+    @SuppressLint("RestrictedApi")
+    fun getMessageList(fromId : String, toId : String )
     {
+        println(" from id to $fromId going to $toId")
         val myTopPostsQuery = FirebaseUtils.database.child("/user-messages/$fromId/$toId").orderByChild("timeStamp")
+        println(" Path restored in ${myTopPostsQuery.path} "  )
         myTopPostsQuery.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot)
             {
