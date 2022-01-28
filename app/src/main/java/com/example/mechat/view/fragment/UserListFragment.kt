@@ -9,10 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechat.R
 import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.modal.data.Users
-import com.example.mechat.view.ChatDetailActivity
+import com.example.mechat.view.activity.ChatDetailActivity
 import com.example.mechat.view.adapter.UserListAdapter
 import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory

@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/teal_700"
     android:background="@color/white"
-    tools:context=".view.ChatDetailActivity"
+    tools:context=".view.activity.ChatDetailActivity"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

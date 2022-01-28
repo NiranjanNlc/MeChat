@@ -1,4 +1,4 @@
-package com.example.mechat.view
+package com.example.mechat.view.activity
 
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -12,7 +12,6 @@ import androidx.transition.TransitionManager
 import com.example.mechat.R
 import com.example.mechat.databinding.SplashScreenBinding
 import com.example.mechat.utils.FirebaseUtils
-import kotlinx.coroutines.delay
 
 class SplashActivity : AppCompatActivity()
 {

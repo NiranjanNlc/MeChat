@@ -1,4 +1,4 @@
-package com.example.mechat.view
+package com.example.mechat.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +21,7 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
         builder = AlertDialog.Builder(this)
         binding.button2.setOnClickListener {
+            loadingDialog()
             FirebaseUtils.firebaseAuth.signInWithEmailAndPassword(binding.username.text.toString(),
             binding.editTextTextPassword.text.toString())
                 .addOnCompleteListener { signIn ->

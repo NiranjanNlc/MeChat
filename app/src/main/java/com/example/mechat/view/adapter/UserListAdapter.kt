@@ -1,18 +1,13 @@
 package com.example.mechat.view.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
-import com.example.mechat.view.ChatDetailActivity
-import com.example.mechat.view.WelecomActivity
 
 
 class UserListAdapter( var clickListener: onNotesClickListener)

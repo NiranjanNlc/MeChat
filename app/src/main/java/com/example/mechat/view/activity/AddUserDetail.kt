@@ -1,4 +1,4 @@
-package com.example.mechat.view
+package com.example.mechat.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
