@@ -1,3 +1,4 @@
+
 package com.example.mechat.modal.repo
 
 import android.util.Log
@@ -6,6 +7,8 @@ import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.utils.FirebaseUtils.database
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -14,12 +17,17 @@ import kotlinx.coroutines.tasks.await
 object AuthenciationService {
 
     private lateinit  var result : AuthResult
+    val userLiveData: MutableLiveData<FirebaseUser>
+    val loggedOutLiveData: MutableLiveData<Boolean>
+    private val firebaseAuth: FirebaseAuth
+
     suspend fun writeNewUser(user: Users):Boolean
     {
         return try{
             val data =  FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
                 ?.await()
             println(" dta base result $data.toString()")
+            userLiveData.postValue(firebaseAuth.currentUser)
             return true
         }catch (e : Exception){
             println(" Sghnng up excepto ${e.message}")
@@ -46,5 +54,27 @@ object AuthenciationService {
             else{
                 Log.i(" error ", " could not sighn up ")
             }
+    }
+    init {
+        firebaseAuth = FirebaseUtils.firebaseAuth
+        userLiveData = MutableLiveData()
+        loggedOutLiveData = MutableLiveData()
+        if (firebaseAuth.currentUser != null) {
+            loggedOutLiveData.postValue(false)
+        }
+    }
+
+    @JvmName("getUserLiveData1")
+    fun getUserLiveData(): MutableLiveData<FirebaseUser> {
+        return userLiveData
+    }
+
+    @JvmName("getLoggedOutLiveData1")
+    fun getLoggedOutLiveData(): MutableLiveData<Boolean> {
+        return loggedOutLiveData
+    }
+    fun logOut() {
+        firebaseAuth.signOut()
+        loggedOutLiveData.postValue(true)
     }
 }
