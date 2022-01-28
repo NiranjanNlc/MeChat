@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/line_divider.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/outgoing_bubble.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_chat_detail.xml" value="0.128" />
+        <entry key="app/src/main/res/layout/activity_loading_layout.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1359375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10364583333333334" />
         <entry key="app/src/main/res/layout/activity_sigh_up.xml" value="0.1203125" />

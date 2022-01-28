@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 class AuthenciationViewModal: ViewModel()
 {
     lateinit var user :  Users
+    var Firebaseuser= AuthenciationService.userLiveData
     var mail= MutableLiveData<String>("niranjannlc10@gmail.com")
     var userName = MutableLiveData<String>("Ashmita Shrestha ")
     var password = MutableLiveData<String>("123456")
@@ -27,4 +28,9 @@ class AuthenciationViewModal: ViewModel()
             AuthenciationService.sighnUpUser(user)
         }
     }
+
+    fun logOut() {
+            AuthenciationService.logOut()
+    }
+
 }
