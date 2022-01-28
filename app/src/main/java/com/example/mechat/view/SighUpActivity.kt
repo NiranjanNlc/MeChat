@@ -45,13 +45,4 @@ class SighUpActivity : AppCompatActivity()
         dialog = builder.create()
         dialog.show()
     }
-    override fun onStart()
-    {
-        super.onStart()
-    }
-
-    private fun checksignUpStaus(procee:Boolean)
-    {
-
-    }
 }
