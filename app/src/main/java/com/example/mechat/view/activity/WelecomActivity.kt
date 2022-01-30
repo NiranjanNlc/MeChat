@@ -3,10 +3,13 @@ package com.example.mechat.view.activity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.mechat.R
 import com.example.mechat.databinding.MainScreenBinding
+import com.example.mechat.utils.FirebaseUtils
+import com.example.mechat.utils.FirebaseUtils.firebaseAuth
 import com.example.mechat.view.adapter.TabsFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -51,5 +54,15 @@ class WelecomActivity : AppCompatActivity()
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.getItemId()) {
+            R.id.action_add -> {
+                firebaseAuth.signOut()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
