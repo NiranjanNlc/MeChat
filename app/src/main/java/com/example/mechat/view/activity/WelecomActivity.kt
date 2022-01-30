@@ -1,5 +1,6 @@
 package com.example.mechat.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -8,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.mechat.R
 import com.example.mechat.databinding.MainScreenBinding
+import com.example.mechat.utils.Extensions.toast
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.utils.FirebaseUtils.firebaseAuth
 import com.example.mechat.view.adapter.TabsFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.firebase.auth.FirebaseUser
 
 
 class WelecomActivity : AppCompatActivity()
@@ -64,5 +67,17 @@ class WelecomActivity : AppCompatActivity()
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = firebaseAuth.currentUser
+        if(user==null)
+        {
+            startActivity(Intent(this, Login::class.java))
+            toast("Logged out sucess fully ")
+            finish()
+        }
+    }
     }
 }
