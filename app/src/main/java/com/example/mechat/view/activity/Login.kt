@@ -22,7 +22,7 @@ class Login : AppCompatActivity() {
         builder = AlertDialog.Builder(this)
         binding.button2.setOnClickListener {
             loadingDialog()
-            FirebaseUtils.firebaseAuth.signInWithEmailAndPassword(binding.username.text.toString(),
+            firebaseAuth.signInWithEmailAndPassword(binding.username.text.toString(),
             binding.editTextTextPassword.text.toString())
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful) {

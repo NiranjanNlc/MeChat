@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/layout/sample_sender.xml" value="0.22" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/user_items.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.12" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15625" />
       </map>
     </option>

@@ -1,16 +1,16 @@
 package com.example.mechat.view.activity
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.example.mechat.R
 import com.example.mechat.databinding.MainScreenBinding
-import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.TabsFragmentAdapter
-import com.example.mechat.view.adapter.UserListAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+
 
 class WelecomActivity : AppCompatActivity()
 {
@@ -46,5 +46,10 @@ class WelecomActivity : AppCompatActivity()
                 adapter.createFragment(position)
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
     }
 }
