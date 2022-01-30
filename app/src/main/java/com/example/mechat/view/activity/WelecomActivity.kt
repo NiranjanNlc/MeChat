@@ -27,6 +27,7 @@ class WelecomActivity : AppCompatActivity()
         binding1 = MainScreenBinding.inflate(layoutInflater)
         val view = binding1.root
         setContentView(view)
+        setSupportActionBar(binding1.myToolbar)
         val tabLayout = binding1.tabView
         val viewPager = binding1.viewPager
         adapter = TabsFragmentAdapter(supportFragmentManager, lifecycle)
@@ -78,6 +79,5 @@ class WelecomActivity : AppCompatActivity()
             toast("Logged out sucess fully ")
             finish()
         }
-    }
     }
 }
