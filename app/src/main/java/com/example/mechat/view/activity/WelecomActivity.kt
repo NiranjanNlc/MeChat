@@ -64,6 +64,7 @@ class WelecomActivity : AppCompatActivity()
         return when (item.getItemId()) {
             R.id.action_add -> {
                 firebaseAuth.signOut()
+                checkUser()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -72,9 +73,12 @@ class WelecomActivity : AppCompatActivity()
 
     override fun onStart() {
         super.onStart()
+        checkUser()
+    }
+
+    private fun checkUser() {
         val user: FirebaseUser? = firebaseAuth.currentUser
-        if(user==null)
-        {
+        if (user == null) {
             startActivity(Intent(this, Login::class.java))
             toast("Logged out sucess fully ")
             finish()
