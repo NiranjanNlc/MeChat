@@ -13,6 +13,8 @@ class ViewModalFactory :ViewModelProvider.Factory
             return UserListViewModal()as T
         } else if (modelClass.isAssignableFrom(ChatDetailViewModal::class.java)) {
             return ChatDetailViewModal()as T
+        } else if (modelClass.isAssignableFrom(UserDetailViewModal::class.java)) {
+            return ChatDetailViewModal()as T
         }
         throw IllegalArgumentException("Unknown class name")
     }
