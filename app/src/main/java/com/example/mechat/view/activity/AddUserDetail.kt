@@ -1,5 +1,6 @@
 package com.example.mechat.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mechat.R
@@ -27,7 +28,10 @@ class AddUserDetail : AppCompatActivity() {
     }
 
     private fun updateProfileImage() {
-        TODO("Not yet implemented")
+        val intent = Intent()
+        intent.action = Intent.ACTION_GET_CONTENT
+        intent.type = "image/*"
+
     }
 
     private fun reverseBackToUserList() {
