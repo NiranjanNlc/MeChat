@@ -51,7 +51,6 @@ class AddUserDetail : AppCompatActivity() {
                  binding.profilePic.setImageURI(list?.data)
                  sendDataToFireBaseStorage(list)
             }
-
         }
 
     private fun sendDataToFireBaseStorage(data: Intent?)
@@ -63,10 +62,12 @@ class AddUserDetail : AppCompatActivity() {
 // Register observers to listen for when the download is done or if it fails
         if (uploadTask != null) {
             uploadTask.addOnFailureListener {
+                println(" success story ")
                 // Handle unsuccessful uploads
             }.addOnSuccessListener { taskSnapshot ->
                 // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
                 // ...
+                println(" Unsucesss story ")
 
             }
         }

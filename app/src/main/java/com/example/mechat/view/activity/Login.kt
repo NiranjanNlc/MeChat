@@ -31,6 +31,7 @@ class Login : AppCompatActivity() {
                         finish()
                     } else {
                         toast("sign in failed")
+                        stopLoadingDialog()
                     }
                 }
         }
@@ -41,6 +42,11 @@ class Login : AppCompatActivity() {
         }
 
     }
+
+    private fun stopLoadingDialog() {
+        dialog.dismiss()
+    }
+
     override fun onStart() {
         super.onStart()
         val user: FirebaseUser? = firebaseAuth.currentUser
