@@ -4,10 +4,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <item
+        android:id="@+id/setting"
+        android:icon="@drawable/logout"
+        app:showAsAction="never"
+        android:title=" Setting ">
+    </item>
+    <item
         android:id="@+id/action_add"
         android:icon="@drawable/logout"
         app:showAsAction="never"
         android:title="LogOut">
     </item>
+
 
 </menu>

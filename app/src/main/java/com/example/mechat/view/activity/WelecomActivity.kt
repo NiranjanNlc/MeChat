@@ -67,8 +67,19 @@ class WelecomActivity : AppCompatActivity()
                 checkUser()
                 true
             }
+            R.id.setting-> {
+                openUserSetting()
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun openUserSetting() {
+        startActivity(Intent(this, AddUserDetail::class.java))
+        toast("Setting opened  ")
+        finish()
     }
 
     override fun onStart() {
