@@ -13,11 +13,13 @@
     <color name="lightGrey">#EDEDED</color>
     <color name="whatsAppColor">#0b6156</color>
     <color name="red">#9F0B0B</color>
-    <color name="status_background">#09688</color>
+    <color name="status_background">#096880</color>
     <color name="chat_background">#8BC34A</color>
     <color name="fb_color">#3c5793</color>
     <color name="lightgreen">#e5ffcc</color>
     <color name="settingsIconColor">#0E8374</color>
     <color name="grayBackground">#BCBCBC</color>
     <color name="chatbackground">#AAAAAA</color>
+    <color name="we_chat_background">#DCC23D</color>
+
 </resources>
