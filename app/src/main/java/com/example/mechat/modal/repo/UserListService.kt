@@ -15,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 object UserListService
 {
     var userList = MutableLiveData<List<Users>>()
+    var user = MutableLiveData<Users>()
 
     suspend fun getUserListFromDb(): Any?
     {
@@ -34,5 +35,16 @@ object UserListService
             Log.d("TAG", "Value is: $list")
             Log.i(" user list 00", list.toString())
             userList.value = list as List<Users>?
+    }
+    suspend fun getUserFromDb(uid: String){
+        return try{
+            val data =FirebaseUtils.database.child("users/${uid}").get().await()
+            Log.i(" data manipulated ",data.toString())
+            user.value =data as Users
+             }
+        catch (e : Exception)
+        {
+            println( " eoor encountered during the operation " + e.message)
+        }
     }
 }
