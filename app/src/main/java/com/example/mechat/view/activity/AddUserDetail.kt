@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
+import coil.load
 import com.example.mechat.databinding.ActivityAddUserDetailBinding
 import com.example.mechat.utils.Extensions.toast
 import com.example.mechat.utils.FirebaseUtils
@@ -81,5 +83,12 @@ class AddUserDetail : AppCompatActivity() {
     private fun loadProfilePic(riversRef: String) {
          println(" Will be implemented thrpough picaso")
         Log.d(" url download ", profileImageUrl)
+        updateUserInfo(profileImageUrl)
+        val imgUri = profileImageUrl.toUri().buildUpon().scheme("https").build()
+        binding.profilePic.load(imgUri)
+    }
+
+    private fun updateUserInfo(profileImageUrl: String) {
+
     }
 }
