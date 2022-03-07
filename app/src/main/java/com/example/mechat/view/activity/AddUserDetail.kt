@@ -6,10 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.databinding.DataBindingUtil
 import coil.load
+import com.example.mechat.R
 import com.example.mechat.databinding.ActivityAddUserDetailBinding
 import com.example.mechat.utils.Extensions.toast
 import com.example.mechat.utils.FirebaseUtils
+import com.example.mechat.viewmodal.ChatDetailViewModal
+import com.example.mechat.viewmodal.UserDetailViewModal
+import com.example.mechat.viewmodal.ViewModalFactory
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
@@ -18,10 +23,11 @@ class AddUserDetail : AppCompatActivity() {
     private lateinit var binding: ActivityAddUserDetailBinding
     private lateinit var riversRef: StorageReference
     private lateinit var profileImageUrl: String
+    private lateinit var viewModal: UserDetailViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddUserDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_user_detail)
+        initialiseViewModal()
         binding.backArrow.setOnClickListener {
             reverseBackToUserList()
         }
@@ -31,7 +37,23 @@ class AddUserDetail : AppCompatActivity() {
         binding.saveInfo.setOnClickListener {
             saveInfo()
         }
+        observeViewModel()
     }
+
+    private fun observeViewModel() {
+         viewModal.user.observe(this,
+             {
+                 println("  user is  ${it.userName}")
+                 binding.user1 = it
+             })
+    }
+
+    private fun initialiseViewModal() {
+        Log.i(" add user detail ","added ")
+        viewModal  = ViewModalFactory().create(UserDetailViewModal ::class.java)
+        binding.viewmodal = viewModal
+    }
+
 
     private fun saveInfo() {
          println(" Now implemented ")
@@ -83,7 +105,7 @@ class AddUserDetail : AppCompatActivity() {
     private fun loadProfilePic(riversRef: String) {
          println(" Will be implemented thrpough picaso")
         Log.d(" url download ", profileImageUrl)
-        updateUserInfo(profileImageUrl)
+     //   updateUserInfo(profileImageUrl)
         val imgUri = profileImageUrl.toUri().buildUpon().scheme("https").build()
         binding.profilePic.load(imgUri)
     }

@@ -1,5 +1,6 @@
 package com.example.mechat.viewmodal
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mechat.modal.repo.AuthenciationService
@@ -20,8 +21,10 @@ class UserDetailViewModal : ViewModel(), CoroutineScope {
     val user = UserListService.user
 
     init {
+        Log.i(" add user detail ","iniated .... ")
         viewModelScope.launch {
-           UserListService.getUserFromDb(FirebaseUtils.firebaseUser!!.uid)
+            Log.i(" add user detail ","view modal scope launched  .... ")
+            UserListService.getUserFromDb(FirebaseUtils.firebaseUser!!.uid)
         }
     }
 }

@@ -26,6 +26,7 @@ class Login : AppCompatActivity() {
             binding.editTextTextPassword.text.toString())
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful) {
+                        stopLoadingDialog()
                         startActivity(Intent(this, WelecomActivity::class.java))
                         toast("signed in successfully")
                         finish()

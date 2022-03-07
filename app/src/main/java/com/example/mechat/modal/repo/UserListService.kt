@@ -37,10 +37,13 @@ object UserListService
             userList.value = list as List<Users>?
     }
     suspend fun getUserFromDb(uid: String){
+        Log.i(" add user detail ","get user from db  .... ")
+
         return try{
-            val data =FirebaseUtils.database.child("users/${uid}").get().await()
+            val data =FirebaseUtils.database.child("users/${uid}/").get().await()
+            Log.i(" add user detail ","user ${data.toString()} ")
             Log.i(" data manipulated ",data.toString())
-            user.value =data as Users
+            user.value =data.getValue(Users ::class.java)
              }
         catch (e : Exception)
         {
