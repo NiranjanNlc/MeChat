@@ -15,14 +15,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
+        app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp"
         android:id="@+id/profilePic"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:background="@drawable/round_image"
+        android:background="@drawable/profile_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backArrow" />
+        app:layout_constraintTop_toBottomOf="@+id/backArrow"
+    />
+<!--    <ImageView-->
+<!--        android:id="@+id/profilePic"-->
+<!--        android:layout_width="128dp"-->
+<!--        android:layout_height="128dp"-->
+<!--        android:background="@drawable/profile_image"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/backArrow" />-->
 
     <ImageView
         android:id="@+id/addImage"
