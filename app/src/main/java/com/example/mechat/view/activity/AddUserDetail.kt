@@ -9,18 +9,13 @@ import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import coil.load
 import com.example.mechat.R
-import com.example.mechat.databinding.ActivityAddUserDetailBinding
 import com.example.mechat.utils.Extensions.toast
-import com.example.mechat.utils.FirebaseUtils
-import com.example.mechat.viewmodal.ChatDetailViewModal
 import com.example.mechat.viewmodal.UserDetailViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
 
 class AddUserDetail : AppCompatActivity() {
-    private lateinit var binding: ActivityAddUserDetailBinding
+    private lateinit var binding:  com.example.mechat.databinding.ActivityAddUserDetailBinding
     private lateinit var riversRef: StorageReference
     private lateinit var profileImageUrl: String
     private lateinit var viewModal: UserDetailViewModal
@@ -29,13 +24,13 @@ class AddUserDetail : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_user_detail)
         initialiseViewModal()
         binding.backArrow.setOnClickListener {
-            reverseBackToUserList()
+             reverseBackToUserList()
         }
         binding.addImage.setOnClickListener {
             updateProfileImage()
         }
         binding.saveInfo.setOnClickListener {
-            saveInfo()
+           // viewModal.saveInfo()
         }
         observeViewModel()
     }
@@ -46,17 +41,20 @@ class AddUserDetail : AppCompatActivity() {
                  println("  user is  ${it.userName}")
                  binding.user1 = it
              })
+        viewModal.profileImageUrl.observe(this,
+            {
+                Log.i(" add user detail ","profile Image url updtaed ")
+                Log.i(" add user detail ","$it ")
+               updateUserInfo(it)
+                loadProfilePic(it)
+            })
     }
 
     private fun initialiseViewModal() {
         Log.i(" add user detail ","added ")
         viewModal  = ViewModalFactory().create(UserDetailViewModal ::class.java)
         binding.viewmodal = viewModal
-    }
-
-
-    private fun saveInfo() {
-         println(" Now implemented ")
+        binding.user1= viewModal.user.value
     }
 
     private fun updateProfileImage() {
@@ -76,41 +74,18 @@ class AddUserDetail : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 val list = it.data
-                 sendDataToFireBaseStorage(list)
-            }
-        }
-
-    private fun sendDataToFireBaseStorage(data: Intent?)
-    {
-        var file = data?.toUri(0)
-        riversRef = FirebaseUtils.storage.reference.child("images/${
-            FirebaseUtils.firebaseUser?.uid}")
-        val uploadTask = data?.data?.let { riversRef.putFile(it) }
-
-// Register observers to listen for when the download is done or if it fails
-        if (uploadTask != null) {
-            uploadTask.addOnFailureListener {
-                Log.d(" success story ", it.message.toString())
-                // binding.profilePic.setImageURI(list?.data)
-                // Handle unsuccessful uploads
-            }.addOnSuccessListener ( OnSuccessListener<UploadTask.TaskSnapshot> { taskSnapshot ->
-                taskSnapshot.storage.downloadUrl.addOnSuccessListener {
-                    Log.d(" Unsucesss story "," haha ")
-                    profileImageUrl = it.toString()
-                    loadProfilePic(profileImageUrl)
-                }
-            })
+                // sendDataToFireBaseStorage(list)
+                viewModal.sendImageToFireBase(list)
             }
         }
     private fun loadProfilePic(riversRef: String) {
          println(" Will be implemented thrpough picaso")
-        Log.d(" url download ", profileImageUrl)
-     //   updateUserInfo(profileImageUrl)
-        val imgUri = profileImageUrl.toUri().buildUpon().scheme("https").build()
+        Log.d(" url download ", riversRef)
+        val imgUri = riversRef.toUri().buildUpon().scheme("https").build()
         binding.profilePic.load(imgUri)
     }
 
     private fun updateUserInfo(profileImageUrl: String) {
-
+            viewModal.updateUserInfo(profileImageUrl)
     }
 }
