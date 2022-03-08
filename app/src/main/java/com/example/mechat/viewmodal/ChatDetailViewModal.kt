@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mechat.modal.repo.ReceivemessageService
 import com.example.mechat.modal.repo.SendMessageService
-import com.google.firebase.auth.FirebaseAuth
 
 class ChatDetailViewModal : ViewModel()
 {
-    var _messageInput = MutableLiveData<String>()
-    val getUserInput: LiveData<String> = _messageInput
-     var recieverId = MutableLiveData<String>()
+    var messageInput = MutableLiveData<String>()
+    val getUserInput: LiveData<String> = messageInput
+    var recieverId = MutableLiveData<String>()
     val senderId = MutableLiveData<String>()
     val messageList = ReceivemessageService.chatmessgaes
     init {
@@ -24,19 +23,19 @@ class ChatDetailViewModal : ViewModel()
     }
     fun sendMessage( )
     {
-        println(" sending messages ............." + _messageInput)
+        println(" sending messages .............$messageInput")
         performSendMessage()
         refreshMessgaeList()
     }
 
     private fun performSendMessage() {
-        if (_messageInput.value.isNullOrEmpty()) {
+        if (messageInput.value.isNullOrEmpty()) {
             println(" empty string ...........")
-             return
+            return
         }
         println(" performing sending message ................")
-        SendMessageService.sendMessage(senderId.value.toString(),recieverId.value.toString(), _messageInput.value.toString())
-        _messageInput.value = " "
+        SendMessageService.sendMessage(senderId.value.toString(),recieverId.value.toString(), messageInput.value.toString())
+        messageInput.value = " "
     }
 
     fun setSenderReceiver(senderid: String?, recieverid: String?) {

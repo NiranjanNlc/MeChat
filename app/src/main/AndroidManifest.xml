@@ -22,16 +22,16 @@
         </activity>
         <activity
             android:name=".view.activity.ChatDetailActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.activity.Login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.activity.SighUpActivity"
             android:exported="true" />
         <activity
             android:name=".view.activity.WelecomActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".view.activity.SplashActivity"
             android:exported="true">

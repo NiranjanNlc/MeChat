@@ -10,21 +10,21 @@ import com.example.mechat.databinding.SampleSenderBinding
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 
-class DetailChatAdapter(context: Context, val messages: List<ChatMessage>):
+class DetailChatAdapter(context: Context, private val messages: List<ChatMessage>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
-    val recieverViewType : Int = 2;
-    val senderViewType : Int = 1;
+    private val recieverViewType : Int = 2
+    private val senderViewType : Int = 1
+
     class ReceiverViewHolder(var binding: SampleRecieverBinding) : RecyclerView.ViewHolder(binding.root)
-    {}
     class SenderViewHolder(var binding: SampleSenderBinding) : RecyclerView.ViewHolder(binding.root)
-    {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if(viewType==2)
         {
             val inflater = LayoutInflater.from(parent.context)
             val binding = SampleRecieverBinding.inflate(inflater)
-            return ReceiverViewHolder(binding);
+            return ReceiverViewHolder(binding)
         }
         else
         {
@@ -35,15 +35,15 @@ class DetailChatAdapter(context: Context, val messages: List<ChatMessage>):
     }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int)
     {
-         val mesge = messages[position]
-         if(holder.javaClass == SenderViewHolder::class.java)
-         {
-             ( holder as SenderViewHolder).binding.textView.setText(mesge.text)
-         }
+        val mesge = messages[position]
+        if(holder.javaClass == SenderViewHolder::class.java)
+        {
+            ( holder as SenderViewHolder).binding.textView.text = mesge.text
+        }
         else
-         {
-             ( holder as ReceiverViewHolder).binding.textView.setText(mesge.text)
-         }
+        {
+            ( holder as ReceiverViewHolder).binding.textView.text = mesge.text
+        }
     }
     override fun getItemCount(): Int
     {
@@ -56,6 +56,6 @@ class DetailChatAdapter(context: Context, val messages: List<ChatMessage>):
         if(messages[position].fromId.equals(FirebaseUtils.firebaseUser?.uid))
             return senderViewType
         else
-        return recieverViewType
+            return recieverViewType
     }
 }

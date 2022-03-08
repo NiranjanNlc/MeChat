@@ -9,19 +9,16 @@ import com.example.mechat.utils.FirebaseUtils.database
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 object AuthenciationService {
 
     private lateinit  var result : AuthResult
     val userLiveData: MutableLiveData<FirebaseUser>
-    val loggedOutLiveData: MutableLiveData<Boolean>
-    private val firebaseAuth: FirebaseAuth
+    private val loggedOutLiveData: MutableLiveData<Boolean>
+    private val firebaseAuth: FirebaseAuth = FirebaseUtils.firebaseAuth
 
-    suspend fun writeNewUser(user: Users):Boolean
+    private suspend fun writeNewUser(user: Users):Boolean
     {
         return try{
             val data =  FirebaseUtils.firebaseAuth.uid?.let { database.child("users").child(it).setValue(user) }
@@ -35,46 +32,41 @@ object AuthenciationService {
         }
     }
 
-   suspend fun sighnUpUser(user: Users)
+    suspend fun sighnUpUser(user: Users)
     {
-       try {
-           result =  FirebaseUtils.firebaseAuth.
-           createUserWithEmailAndPassword(user.mail!!, user.password).await()
-       }
-       catch (e:Exception)
-       {
-           Log.i("SghnUpErro",e.message.toString())
-       }
-            if (result.user!=null)
-            {
-                println(result.toString())
-                user.userId = result.user!!.uid
-                writeNewUser(user)
-            }
-            else{
-                Log.i(" error ", " could not sighn up ")
-            }
+        try {
+            result =  FirebaseUtils.firebaseAuth.
+            createUserWithEmailAndPassword(user.mail!!, user.password).await()
+        }
+        catch (e:Exception)
+        {
+            Log.i("SghnUpErro",e.message.toString())
+        }
+        if (result.user!=null)
+        {
+            println(result.toString())
+            user.userId = result.user!!.uid
+            writeNewUser(user)
+        }
+        else{
+            Log.i(" error ", " could not sighn up ")
+        }
     }
     init {
-        firebaseAuth = FirebaseUtils.firebaseAuth
         userLiveData = MutableLiveData()
         loggedOutLiveData = MutableLiveData()
+
         if (firebaseAuth.currentUser != null) {
             loggedOutLiveData.postValue(false)
         }
+
     }
 
-    @JvmName("getUserLiveData1")
-    fun getUserLiveData(): MutableLiveData<FirebaseUser> {
-        return userLiveData
-    }
-
-    @JvmName("getLoggedOutLiveData1")
-    fun getLoggedOutLiveData(): MutableLiveData<Boolean> {
-        return loggedOutLiveData
-    }
     fun logOut() {
+
         firebaseAuth.signOut()
+
         loggedOutLiveData.postValue(true)
+
     }
 }

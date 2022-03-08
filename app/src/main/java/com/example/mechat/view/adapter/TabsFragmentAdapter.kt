@@ -10,9 +10,8 @@ import com.example.mechat.view.fragment.UserListFragment
 class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
     FragmentStateAdapter(fm,lifecycle)
 {
-     val  NUM_TABS = 2
     override fun getItemCount(): Int {
-       return NUM_TABS
+        return NUM_TABS
     }
     override fun createFragment(position: Int): Fragment
     {
@@ -20,5 +19,9 @@ class TabsFragmentAdapter(val fm: FragmentManager, val lifecycle: Lifecycle) :
         if(position ===0 )
             return UserListFragment()
         return ChatListFragment()
+    }
+
+    companion object {
+        const  val  NUM_TABS = 2
     }
 }

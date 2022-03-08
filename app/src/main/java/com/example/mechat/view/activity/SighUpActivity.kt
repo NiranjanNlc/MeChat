@@ -16,8 +16,8 @@ class SighUpActivity : AppCompatActivity()
 {
     private lateinit var binding:ActivitySighUpBinding
     private lateinit var viewModal:AuthenciationViewModal
-    lateinit var builder: AlertDialog.Builder
-    lateinit var dialog: AlertDialog
+    private lateinit var builder: AlertDialog.Builder
+    private lateinit var dialog: AlertDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sigh_up)
@@ -30,14 +30,14 @@ class SighUpActivity : AppCompatActivity()
             Log.d(" butttom of sighnup  ", " pressed")
             viewModal.sighnUp()
         }
-        viewModal.Firebaseuser.observe(this,{
-            if(it!=null) {
+        viewModal.firebaseUser.observe(this) {
+            if (it != null) {
                 viewModal.logOut()
                 startActivity(Intent(this, Login::class.java))
                 toast("signed in successfully")
                 finish()
             }
-        })
+        }
     }
     private fun loadingDialog(){
         builder.setView(layoutInflater.inflate(R.layout.activity_loading_layout,null))

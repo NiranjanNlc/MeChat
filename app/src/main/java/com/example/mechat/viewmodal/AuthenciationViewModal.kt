@@ -11,14 +11,14 @@ import kotlinx.coroutines.launch
 class AuthenciationViewModal: ViewModel()
 {
     lateinit var user :  Users
-    var Firebaseuser= AuthenciationService.userLiveData
-    var mail= MutableLiveData<String>("niranjannlc10@gmail.com")
-    var userName = MutableLiveData<String>("Ashmita Shrestha ")
-    var password = MutableLiveData<String>("123456")
+    var firebaseUser= AuthenciationService.userLiveData
+    var mail= MutableLiveData("niranjannlc10@gmail.com")
+    var userName = MutableLiveData("Ashmita Shrestha ")
+    var password = MutableLiveData("123456")
     init{
-            mail.value = "niranjannlc10@gmail.com"
-            userName.value= "Niranjan"
-            password.value ="123456"
+        mail.value = "niranjannlc10@gmail.com"
+        userName.value= "Niranjan"
+        password.value ="123456"
     }
     fun sighnUp()
     {
@@ -30,7 +30,7 @@ class AuthenciationViewModal: ViewModel()
     }
 
     fun logOut() {
-            AuthenciationService.logOut()
+        AuthenciationService.logOut()
     }
 
 }

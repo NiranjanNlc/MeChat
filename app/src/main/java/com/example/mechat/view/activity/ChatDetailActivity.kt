@@ -30,7 +30,7 @@ class ChatDetailActivity : AppCompatActivity()
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         onserVeViewModel()
-        viewModal.refreshMessgaeList()
+//        viewModal.refreshMessgaeList()
     }
 
     private fun initializeAdapter(messages: List<ChatMessage>) {
@@ -38,20 +38,20 @@ class ChatDetailActivity : AppCompatActivity()
     }
 
     private fun onserVeViewModel() {
-        viewModal.messageList.observe(this,{
+        viewModal.messageList.observe(this) {
             setSenderReceiver(intent.extras?.get("receiver") as Users)
             initializeAdapter(it)
-             initializeRecyclerView()
+            initializeRecyclerView()
             viewModal.refreshMessgaeList()
-        })
+        }
     }
 
     private fun setSenderReceiver(user: Any?) {
-        var senderId = FirebaseUtils.firebaseUser?.uid
-        var recieverId = intent.getStringExtra("userId")
-        var userName = intent.getStringExtra("userName")
+        val senderId = FirebaseUtils.firebaseUser?.uid
+        val recieverId = intent.getStringExtra("userId")
+        val userName = intent.getStringExtra("userName")
         Log.i("Send", " $senderId was  $recieverId  thus $userName")
-        Log.i("Receiver", " Nlc please ${user}")
+        Log.i("Receiver", " Nlc please $user")
         binding.username.text = userName
         binding.viewmodal?.recieverId?.value = recieverId
         binding.viewmodal?.senderId?.value = senderId
@@ -62,7 +62,7 @@ class ChatDetailActivity : AppCompatActivity()
         binding.chatMessageList.adapter = adapter
         binding.chatMessageList.layoutManager = LinearLayoutManager(this)
         val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        divider.setDrawable(ContextCompat.getDrawable(baseContext, com.example.mechat.R.drawable.line_divider)!!
+        divider.setDrawable(ContextCompat.getDrawable(baseContext, R.drawable.line_divider)!!
         )
         binding.chatMessageList.addItemDecoration(divider)
 

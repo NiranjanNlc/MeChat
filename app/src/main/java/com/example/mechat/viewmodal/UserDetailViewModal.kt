@@ -25,7 +25,7 @@ class UserDetailViewModal : ViewModel(), CoroutineScope {
         Log.i(" add user detail ","iniated .... ")
         viewModelScope.launch {
             Log.i(" add user detail ","view modal scope launched  .... ")
-           SettingService.getUserFromDb(FirebaseUtils.firebaseUser!!.uid)
+            SettingService.getUserFromDb(FirebaseUtils.firebaseUser!!.uid)
         }
     }
 

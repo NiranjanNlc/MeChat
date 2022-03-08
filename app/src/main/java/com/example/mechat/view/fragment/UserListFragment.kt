@@ -3,11 +3,10 @@ package com.example.mechat.view.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.modal.data.Users
@@ -15,9 +14,8 @@ import com.example.mechat.view.activity.ChatDetailActivity
 import com.example.mechat.view.adapter.UserListAdapter
 import com.example.mechat.viewmodal.UserListViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
-import java.lang.Exception
 
-class UserListFragment : Fragment() ,UserListAdapter.onNotesClickListener{
+class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
     private  lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: UserListViewModal
     private lateinit var adapter : UserListAdapter
@@ -26,7 +24,7 @@ class UserListFragment : Fragment() ,UserListAdapter.onNotesClickListener{
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Log.i(" in the ", " user list ")
         binding = FragmentUserListBinding.inflate(layoutInflater,container,false)
         initialiseSampleViewModal()
@@ -54,16 +52,15 @@ class UserListFragment : Fragment() ,UserListAdapter.onNotesClickListener{
 
     private fun observeChange()
     {
-        viewModal.userList.observe(viewLifecycleOwner, Observer
-        {
+        viewModal.userList.observe(viewLifecycleOwner) {
             setUpAdapter()
             initRecyclerView()
             println(it)
             Log.i(" vlaues reterived ", it.toString())
-               adapter.submitList(it)
-                adapter.notifyDataSetChanged()
-                println(" hello nepoal " ,)
-        })
+            adapter.submitList(it)
+            adapter.notifyDataSetChanged()
+            println(" hello nepoal ")
+        }
 
     }
     private fun initialiseSampleViewModal()
@@ -73,7 +70,7 @@ class UserListFragment : Fragment() ,UserListAdapter.onNotesClickListener{
 
 
     override fun onClick(user: Users) {
-        var i = Intent(activity, ChatDetailActivity ::class.java)
+        val i = Intent(activity, ChatDetailActivity ::class.java)
         println(" Nlc user here $user.toString()")
         i.putExtra("userId",user.userId)
         i.putExtra("userName",user.userName)

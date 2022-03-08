@@ -15,15 +15,15 @@ class UserListViewModal: ViewModel(),CoroutineScope
 
     init{
         //userList = UserListService.userList
-       // UserListService.getListOfUser()
+        // UserListService.getListOfUser()
         getUserList()
     }
-    fun getUserList() {
+    private fun getUserList() {
         this.launch {
-            withContext(coroutineContext,
-                {
-                    UserListService.getListOfUser()
-                })
+            withContext(coroutineContext
+            ) {
+                UserListService.getListOfUser()
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
+        //noinspection DifferentKotlinGradleVersion
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
         // The google-services plugin is required to parse the google-services.json file
         classpath 'com.google.gms:google-services:4.3.5'

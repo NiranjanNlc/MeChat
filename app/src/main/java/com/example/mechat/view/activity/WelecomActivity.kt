@@ -10,7 +10,6 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.mechat.R
 import com.example.mechat.databinding.MainScreenBinding
 import com.example.mechat.utils.Extensions.toast
-import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.utils.FirebaseUtils.firebaseAuth
 import com.example.mechat.view.adapter.TabsFragmentAdapter
 import com.google.android.material.tabs.TabLayout
@@ -61,7 +60,7 @@ class WelecomActivity : AppCompatActivity()
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
-        return when (item.getItemId()) {
+        return when (item.itemId) {
             R.id.action_add -> {
                 firebaseAuth.signOut()
                 checkUser()

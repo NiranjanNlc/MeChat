@@ -12,7 +12,7 @@ import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.ChatListAdapter.*
 
 class ChatListAdapter constructor(val context : Context ):
-  ListAdapter<Users, UserListViewHolder>(COMPARATOR)
+    ListAdapter<Users, UserListViewHolder>(COMPARATOR)
 //   ListAdapter<Users,ChatListAdapter.UserListViewHolder>(COMPARATOR)
 {
 
@@ -24,7 +24,7 @@ class ChatListAdapter constructor(val context : Context ):
 
     }
 
-     companion object COMPARATOR : DiffUtil.ItemCallback<Users>()
+    companion object COMPARATOR : DiffUtil.ItemCallback<Users>()
     {
         override fun areItemsTheSame(oldItem: Users, newItem: Users): Boolean
         {
@@ -32,7 +32,7 @@ class ChatListAdapter constructor(val context : Context ):
         }
 
         override fun areContentsTheSame(oldItem: Users, newItem: Users): Boolean {
-             return oldItem.equals(newItem)
+            return oldItem.equals(newItem)
         }
     }
 

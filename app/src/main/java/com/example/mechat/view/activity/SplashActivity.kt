@@ -30,7 +30,7 @@ class SplashActivity : AppCompatActivity()
     }
 
     private fun animate() {
-        val mFade: Fade = Fade(Fade.OUT)
+        val mFade = Fade(Fade.OUT)
         TransitionManager.beginDelayedTransition(binnding.splach, mFade)
         val animator = ObjectAnimator.ofFloat(binnding.imageView7, View.ROTATION, -360f, 0f)
         animator.duration = 1000

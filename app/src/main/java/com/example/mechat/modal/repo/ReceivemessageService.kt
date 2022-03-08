@@ -1,13 +1,13 @@
 package com.example.mechat.modal.repo
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 object ReceivemessageService
 {
@@ -23,7 +23,7 @@ object ReceivemessageService
             {
                 val list = snapshot.children.map { it.getValue(ChatMessage::class.java)!! }
                 Log.d("TAG", "Value is: $list")
-                Log.i(" messageist 00", snapshot.getValue().toString())
+                Log.i(" messageist 00", snapshot.value.toString())
                 chatmessgaes.value = list
             }
 

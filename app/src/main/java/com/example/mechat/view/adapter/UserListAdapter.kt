@@ -10,20 +10,20 @@ import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
 
 
-class UserListAdapter( var clickListener: onNotesClickListener)
-: ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
+class UserListAdapter(private var clickListener: OnUserClickListener)
+    : ListAdapter<Users, UserListAdapter.UserListViewHolderr>(COMPARATOR)
 
 {
-    public interface onNotesClickListener
+    interface OnUserClickListener
     {
-        public fun onClick(user: Users)
+        fun onClick(user: Users)
     }
 
-    class UserListViewHolderr(var items: UserItemsBinding,private val clickListener: onNotesClickListener): RecyclerView.ViewHolder(items.root)
+    class UserListViewHolderr(var items: UserItemsBinding,private val clickListener: OnUserClickListener): RecyclerView.ViewHolder(items.root)
     {
         init {
             items.root.setOnClickListener {
-           clickListener.onClick(items.userItems!!)
+                clickListener.onClick(items.userItems!!)
             }
         }
 
@@ -34,7 +34,7 @@ class UserListAdapter( var clickListener: onNotesClickListener)
 
         }
         companion object {
-            fun from(parent: ViewGroup, clickListener: onNotesClickListener): UserListViewHolderr {
+            fun from(parent: ViewGroup, clickListener: OnUserClickListener): UserListViewHolderr {
                 val inflater = LayoutInflater.from(parent.context)
                 val binding = UserItemsBinding.inflate(inflater)
                 return UserListViewHolderr(binding,clickListener)
@@ -44,14 +44,14 @@ class UserListAdapter( var clickListener: onNotesClickListener)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolderr {
         println("On view create ")
-         return UserListViewHolderr.from(parent,clickListener)
+        return UserListViewHolderr.from(parent,clickListener)
 
     }
 
     override fun onBindViewHolder(holder: UserListViewHolderr, position: Int)
     {
         val user = getItem(position)
-        println( " see thid " + user)
+        println(" see thid $user")
         holder.bind(user)
         holder.items.executePendingBindings()
     }
@@ -60,7 +60,7 @@ class UserListAdapter( var clickListener: onNotesClickListener)
         val COMPARATOR = object : DiffUtil.ItemCallback<Users>() {
             override fun areItemsTheSame(oldItem: Users, newItem: Users): Boolean {
                 println(" item same ")
-                return oldItem == newItem;
+                return oldItem == newItem
             }
 
             override fun areContentsTheSame(oldItem: Users, newItem: Users): Boolean {

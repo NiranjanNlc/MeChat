@@ -123,7 +123,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:hint="Enter your messages "
-            android:text="@={viewmodal._messageInput}"
+            android:text="@={viewmodal.messageInput}"
             android:inputType="textMultiLine"
             android:padding="8dp" />
 

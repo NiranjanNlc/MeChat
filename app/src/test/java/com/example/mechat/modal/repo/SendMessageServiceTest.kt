@@ -1,7 +1,5 @@
 package com.example.mechat.modal.repo
 
-import org.junit.Assert.*
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

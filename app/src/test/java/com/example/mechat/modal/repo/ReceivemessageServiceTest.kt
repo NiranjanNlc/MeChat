@@ -1,7 +1,5 @@
 package com.example.mechat.modal.repo
 
-import org.junit.Assert.*
-
 import org.junit.Test
 
 class ReceivemessageServiceTest {

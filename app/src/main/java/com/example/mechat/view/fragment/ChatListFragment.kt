@@ -19,6 +19,6 @@ class ChatListFragment : Fragment()
         Log.i(" in the ", " chat list fragments ,,,,,,,,,")
         return inflater.inflate(R.layout.fragment_chat, container, false)
     }
-    }
+}
 
 
