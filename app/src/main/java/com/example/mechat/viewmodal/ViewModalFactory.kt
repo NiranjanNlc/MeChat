@@ -3,9 +3,9 @@ package com.example.mechat.viewmodal
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class ViewModalFactory :ViewModelProvider.Factory
+class ViewModalFactory : ViewModelProvider.AndroidViewModelFactory()
 {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(AuthenciationViewModal::class.java) -> {
                 AuthenciationViewModal()as T
