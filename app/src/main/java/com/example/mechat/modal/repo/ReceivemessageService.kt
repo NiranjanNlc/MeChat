@@ -7,17 +7,25 @@ import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 object ReceivemessageService
 {
     var chatmessgaes = MutableLiveData<List<ChatMessage>>()
+    val sendReceiveRef = FirebaseUtils.database.child("/user-messages/")
+    private lateinit var receiverPathSring : String
+
     @SuppressLint("RestrictedApi")
     fun getMessageList(senderId : String, receiverId : String )
     {
+        receiverPathSring ="$receiverId/$senderId"
         println(" from id to $senderId going to $receiverId")
-        val myTopPostsQuery = FirebaseUtils.database.child("/user-messages/$senderId/$receiverId").orderByChild("timeStamp")
+
+        val myTopPostsQuery = sendReceiveRef.child("$senderId/$receiverId")
+                                            .orderByChild("timeStamp")
         println(" Path restored in ${myTopPostsQuery.path} "  )
+
         myTopPostsQuery.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot)
             {

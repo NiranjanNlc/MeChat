@@ -7,22 +7,42 @@ import com.google.firebase.database.FirebaseDatabase
 
 object SendMessageService
 {
-
-    fun sendMessage(fromId : String, receiverId : String , text : String)
+    val sendReceiveRef = FirebaseDatabase.getInstance().getReference("/user-messages/")
+    val lsestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/")
+    private lateinit var chatMessage :ChatMessage
+    private lateinit var senderPathString: String
+    private lateinit var receiverPathSring : String
+    fun sendMessage(receiverId : String, senderId : String , text : String)
     {
-        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$receiverId").push()
-        val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$receiverId/$fromId").push()
+        senderPathString = "$senderId/$receiverId"
+        receiverPathSring ="$receiverId/$senderId"
 
-        val chatMessage = ChatMessage(reference.key!!, text, fromId, receiverId, System.currentTimeMillis() / 1000)
+        chatMessage = ChatMessage("reference.key!!", text,
+            senderId,
+            receiverId, System.currentTimeMillis() / 1000)
+        updateSenderRefrence()
+        updateReceiverRefrence()
+        updaeLatestMessage()
+       
+    }
+
+    private fun updaeLatestMessage() {
+        val senderLastMsg = lsestMessageRef.child(senderPathString )
+        senderLastMsg.setValue(chatMessage)
+        val receiverLastMsg = lsestMessageRef.child(receiverPathSring )
+        receiverLastMsg.setValue(chatMessage)
+    }
+
+    private fun updateReceiverRefrence() {
+        val toReference = sendReceiveRef.child(receiverPathSring ).push()
+        toReference.setValue(chatMessage)
+    }
+
+    private fun updateSenderRefrence() {
+        val reference = sendReceiveRef.child(senderPathString ).push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved our chat message: ${reference.key}")
             }
-        
-        toReference.setValue(chatMessage)
-        val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$receiverId")
-        latestMessageRef.setValue(chatMessage)
-        val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$receiverId/$fromId")
-        latestMessageToRef.setValue(chatMessage)
     }
 }
