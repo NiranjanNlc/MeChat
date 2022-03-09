@@ -7,7 +7,7 @@ import com.example.mechat.modal.data.ChatMessage
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 
-object SendMessageService : ChatOperation {
+object ChatService : ChatOperation {
     var chatmessgaes = MutableLiveData<List<ChatMessage>>()
     val sendReceiveRef = FirebaseDatabase.getInstance().getReference("/user-messages/")
     val lsestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/")

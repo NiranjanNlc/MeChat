@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class SendMessageServiceTest1
+class ChatServiceTest1
 {
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
     private lateinit var receiverPathSring : String
@@ -35,7 +35,7 @@ class SendMessageServiceTest1
     @Before
     fun setupViewModel(){
         runBlocking {
-            SendMessageService.sendMessage(chatMessage)
+            ChatService.sendMessage(chatMessage)
         }
     }
 
@@ -78,9 +78,9 @@ class SendMessageServiceTest1
             getEndPointMessages(chatMessage.senderId.toString(), chatMessage.receiverId!!)
         }
         runBlocking {
-            SendMessageService.getMessageList(chatMessage.senderId.toString(), chatMessage.receiverId!!)
+            ChatService.getMessageList(chatMessage.senderId.toString(), chatMessage.receiverId!!)
         }
-        val message1= SendMessageService.chatmessgaes.value
+        val message1= ChatService.chatmessgaes.value
         Log.i(" message posted ",message.toString())
         assertEquals(message1, message )
     }

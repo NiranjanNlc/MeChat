@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mechat.modal.data.ChatMessage
-import com.example.mechat.modal.repo.SendMessageService
+import com.example.mechat.modal.repo.ChatService
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.random.Random
 
 class ChatDetailViewModal : ViewModel()
 {
@@ -16,7 +15,7 @@ class ChatDetailViewModal : ViewModel()
     val getUserInput: LiveData<String> = messageInput
     var recieverId = MutableLiveData<String>()
     val senderId = MutableLiveData<String>()
-    val messageList = SendMessageService.chatmessgaes
+    val messageList = ChatService.chatmessgaes
     init {
         refreshMessgaeList()
     }
@@ -24,7 +23,7 @@ class ChatDetailViewModal : ViewModel()
     {
         println(" ${senderId.value} is sdnding message to ${recieverId.value}")
         viewModelScope.launch {
-            SendMessageService.getMessageList(senderId.value.toString(),recieverId.value.toString())
+            ChatService.getMessageList(senderId.value.toString(),recieverId.value.toString())
         }
     }
     fun sendMessage( )
@@ -45,7 +44,7 @@ class ChatDetailViewModal : ViewModel()
             senderId.value,
             recieverId.value,
             System.currentTimeMillis()/1000)
-        SendMessageService.sendMessage(chatMessage)
+        ChatService.sendMessage(chatMessage)
         messageInput.value = " "
     }
 
