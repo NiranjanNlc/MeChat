@@ -18,3 +18,9 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+ext{
+    androidXTestVersion = '2.1.0'
+    mockitoKotlinVersion = '3.3.3'
+    mockkVersion = '3.3.3'
+    mockitoVersion = '3.3.3'
+}

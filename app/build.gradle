@@ -57,6 +57,16 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //instant exwcutor rule
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    // Optional -- Robolectric environment
+    testImplementation "androidx.test:core:$androidXTestVersion"
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    // Optional -- mockito-kotlin
+    testImplementation "org.mockito:mockito-kotlin:$mockitoKotlinVersion"
+    // Optional -- Mockk framework
+    testImplementation "io.mockk:mockk:$mockkVersion"
     // Google Sign In SDK
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
