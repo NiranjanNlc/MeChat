@@ -53,7 +53,7 @@ class DetailChatAdapter(context: Context, private val messages: List<ChatMessage
     override fun getItemViewType(position: Int): Int
     {
         Log.i(" types of view here ",FirebaseUtils.firebaseUser.toString())
-        if(messages[position].fromId.equals(FirebaseUtils.firebaseUser?.uid))
+        if(messages[position].senderId.equals(FirebaseUtils.firebaseUser?.uid))
             return senderViewType
         else
             return recieverViewType

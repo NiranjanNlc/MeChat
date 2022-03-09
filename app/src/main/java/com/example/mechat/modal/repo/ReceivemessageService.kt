@@ -13,10 +13,10 @@ object ReceivemessageService
 {
     var chatmessgaes = MutableLiveData<List<ChatMessage>>()
     @SuppressLint("RestrictedApi")
-    fun getMessageList(fromId : String, toId : String )
+    fun getMessageList(senderId : String, receiverId : String )
     {
-        println(" from id to $fromId going to $toId")
-        val myTopPostsQuery = FirebaseUtils.database.child("/user-messages/$fromId/$toId").orderByChild("timeStamp")
+        println(" from id to $senderId going to $receiverId")
+        val myTopPostsQuery = FirebaseUtils.database.child("/user-messages/$senderId/$receiverId").orderByChild("timeStamp")
         println(" Path restored in ${myTopPostsQuery.path} "  )
         myTopPostsQuery.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot)
