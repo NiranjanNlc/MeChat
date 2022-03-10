@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.firebase.auth.FirebaseUser
 
 
-class WelecomActivity : AppCompatActivity()
+class Home : AppCompatActivity()
 {
     private lateinit var binding1 : MainScreenBinding
     private lateinit var adapter: TabsFragmentAdapter
@@ -76,7 +76,7 @@ class WelecomActivity : AppCompatActivity()
     }
 
     private fun openUserSetting() {
-        startActivity(Intent(this, AddUserDetail::class.java))
+        startActivity(Intent(this, Setting::class.java))
         toast("Setting opened  ")
         finish()
     }

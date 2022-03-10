@@ -9,20 +9,20 @@ import androidx.databinding.DataBindingUtil
 import com.example.mechat.R
 import com.example.mechat.databinding.ActivitySighUpBinding
 import com.example.mechat.utils.Extensions.toast
-import com.example.mechat.viewmodal.AuthenciationViewModal
+import com.example.mechat.viewmodal.AuthViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 
-class SighUpActivity : AppCompatActivity()
+class SighnUp : AppCompatActivity()
 {
     private lateinit var binding:ActivitySighUpBinding
-    private lateinit var viewModal:AuthenciationViewModal
+    private lateinit var viewModal:AuthViewModal
     private lateinit var builder: AlertDialog.Builder
     private lateinit var dialog: AlertDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sigh_up)
         builder = AlertDialog.Builder(this)
-        viewModal  = ViewModalFactory().create(AuthenciationViewModal ::class.java)
+        viewModal  = ViewModalFactory().create(AuthViewModal ::class.java)
         /*create a user*/
         binding.viewModal = viewModal
         binding.button2.setOnClickListener{

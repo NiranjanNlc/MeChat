@@ -4,14 +4,14 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mechat.modal.repo.AuthenciationService
+import com.example.mechat.modal.repo.Authenciation
 import com.example.mechat.modal.data.Users
 import kotlinx.coroutines.launch
 
-class AuthenciationViewModal: ViewModel()
+class AuthViewModal: ViewModel()
 {
     lateinit var user :  Users
-    var firebaseUser= AuthenciationService.userLiveData
+    var firebaseUser= Authenciation.userLiveData
     var mail= MutableLiveData("niranjannlc10@gmail.com")
     var userName = MutableLiveData("Ashmita Shrestha ")
     var password = MutableLiveData("123456")
@@ -25,12 +25,12 @@ class AuthenciationViewModal: ViewModel()
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
         viewModelScope.launch {
-            AuthenciationService.sighnUpUser(user)
+            Authenciation.sighnUpUser(user)
         }
     }
 
     fun logOut() {
-        AuthenciationService.logOut()
+        Authenciation.logOut()
     }
 
 }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class UserDetailViewModal : ViewModel(), CoroutineScope {
+class SettingViewModal : ViewModel(), CoroutineScope {
 
 
     override val coroutineContext: CoroutineContext =

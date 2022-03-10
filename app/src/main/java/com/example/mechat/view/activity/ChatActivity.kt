@@ -9,7 +9,7 @@ import com.example.mechat.databinding.ActivityChatDetailBinding
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 import com.example.mechat.view.adapter.DetailChatAdapter
-import com.example.mechat.viewmodal.ChatDetailViewModal
+import com.example.mechat.viewmodal.ChatViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import androidx.recyclerview.widget.DividerItemDecoration
 
@@ -18,15 +18,15 @@ import com.example.mechat.R
 import com.example.mechat.modal.data.Users
 
 
-class ChatDetailActivity : AppCompatActivity()
+class ChatActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityChatDetailBinding
-    private lateinit var viewModal: ChatDetailViewModal
+    private lateinit var viewModal: ChatViewModal
     private lateinit var adapter: DetailChatAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_detail)
-        viewModal  = ViewModalFactory().create(ChatDetailViewModal ::class.java)
+        viewModal  = ViewModalFactory().create(ChatViewModal ::class.java)
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         onserVeViewModel()

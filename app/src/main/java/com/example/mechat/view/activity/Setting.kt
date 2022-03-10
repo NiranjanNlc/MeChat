@@ -7,15 +7,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
-import coil.load
 import com.example.mechat.R
 import com.example.mechat.utils.Extensions.toast
-import com.example.mechat.viewmodal.UserDetailViewModal
+import com.example.mechat.viewmodal.SettingViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 
-class AddUserDetail : AppCompatActivity() {
+class Setting : AppCompatActivity() {
     private lateinit var binding:  com.example.mechat.databinding.ActivityAddUserDetailBinding
-    private lateinit var viewModal: UserDetailViewModal
+    private lateinit var viewModal: SettingViewModal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_user_detail)
@@ -49,7 +48,7 @@ class AddUserDetail : AppCompatActivity() {
 
     private fun initialiseViewModal() {
         Log.i(" add user detail ","added ")
-        viewModal  = ViewModalFactory().create(UserDetailViewModal ::class.java)
+        viewModal  = ViewModalFactory().create(SettingViewModal ::class.java)
         binding.viewmodal = viewModal
         binding.user1= viewModal.user.value
     }
@@ -62,7 +61,7 @@ class AddUserDetail : AppCompatActivity() {
     }
 
     private fun reverseBackToUserList() {
-        startActivity(Intent(this, WelecomActivity::class.java))
+        startActivity(Intent(this, Home::class.java))
         toast("Logged out sucess fully ")
         finish()
     }

@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
-object AuthenciationService {
+object Authenciation {
 
     private lateinit  var result : AuthResult
     val userLiveData: MutableLiveData<FirebaseUser>

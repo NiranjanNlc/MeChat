@@ -26,7 +26,7 @@ class Login : AppCompatActivity() {
                 .addOnCompleteListener { signIn ->
                     if (signIn.isSuccessful) {
                         stopLoadingDialog()
-                        startActivity(Intent(this, WelecomActivity::class.java))
+                        startActivity(Intent(this, Home::class.java))
                         toast("signed in successfully")
                         finish()
                     } else {
@@ -37,7 +37,7 @@ class Login : AppCompatActivity() {
         }
         binding.sighnUpOption.setOnClickListener {
             toast("created account successfully !")
-            startActivity(Intent(this, SighUpActivity::class.java))
+            startActivity(Intent(this, SighnUp::class.java))
             finish()
         }
 
@@ -51,7 +51,7 @@ class Login : AppCompatActivity() {
         super.onStart()
         val user: FirebaseUser? = firebaseAuth.currentUser
         user?.let {
-            startActivity(Intent(this, WelecomActivity::class.java))
+            startActivity(Intent(this, Home::class.java))
             toast("welcome back")
             finish()
         }

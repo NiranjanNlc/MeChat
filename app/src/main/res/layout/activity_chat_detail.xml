@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewmodal"
-            type="com.example.mechat.viewmodal.ChatDetailViewModal" />
+            type="com.example.mechat.viewmodal.ChatViewModal" />
     </data>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/teal_700"
     android:background="@color/white"
-    tools:context=".view.activity.ChatDetailActivity"
+    tools:context=".view.activity.ChatActivity"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

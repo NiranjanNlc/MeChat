@@ -9,7 +9,7 @@ import com.example.mechat.modal.repo.ChatService
 import kotlinx.coroutines.launch
 import java.util.*
 
-class ChatDetailViewModal : ViewModel()
+class ChatViewModal : ViewModel()
 {
     var messageInput = MutableLiveData<String>()
     val getUserInput: LiveData<String> = messageInput

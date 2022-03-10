@@ -13,7 +13,7 @@ import com.example.mechat.R
 import com.example.mechat.databinding.SplashScreenBinding
 import com.example.mechat.utils.FirebaseUtils
 
-class SplashActivity : AppCompatActivity()
+class SplashScreen : AppCompatActivity()
 {
     private lateinit var i : Intent
     private lateinit var binnding : SplashScreenBinding
@@ -39,7 +39,7 @@ class SplashActivity : AppCompatActivity()
 
     private fun transferToNextActivity() {
         if (FirebaseUtils.firebaseUser != null) {
-            i = Intent(this, WelecomActivity::class.java)
+            i = Intent(this, Home::class.java)
         } else {
             i = Intent(this, Login::class.java)
         }

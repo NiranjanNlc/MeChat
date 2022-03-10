@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewmodal"
-            type="com.example.mechat.viewmodal.UserDetailViewModal" />
+            type="com.example.mechat.viewmodal.SettingViewModal" />
         <variable
             name="user1"
             type="com.example.mechat.modal.data.Users" />
@@ -15,7 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".view.activity.AddUserDetail">
+    tools:context=".view.activity.Setting">
 
     <ImageView
         android:id="@+id/backArrow"

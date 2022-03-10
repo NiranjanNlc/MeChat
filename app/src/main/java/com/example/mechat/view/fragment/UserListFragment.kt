@@ -10,14 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.databinding.FragmentUserListBinding
 import com.example.mechat.modal.data.Users
-import com.example.mechat.view.activity.ChatDetailActivity
+import com.example.mechat.view.activity.ChatActivity
 import com.example.mechat.view.adapter.UserListAdapter
-import com.example.mechat.viewmodal.UserListViewModal
+import com.example.mechat.viewmodal.HomeViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 
 class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
     private  lateinit var binding: FragmentUserListBinding
-    private lateinit var viewModal: UserListViewModal
+    private lateinit var viewModal: HomeViewModal
     private lateinit var adapter : UserListAdapter
 
     override fun onCreateView(
@@ -65,12 +65,12 @@ class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
     }
     private fun initialiseSampleViewModal()
     {
-        viewModal = ViewModalFactory().create(UserListViewModal ::class.java)
+        viewModal = ViewModalFactory().create(HomeViewModal ::class.java)
     }
 
 
     override fun onClick(user: Users) {
-        val i = Intent(activity, ChatDetailActivity ::class.java)
+        val i = Intent(activity, ChatActivity ::class.java)
         println(" Nlc user here $user.toString()")
         i.putExtra("userId",user.userId)
         i.putExtra("userName",user.userName)

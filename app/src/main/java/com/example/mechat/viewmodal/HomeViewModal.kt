@@ -5,7 +5,7 @@ import com.example.mechat.modal.repo.UserListService
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class UserListViewModal: ViewModel(),CoroutineScope
+class HomeViewModal: ViewModel(),CoroutineScope
 {
 
     val userList = UserListService.userList

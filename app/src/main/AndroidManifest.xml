@@ -17,23 +17,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeChat">
         <activity
-            android:name=".view.activity.AddUserDetail"
+            android:name=".view.activity.Setting"
             android:exported="true">
         </activity>
         <activity
-            android:name=".view.activity.ChatDetailActivity"
+            android:name=".view.activity.ChatActivity"
             android:exported="true" />
         <activity
             android:name=".view.activity.Login"
             android:exported="true" />
         <activity
-            android:name=".view.activity.SighUpActivity"
+            android:name=".view.activity.SighnUp"
             android:exported="true" />
         <activity
-            android:name=".view.activity.WelecomActivity"
+            android:name=".view.activity.Home"
             android:exported="true" />
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".view.activity.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
