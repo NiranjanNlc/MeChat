@@ -37,6 +37,7 @@ class Setting : AppCompatActivity() {
         ) {
             println("  user is  ${it.userName}")
             binding.user1 = it
+            binding.profilePic.load(it.profilePic?.toUri()?.buildUpon()?.scheme("https")?.build())
         }
         viewModal.profileImageUrl.observe(this
         ) {
@@ -51,7 +52,13 @@ class Setting : AppCompatActivity() {
         Log.i(" add user detail ","added ")
         viewModal  = ViewModalFactory().create(SettingViewModal ::class.java)
         binding.viewmodal = viewModal
-        binding.user1= viewModal.user.value
+        val user = viewModal.user.value
+        Log.i(" detail from viewmoal  ",user.toString())
+        binding.user1= user
+        if (user != null) {
+            binding.profilePic.load(user.profilePic?.toUri()?.buildUpon()?.scheme("https")?.build())
+        }
+
     }
 
     private fun updateProfileImage() {

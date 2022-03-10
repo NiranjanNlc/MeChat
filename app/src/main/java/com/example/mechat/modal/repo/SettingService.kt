@@ -38,7 +38,7 @@ object SettingService {
             val data =FirebaseUtils.database.child("users/${uid}/").get().await()
             Log.i(" add user detail ","user $data ")
             Log.i(" data manipulated ",data.toString())
-            UserListService.user.value =data.getValue(Users ::class.java)
+            user.value =data.getValue(Users ::class.java)
         }
         catch (e : Exception)
         {

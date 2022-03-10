@@ -48,7 +48,8 @@ class ChatActivity : AppCompatActivity()
             initializeRecyclerView()
         }
         viewModal.logIneduser.value?.userId?.let { Log.i("profilePic", it) }
-        //binding.profileImage.load(viewModal.logIneduser.value?.profilePic)
+
+        binding.profileImage.load(viewModal.logIneduser.value?.profilePic)
     }
 
     private fun setSenderReceiver(user: Any?) {
