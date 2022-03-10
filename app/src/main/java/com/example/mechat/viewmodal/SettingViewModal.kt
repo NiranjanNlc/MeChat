@@ -40,4 +40,11 @@ class SettingViewModal : ViewModel(), CoroutineScope {
             SettingService.saveImageFireBaseStorage(list)
         }
     }
+
+    fun saveInfo(userName: String, userBio: String) {
+        viewModelScope.launch {
+            SettingService.saveUser(userName,userBio)
+        }
+
+    }
 }

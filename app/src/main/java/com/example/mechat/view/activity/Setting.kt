@@ -27,9 +27,13 @@ class Setting : AppCompatActivity() {
             updateProfileImage()
         }
         binding.saveInfo.setOnClickListener {
-            // viewModal.saveInfo()
+             saveInfo()
         }
         observeViewModel()
+    }
+
+    private fun saveInfo() {
+        viewModal.saveInfo(binding.editUBio.text.toString(),binding.editBio.text.toString())
     }
 
     private fun observeViewModel() {

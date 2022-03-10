@@ -57,4 +57,16 @@ object SettingService {
         }
 
     }
+
+    suspend fun saveUser(user: String, userBio: String) {
+        try{
+            val data =   FirebaseUtils.database.child("/users/$uid/").child("userName").setValue(user).await()
+            val data1 =   FirebaseUtils.database.child("/users/$uid/").child("bio").setValue(userBio).await()
+            println(" dta base result $data.toString() ${data1.toString()}")
+        }
+        catch (e : Exception)
+        {
+            println( " eoor encountered during the operation " + e.message)
+        }
+    }
 }
