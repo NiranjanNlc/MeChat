@@ -32,7 +32,7 @@ class ChatActivity : AppCompatActivity()
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         obserVeViewModel()
-//        viewModal.refreshMessgaeList()
+        viewModal.refreshMessgaeList()
     }
 
     private fun initializeAdapter(messages: List<ChatMessage>) {
@@ -44,7 +44,6 @@ class ChatActivity : AppCompatActivity()
             setSenderReceiver(intent.extras?.get("receiver") as Users)
             initializeAdapter(it)
             initializeRecyclerView()
-        //    viewModal.refreshMessgaeList()
         }
     }
 
@@ -60,6 +59,9 @@ class ChatActivity : AppCompatActivity()
         viewModal.setSenderReceiver(senderId, recieverId)
         binding.backArrow.setOnClickListener {
             reverseBackToUserList()
+        }
+        binding.sendMessage.setOnClickListener {
+            sendngMessage()
         }
     }
 
@@ -78,6 +80,7 @@ class ChatActivity : AppCompatActivity()
         val messageText = binding.editTextTextMultiLine.text
         if (messageText.isNotBlank() && messageText.isNotEmpty())
             viewModal.sendMessage()
+        binding.editTextTextMultiLine.text.clear()
     }
     private fun reverseBackToUserList() {
         startActivity(Intent(this, Home::class.java))

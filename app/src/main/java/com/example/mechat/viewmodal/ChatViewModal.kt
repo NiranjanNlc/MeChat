@@ -12,7 +12,6 @@ import java.util.*
 class ChatViewModal : ViewModel()
 {
     var messageInput = MutableLiveData<String>()
-    val getUserInput: LiveData<String> = messageInput
     var recieverId = MutableLiveData<String>()
     val senderId = MutableLiveData<String>()
     val messageList = ChatService.chatmessgaes
@@ -34,11 +33,6 @@ class ChatViewModal : ViewModel()
     }
 
     private fun performSendMessage() {
-        if (messageInput.value.isNullOrEmpty()) {
-            println(" empty string ...........")
-            return
-        }
-        println(" performing sending message ................")
         val chatMessage = ChatMessage(UUID.randomUUID().toString(),
             messageInput.value,
             senderId.value,
@@ -47,7 +41,6 @@ class ChatViewModal : ViewModel()
         viewModelScope.launch {
             ChatService.sendMessage(chatMessage)
         }
-        messageInput.value = " "
     }
 
     fun setSenderReceiver(senderid: String?, recieverid: String?) {
