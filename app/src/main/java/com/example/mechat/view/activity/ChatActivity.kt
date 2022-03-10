@@ -1,5 +1,6 @@
 package com.example.mechat.view.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.databinding.ActivityChatDetailBinding
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
-import com.example.mechat.view.adapter.DetailChatAdapter
+import com.example.mechat.view.adapter.ChatAdapter
 import com.example.mechat.viewmodal.ChatViewModal
 import com.example.mechat.viewmodal.ViewModalFactory
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,33 +17,34 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.core.content.ContextCompat
 import com.example.mechat.R
 import com.example.mechat.modal.data.Users
+import com.example.mechat.utils.Extensions.toast
 
 
 class ChatActivity : AppCompatActivity()
 {
     private lateinit var binding: ActivityChatDetailBinding
     private lateinit var viewModal: ChatViewModal
-    private lateinit var adapter: DetailChatAdapter
+    private lateinit var adapter: ChatAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_detail)
         viewModal  = ViewModalFactory().create(ChatViewModal ::class.java)
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
-        onserVeViewModel()
+        obserVeViewModel()
 //        viewModal.refreshMessgaeList()
     }
 
     private fun initializeAdapter(messages: List<ChatMessage>) {
-        adapter= DetailChatAdapter(this,messages )
+        adapter= ChatAdapter(this,messages )
     }
 
-    private fun onserVeViewModel() {
+    private fun obserVeViewModel() {
         viewModal.messageList.observe(this) {
             setSenderReceiver(intent.extras?.get("receiver") as Users)
             initializeAdapter(it)
             initializeRecyclerView()
-            viewModal.refreshMessgaeList()
+        //    viewModal.refreshMessgaeList()
         }
     }
 
@@ -56,6 +58,9 @@ class ChatActivity : AppCompatActivity()
         binding.viewmodal?.recieverId?.value = recieverId
         binding.viewmodal?.senderId?.value = senderId
         viewModal.setSenderReceiver(senderId, recieverId)
+        binding.backArrow.setOnClickListener {
+            reverseBackToUserList()
+        }
     }
 
     private fun initializeRecyclerView() {
@@ -73,5 +78,10 @@ class ChatActivity : AppCompatActivity()
         val messageText = binding.editTextTextMultiLine.text
         if (messageText.isNotBlank() && messageText.isNotEmpty())
             viewModal.sendMessage()
+    }
+    private fun reverseBackToUserList() {
+        startActivity(Intent(this, Home::class.java))
+        toast("Logged out sucess fully ")
+        finish()
     }
 }

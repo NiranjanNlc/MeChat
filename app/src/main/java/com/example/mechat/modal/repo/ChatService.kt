@@ -14,28 +14,28 @@ object ChatService : ChatOperation {
     private lateinit var chatMessage: ChatMessage
     private lateinit var senderPathString: String
     private lateinit var receiverPathSring: String
-    override fun sendMessage(receiverId: String, senderId: String, text: String) {
-        senderPathString = "$senderId/$receiverId"
-        receiverPathSring = "$receiverId/$senderId"
+//    override fun sendMessage(receiverId: String, senderId: String, text: String) {
+//        senderPathString = "$senderId/$receiverId"
+//        receiverPathSring = "$receiverId/$senderId"
+//
+//        chatMessage = ChatMessage(
+//            "reference.key!!", text,
+//            senderId,
+//            receiverId, System.currentTimeMillis() / 1000
+//        )
+//        updateSenderRefrence()
+//        updateReceiverRefrence()
+//        updateLatestMessage()
+//    }
 
-        chatMessage = ChatMessage(
-            "reference.key!!", text,
-            senderId,
-            receiverId, System.currentTimeMillis() / 1000
-        )
-        updateSenderRefrence()
-        updateReceiverRefrence()
-        updateLatestMessage()
-
-    }
-    override fun sendMessage(chatMessage1: ChatMessage) {
+    override suspend fun sendMessage(chatMessage1: ChatMessage) {
         senderPathString = "${chatMessage1.senderId}/${chatMessage1.receiverId}"
         receiverPathSring = "${chatMessage1.receiverId}/${chatMessage1.senderId}"
         chatMessage =chatMessage1
         updateSenderRefrence()
         updateReceiverRefrence()
         updateLatestMessage()
-
+        getMessageList(chatMessage1.senderId!!,chatMessage1.receiverId!!)
     }
 
 
@@ -69,7 +69,6 @@ object ChatService : ChatOperation {
             await()
         println(" Path restored in ${myTopPostsQuery.children} ")
         chatmessgaes.value = myTopPostsQuery.children.map {it.getValue(ChatMessage::class.java)!! }
-
     }
 
 }

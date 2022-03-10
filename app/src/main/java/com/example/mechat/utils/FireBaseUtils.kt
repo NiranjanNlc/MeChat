@@ -12,4 +12,5 @@ object FirebaseUtils {
     val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
     val database = Firebase.database.getReferenceFromUrl("https://mechat-181d7-default-rtdb.firebaseio.com/")
     val storage = FirebaseStorage.getInstance()
+    val sender = firebaseUser?.uid
 }

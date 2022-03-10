@@ -25,7 +25,7 @@ class AuthViewModal: ViewModel()
         user= Users(userName =userName.value.toString(),mail = mail.value.toString(),password =password.value.toString() )
         Log.i("user ",user.toString())
         viewModelScope.launch {
-            Authenciation.sighnUpUser(user)
+            Authenciation.signUpUser(user)
         }
     }
 

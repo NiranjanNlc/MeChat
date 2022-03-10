@@ -44,7 +44,9 @@ class ChatViewModal : ViewModel()
             senderId.value,
             recieverId.value,
             System.currentTimeMillis()/1000)
-        ChatService.sendMessage(chatMessage)
+        viewModelScope.launch {
+            ChatService.sendMessage(chatMessage)
+        }
         messageInput.value = " "
     }
 

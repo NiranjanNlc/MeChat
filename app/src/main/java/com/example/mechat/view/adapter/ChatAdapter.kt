@@ -10,7 +10,7 @@ import com.example.mechat.databinding.SampleSenderBinding
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.utils.FirebaseUtils
 
-class DetailChatAdapter(context: Context, private val messages: List<ChatMessage>):
+class ChatAdapter(context: Context, private val messages: List<ChatMessage>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
     private val recieverViewType : Int = 2

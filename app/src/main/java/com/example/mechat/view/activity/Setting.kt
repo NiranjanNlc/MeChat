@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import coil.load
 import com.example.mechat.R
 import com.example.mechat.utils.Extensions.toast
 import com.example.mechat.viewmodal.SettingViewModal

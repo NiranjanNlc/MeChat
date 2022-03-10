@@ -14,8 +14,8 @@ import kotlinx.coroutines.tasks.await
 object Authenciation {
 
     private lateinit  var result : AuthResult
-    val userLiveData: MutableLiveData<FirebaseUser>
-    private val loggedOutLiveData: MutableLiveData<Boolean>
+    val userLiveData: MutableLiveData<FirebaseUser> = MutableLiveData()
+    private val loggedOutLiveData: MutableLiveData<Boolean> = MutableLiveData()
     private val firebaseAuth: FirebaseAuth = FirebaseUtils.firebaseAuth
 
     private suspend fun writeNewUser(user: Users):Boolean
@@ -25,14 +25,14 @@ object Authenciation {
                 ?.await()
             println(" dta base result $data.toString()")
             userLiveData.postValue(firebaseAuth.currentUser)
-            return true
+            true
         }catch (e : Exception){
             println(" Sghnng up excepto ${e.message}")
-            return false
+            false
         }
     }
 
-    suspend fun sighnUpUser(user: Users)
+    suspend fun signUpUser(user: Users)
     {
         try {
             result =  FirebaseUtils.firebaseAuth.
@@ -53,8 +53,6 @@ object Authenciation {
         }
     }
     init {
-        userLiveData = MutableLiveData()
-        loggedOutLiveData = MutableLiveData()
 
         if (firebaseAuth.currentUser != null) {
             loggedOutLiveData.postValue(false)
