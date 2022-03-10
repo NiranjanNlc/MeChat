@@ -15,6 +15,7 @@ import com.example.mechat.viewmodal.ViewModalFactory
 import androidx.recyclerview.widget.DividerItemDecoration
 
 import androidx.core.content.ContextCompat
+import coil.load
 import com.example.mechat.R
 import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.Extensions.toast
@@ -32,6 +33,7 @@ class ChatActivity : AppCompatActivity()
         binding.viewmodal = viewModal
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         obserVeViewModel()
+        viewModal.getLogineduseer()
         viewModal.refreshMessgaeList()
     }
 
@@ -45,6 +47,8 @@ class ChatActivity : AppCompatActivity()
             initializeAdapter(it)
             initializeRecyclerView()
         }
+        viewModal.logIneduser.value?.userId?.let { Log.i("profilePic", it) }
+        //binding.profileImage.load(viewModal.logIneduser.value?.profilePic)
     }
 
     private fun setSenderReceiver(user: Any?) {
@@ -55,8 +59,7 @@ class ChatActivity : AppCompatActivity()
         Log.i("Receiver", " Nlc please $user")
         binding.username.text = userName
         binding.viewmodal?.recieverId?.value = recieverId
-        binding.viewmodal?.senderId?.value = senderId
-        viewModal.setSenderReceiver(senderId, recieverId)
+        viewModal.setSenderReceiver(senderId)
         binding.backArrow.setOnClickListener {
             reverseBackToUserList()
         }
@@ -65,9 +68,11 @@ class ChatActivity : AppCompatActivity()
         }
     }
 
-    private fun initializeRecyclerView() {
+     private fun initializeRecyclerView() {
         binding.chatMessageList.adapter = adapter
-        binding.chatMessageList.layoutManager = LinearLayoutManager(this)
+        binding.chatMessageList.layoutManager = LinearLayoutManager(this,
+                                                                    LinearLayoutManager.VERTICAL,
+                                                        false)
         val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(baseContext, R.drawable.line_divider)!!
         )

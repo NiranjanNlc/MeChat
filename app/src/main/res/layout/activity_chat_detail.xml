@@ -98,7 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sendChat"
         android:layout_below="@+id/toolbar"
-        android:padding="16dp">
+        android:padding="0dp"
+        app:stackFromEnd="true"
+        >
 
 <!--        tools:listitem="@layout/sample_reciever">-->
 

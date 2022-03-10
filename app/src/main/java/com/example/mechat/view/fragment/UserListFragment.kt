@@ -19,6 +19,7 @@ class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
     private  lateinit var binding: FragmentUserListBinding
     private lateinit var viewModal: HomeViewModal
     private lateinit var adapter : UserListAdapter
+    private lateinit var loginedUsers: Users
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,6 +67,8 @@ class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
     private fun initialiseSampleViewModal()
     {
         viewModal = ViewModalFactory().create(HomeViewModal ::class.java)
+        viewModal.getLogineduseer()
+       // loginedUsers = viewModal.loginedUser.value!!
     }
 
 
@@ -76,6 +79,8 @@ class UserListFragment : Fragment() ,UserListAdapter.OnUserClickListener{
         i.putExtra("userName",user.userName)
         i.putExtra("userProfile",user.userName)
         i.putExtra("receiver",user)
+     //   i.putExtra("loginUser",loginedUsers)
         startActivity(i,null)
     }
+
 }

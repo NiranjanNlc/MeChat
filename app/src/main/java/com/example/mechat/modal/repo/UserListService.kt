@@ -30,9 +30,9 @@ object UserListService
         Log.i(" user list 00", list.toString())
         userList.value = list as List<Users>?
     }
-    suspend fun getUserFromDb(uid: String){
+    suspend fun getUserFromDb(){
         Log.i(" add user detail ","get user from db  .... ")
-
+        val uid = FirebaseUtils.sender
         return try{
             val data =FirebaseUtils.database.child("users/${uid}/").get().await()
             Log.i(" add user detail ","user $data ")

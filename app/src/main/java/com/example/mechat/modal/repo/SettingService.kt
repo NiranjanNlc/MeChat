@@ -48,7 +48,7 @@ object SettingService {
 
     suspend fun updateProfileImageUrl( profileImageUrl: String) {
         try{
-            val data =   FirebaseUtils.database.child("/users/$uid/").child("profileImage").setValue(profileImageUrl).await()
+            val data =   FirebaseUtils.database.child("/users/$uid/").child("profilePic").setValue(profileImageUrl).await()
             println(" dta base result $data.toString()")
         }
         catch (e : Exception)

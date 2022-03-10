@@ -6,23 +6,25 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.modal.repo.ChatService
+import com.example.mechat.modal.repo.UserListService
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class ChatViewModal : ViewModel()
 {
+    val logIneduser = UserListService.user
     var messageInput = MutableLiveData<String>()
     var recieverId = MutableLiveData<String>()
-    val senderId = MutableLiveData<String>()
     val messageList = ChatService.chatmessgaes
     init {
         refreshMessgaeList()
     }
     fun refreshMessgaeList()
     {
-        println(" ${senderId.value} is sdnding message to ${recieverId.value}")
+        println(" ${logIneduser.value?.userId} is sdnding message to ${recieverId.value}")
         viewModelScope.launch {
-            ChatService.getMessageList(senderId.value.toString(),recieverId.value.toString())
+            ChatService.getMessageList(logIneduser.value?.userId.toString(),recieverId.value.toString())
         }
     }
     fun sendMessage( )
@@ -35,7 +37,7 @@ class ChatViewModal : ViewModel()
     private fun performSendMessage() {
         val chatMessage = ChatMessage(UUID.randomUUID().toString(),
             messageInput.value,
-            senderId.value,
+            logIneduser.value?.userId,
             recieverId.value,
             System.currentTimeMillis()/1000)
         viewModelScope.launch {
@@ -43,9 +45,19 @@ class ChatViewModal : ViewModel()
         }
     }
 
-    fun setSenderReceiver(senderid: String?, recieverid: String?) {
-        senderId.value = senderid!!
+    fun setSenderReceiver( recieverid: String?) {
         recieverId.value = recieverid!!
     }
+
+    fun getLogineduseer() {
+        viewModelScope.launch {
+            withContext(coroutineContext
+            ) {
+                UserListService.getUserFromDb()
+            }
+        }
+
+    }
 }
+
 

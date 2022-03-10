@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.mechat.databinding.UserItemsBinding
 import com.example.mechat.modal.data.Users
 
@@ -31,7 +32,7 @@ class UserListAdapter(private var clickListener: OnUserClickListener)
         {
             Log.i(" binding " , user.toString())
             items.userItems = user
-
+            items.profileImage.load(user.profilePic)
         }
         companion object {
             fun from(parent: ViewGroup, clickListener: OnUserClickListener): UserListViewHolderr {

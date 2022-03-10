@@ -9,6 +9,7 @@ class HomeViewModal: ViewModel(),CoroutineScope
 {
 
     val userList = UserListService.userList
+    val loginedUser = UserListService.user
     override val coroutineContext: CoroutineContext =
         Dispatchers.Main + SupervisorJob()
 
@@ -20,10 +21,20 @@ class HomeViewModal: ViewModel(),CoroutineScope
     }
     private fun getUserList() {
         this.launch {
-            withContext(coroutineContext
+            withContext(
+                coroutineContext
             ) {
                 UserListService.getListOfUser()
             }
         }
     }
+         fun getLogineduseer() {
+            this.launch {
+                withContext(coroutineContext
+                ) {
+                    UserListService.getUserFromDb()
+                }
+            }
+
+}
 }
