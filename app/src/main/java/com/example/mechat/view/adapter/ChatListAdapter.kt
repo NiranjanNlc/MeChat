@@ -7,50 +7,69 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mechat.databinding.ChatItemsBinding
 import com.example.mechat.databinding.UserItemsBinding
+import com.example.mechat.modal.data.Chats
 import com.example.mechat.modal.data.Users
 import com.example.mechat.view.adapter.ChatListAdapter.*
 
-class ChatListAdapter constructor(val context : Context ):
-    ListAdapter<Users, UserListViewHolder>(COMPARATOR)
-//   ListAdapter<Users,ChatListAdapter.UserListViewHolder>(COMPARATOR)
+class ChatListAdapter constructor(val clickListener: OnChatClickListener ):
+    ListAdapter<Chats, ChatListViewHolder>(COMPARATOR)
+//   ListAdapter<Chats,ChatListAdapter.ChatListViewHolder>(COMPARATOR)
 {
 
-    inner  class UserListViewHolder(var items: UserItemsBinding): RecyclerView.ViewHolder(items.root) {
-
-        fun bind(userItems: Users) {
-            items.userItems= userItems
-        }
-
+    interface OnChatClickListener
+    {
+        fun onClick(chats: Chats)
     }
 
-    companion object COMPARATOR : DiffUtil.ItemCallback<Users>()
-    {
-        override fun areItemsTheSame(oldItem: Users, newItem: Users): Boolean
-        {
-            return oldItem.profilePic == newItem.profilePic
+      class ChatListViewHolder(var items: ChatItemsBinding,private val clickListener:OnChatClickListener): RecyclerView.ViewHolder(items.root) {
+
+        fun bind(chatItems: Chats) {
+        //    items.ChatItems= ChatItems
+        }
+        companion object {
+            fun from(parent: ViewGroup, clickListener: OnChatClickListener): ChatListViewHolder {
+                val inflater = LayoutInflater.from(parent.context)
+                val binding = ChatItemsBinding.inflate(inflater)
+                return ChatListViewHolder(binding, clickListener)
+            }
         }
 
-        override fun areContentsTheSame(oldItem: Users, newItem: Users): Boolean {
+        init {
+            items.root.setOnClickListener {
+               // clickListener.onClick(items.ch!!)
+            }
+        }
+    }
+
+    companion object COMPARATOR : DiffUtil.ItemCallback<Chats>()
+    {
+        override fun areItemsTheSame(oldItem: Chats, newItem: Chats): Boolean
+        {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Chats, newItem: Chats): Boolean {
             return oldItem.equals(newItem)
         }
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatListViewHolder
     {
         println("On view create ")
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = UserItemsBinding.inflate(inflater)
-        return UserListViewHolder(binding)
+//        val inflater = LayoutInflater.from(parent.context)
+//        val binding = ChatItemsBinding.inflate(inflater)
+        return ChatListViewHolder.from(parent,clickListener)
 
     }
-    override fun onBindViewHolder(holder: UserListViewHolder, position: Int)
+    override fun onBindViewHolder(holder: ChatListViewHolder, position: Int)
     {
-        val userItems = getItem(position)
-        println( " see thid " + userItems.profilePic.toString())
-        holder.bind(userItems)
-        Glide.with(context).load(userItems.profilePic).into(holder.items.profileImage)
+        val ChatItems = getItem(position)
+       // println( " see thid " + ChatItems.profilePic.toString())
+        holder.bind(ChatItems)
+      //  Glide.with(context).load(ChatItems.profilePic).into(holder.items.profileImage)
         holder.items.executePendingBindings()
     }
 }
