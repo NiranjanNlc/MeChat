@@ -100,4 +100,13 @@ class ChatServiceTest1
         val messages = data.children.map {it.getValue(ChatMessage::class.java)!! }
         return messages
     }
+    @Test
+    fun verifyGetChatistIsWorking()
+    {
+
+        runBlocking {
+            UserListService.getListOfChats()
+        }
+
+    }
 }
