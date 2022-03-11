@@ -8,11 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mechat.R
 import com.example.mechat.databinding.FragmentChatBinding
 import com.example.mechat.modal.data.Chats
 import com.example.mechat.view.activity.ChatActivity
-import com.example.mechat.view.adapter.ChatAdapter
 import com.example.mechat.view.adapter.ChatListAdapter
 import com.example.mechat.viewmodal.HomeViewModal
 import com.example.mechat.viewmodal.ViewModalFactory

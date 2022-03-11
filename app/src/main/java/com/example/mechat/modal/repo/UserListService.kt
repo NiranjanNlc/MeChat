@@ -2,6 +2,7 @@ package com.example.mechat.modal.repo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.modal.data.Chats
 import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.FirebaseUtils
@@ -48,10 +49,10 @@ object UserListService
     }
     private suspend fun getChatListFromDb(): Any?
     {
-         return try{
+        return try{
             val data =FirebaseUtils.database.child("latest-messages/$uid/").get().await()
-            Log.i(" data manipulated ",data.toString())
-            data.children.map {it.getValue(Users::class.java)!!  }
+            Log.i(" data manipulated chat",data.toString())
+            data.children.map {it.getValue(Chats::class.java)!!  }
         }catch (e : Exception)
         {
             println( " eoor encountered during the operation " + e.message)
