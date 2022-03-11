@@ -49,9 +49,13 @@ object UserListService
     }
     private suspend fun getChatListFromDb(): Any?
     {
+        println(" $uid" )
+        Log.i(" data manipulated chat","$uid")
+
         return try{
-            val data =FirebaseUtils.database.child("latest-messages/$uid/").get().await()
+            val data =FirebaseUtils.database.child("latest-messages/$uid").get().await()
             Log.i(" data manipulated chat",data.toString())
+            Log.i(" data manipulated chat",data.getValue().toString())
             data.children.map {it.getValue(Chats::class.java)!!  }
         }catch (e : Exception)
         {

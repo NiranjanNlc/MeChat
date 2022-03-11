@@ -14,19 +14,6 @@ object ChatService : ChatOperation {
     private lateinit var chatMessage: ChatMessage
     private lateinit var senderPathString: String
     private lateinit var receiverPathSring: String
-//    override fun sendMessage(receiverId: String, senderId: String, text: String) {
-//        senderPathString = "$senderId/$receiverId"
-//        receiverPathSring = "$receiverId/$senderId"
-//
-//        chatMessage = ChatMessage(
-//            "reference.key!!", text,
-//            senderId,
-//            receiverId, System.currentTimeMillis() / 1000
-//        )
-//        updateSenderRefrence()
-//        updateReceiverRefrence()
-//        updateLatestMessage()
-//    }
 
     override suspend fun sendMessage(chatMessage1: ChatMessage) {
         senderPathString = "${chatMessage1.senderId}/${chatMessage1.receiverId}"
