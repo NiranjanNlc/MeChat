@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
-class ChatServiceTest1
+class SendMessageServiceTest
 {
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
     private lateinit var receiverPathSring : String
@@ -25,7 +25,7 @@ class ChatServiceTest1
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    val chatMessage = ChatMessage("12345",
+    val chatMessage = ChatMessage(
         " HelloAasshmab ",
         "123456",
         "12345678",

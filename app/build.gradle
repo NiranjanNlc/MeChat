@@ -101,6 +101,9 @@ dependencies {
     //coil libary
     implementation "io.coil-kt:coil:1.1.1"
 
+    // GsoN
+    implementation 'com.google.code.gson:gson:2.8.7'
+
 
 
 }

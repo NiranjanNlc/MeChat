@@ -18,6 +18,8 @@ object ChatService : ChatOperation {
     override suspend fun sendMessage(chatMessage1: ChatMessage) {
         senderPathString = "${chatMessage1.senderId}/${chatMessage1.receiverId}"
         receiverPathSring = "${chatMessage1.receiverId}/${chatMessage1.senderId}"
+        Log.i(" sender oath  string ", senderPathString)
+        Log.i(" receiver oath  string ", receiverPathSring)
         chatMessage =chatMessage1
         updateSenderRefrence()
         updateReceiverRefrence()
@@ -26,19 +28,23 @@ object ChatService : ChatOperation {
     }
 
 
-    private fun updateLatestMessage() {
+   override fun updateLatestMessage() {
         val senderLastMsg = lsestMessageRef.child(senderPathString)
         senderLastMsg.setValue(chatMessage)
         val receiverLastMsg = lsestMessageRef.child(receiverPathSring)
         receiverLastMsg.setValue(chatMessage)
     }
 
-    private fun updateReceiverRefrence() {
+    override fun getListOfChat() {
+        TODO("Not yet implemented")
+    }
+
+     override suspend fun updateReceiverRefrence() {
         val toReference = sendReceiveRef.child(receiverPathSring).push()
         toReference.setValue(chatMessage)
     }
 
-    private fun updateSenderRefrence() {
+   override suspend fun updateSenderRefrence() {
         val reference = sendReceiveRef.child(senderPathString).push()
         reference.setValue(chatMessage)
             .addOnSuccessListener {
@@ -50,8 +56,9 @@ object ChatService : ChatOperation {
     override suspend fun getMessageList(senderId: String, receiverId: String) {
         receiverPathSring = "$receiverId/$senderId"
         println(" from id to $senderId going to $receiverId")
+        Log.i("receiver path String ", receiverPathSring)
 
-        val myTopPostsQuery =  sendReceiveRef.child("$senderId/$receiverId")
+        val myTopPostsQuery =  sendReceiveRef.child(receiverPathSring)
             .get().
             await()
         println(" Path restored in ${myTopPostsQuery.children} ")

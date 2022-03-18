@@ -2,10 +2,11 @@ package com.example.mechat.modal.repo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.modal.data.Chats
 import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.FirebaseUtils
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import kotlinx.coroutines.tasks.await
 
 object UserListService
@@ -47,19 +48,25 @@ object UserListService
             println( " eoor encountered during the operation " + e.message)
         }
     }
-    private suspend fun getChatListFromDb(): Any?
+      suspend fun getChatListFromDb(): Any?
     {
         println(" $uid" )
         Log.i(" data manipulated chat","$uid")
 
         return try{
-            val data =FirebaseUtils.database.child("latest-messages/$uid").get().await()
+            val data =FirebaseUtils.database.child("latest-messages/")
+                .child("${uid}/").get().await()
+
             Log.i(" data manipulated chat",data.toString())
-            Log.i(" data manipulated chat",data.getValue().toString())
+            Log.i(" data manipulated chat",data.ref.toString())
+            Log.i(" data d chat",data.getValue().toString())
+            val jsonString = data.value as HashMap<*, *>
+            Log.i("  required data sets ",jsonString.get("{$uid}").toString())
+
             data.children.map {it.getValue(Chats::class.java)!!  }
         }catch (e : Exception)
         {
-            println( " eoor encountered during the operation " + e.message)
+            Log.i( " eoor " ,"encountered during the operation $e.message")
             null
         }
     }

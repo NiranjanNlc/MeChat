@@ -6,4 +6,8 @@ interface ChatOperation {
 
     suspend fun getMessageList(senderId : String, receiverId : String)
     suspend fun sendMessage(chatMessage1: ChatMessage)
+    suspend fun updateSenderRefrence()
+    suspend fun updateReceiverRefrence()
+    fun updateLatestMessage()
+    fun getListOfChat()
 }

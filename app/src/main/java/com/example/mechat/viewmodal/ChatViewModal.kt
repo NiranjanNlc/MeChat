@@ -35,7 +35,7 @@ class ChatViewModal : ViewModel()
     }
 
     private fun performSendMessage() {
-        val chatMessage = ChatMessage(UUID.randomUUID().toString(),
+        val chatMessage = ChatMessage(
             messageInput.value,
             logIneduser.value?.userId,
             recieverId.value,

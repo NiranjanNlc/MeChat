@@ -26,11 +26,13 @@ class ChatActivity : AppCompatActivity()
     private lateinit var binding: ActivityChatDetailBinding
     private lateinit var viewModal: ChatViewModal
     private lateinit var adapter: ChatAdapter
+    private lateinit var receiver: Users
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_chat_detail)
         viewModal  = ViewModalFactory().create(ChatViewModal ::class.java)
         binding.viewmodal = viewModal
+        receiver = intent.extras?.get("receiver") as Users
         setSenderReceiver(intent.extras?.get("receiver") as Users)
         obserVeViewModel()
         viewModal.getLogineduseer()
@@ -49,18 +51,18 @@ class ChatActivity : AppCompatActivity()
         }
         viewModal.logIneduser.value?.userId?.let { Log.i("profilePic", it) }
 
-        binding.profileImage.load(viewModal.logIneduser.value?.profilePic)
+        binding.profileImage.load(receiver.profilePic)
     }
 
-    private fun setSenderReceiver(user: Any?) {
+    private fun setSenderReceiver(user: Users) {
         val senderId = FirebaseUtils.firebaseUser?.uid
         val recieverId = intent.getStringExtra("userId")
         val userName = intent.getStringExtra("userName")
         Log.i("Send", " $senderId was  $recieverId  thus $userName")
         Log.i("Receiver", " Nlc please $user")
         binding.username.text = userName
-        binding.viewmodal?.recieverId?.value = recieverId
-        viewModal.setSenderReceiver(senderId)
+        binding.viewmodal?.recieverId?.value = receiver.userId
+      //  viewModal.setSenderReceiver(user.userId)
         binding.backArrow.setOnClickListener {
             reverseBackToUserList()
         }
