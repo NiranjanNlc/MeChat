@@ -1,95 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewmodal"
             type="com.example.mechat.viewmodal.ChatViewModal" />
     </data>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:id="@+id/leftaaarooe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/teal_700"
     android:background="@color/white"
     tools:context=".view.activity.ChatActivity"
-    >
+    android:layout_marginStart="0dp"
+    android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0dp"
         android:background="?attr/colorAccent"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/profile_image"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                tools:srcCompat="@tools:sample/avatars"
-                app:layout_constraintStart_toEndOf="@+id/backArrow"
-                app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/arrow_back"
+            app:tint="@color/white"
+            />
 
-            <ImageView
-                android:id="@+id/backArrow"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/arrow"
-                app:tint="@color/white" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/menu" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/videocall" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="8dp"
-                android:layout_marginLeft="1677777dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/call" />
-
-            <TextView
-                android:id="@+id/username"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/avatar"
+            />
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Niranjan"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView6"
-                app:layout_constraintStart_toEndOf="@+id/profile_image"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:text="@string/username"
+                    android:layout_gravity="start"
+                    android:textSize="16sp"
+                    android:padding="2dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_gravity="start"
+                    android:text="@string/status"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -98,11 +90,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/sendChat"
         android:layout_below="@+id/toolbar"
-        android:padding="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         app:stackFromEnd="true"
-        >
+        tools:listitem="@layout/sample_reciever">
 
-<!--        tools:listitem="@layout/sample_reciever">-->
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -139,7 +131,7 @@
             android:onClick="@{(view) -> viewmodal.sendMessage()}"
             app:srcCompat="@drawable/send" />
     </LinearLayout>
-<!--    android:clickable="@{viewmodal._messageInput.toString().length()>0}"-->
+<!--&lt;!&ndash;    android:clickable="@{viewmodal._messageInput.toString().length()>0}"&ndash;&gt;-->
 
 
 </RelativeLayout>

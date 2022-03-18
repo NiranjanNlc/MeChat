@@ -5,18 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="2dp"
     android:paddingLeft="32dp"
     android:maxWidth="304dp"
     android:minWidth="304dp"
     android:background="@drawable/incoming_bubble"
    >
-<!--    android:layout_marginTop="8dp"-->
-<!--    android:layout_marginRight="8dp"-->
-<!--    android:maxWidth="304dp"-->
-<!--    android:maxHeight="410dp"-->
-<!--    android:minHeight="16dp"-->
-<!--    >-->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -24,6 +18,7 @@
         android:layout_margin="8dp"
         android:maxHeight="384dp"
         android:minHeight="08dp"
+        android:textSize="16sp"
         android:text="@string/recievermessage"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +31,7 @@
         android:layout_margin="4dp"
         android:inputType="textLongMessage|textMultiLine"
         android:text="12:20 am"
+        android:textSize="4sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
