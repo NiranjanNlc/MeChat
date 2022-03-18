@@ -1,12 +1,11 @@
 package com.example.mechat.modal.data
 
-import android.content.BroadcastReceiver
+import kotlinx.serialization.Serializable
 
-data class Chats
-    (
-    val timeStamp:String?=null,
+@Serializable
+data class Chats(
+    val timeStamp: Long? =null,
     val senderId:String?=null,
     val receiverId: String?=null,
-    val text:String?=null,
-    val key:String?=null
+    val text:String?=null
             )

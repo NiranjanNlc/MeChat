@@ -4,7 +4,7 @@ import androidx.room.PrimaryKey
 import java.util.*
 import java.io.Serializable
 
-
+@kotlinx.serialization.Serializable
 data class Users(val profilePic:String?=null ,
                  val userName:String?=null,
                  val mail:String?=null,

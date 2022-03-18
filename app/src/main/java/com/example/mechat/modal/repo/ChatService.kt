@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechat.modal.data.ChatMessage
+import com.example.mechat.modal.data.Chats
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 
@@ -16,8 +17,8 @@ object ChatService : ChatOperation {
     private lateinit var receiverPathSring: String
 
     override suspend fun sendMessage(chatMessage1: ChatMessage) {
-        senderPathString = "${chatMessage1.senderId}/${chatMessage1.receiverId}"
-        receiverPathSring = "${chatMessage1.receiverId}/${chatMessage1.senderId}"
+        senderPathString = "${chatMessage1.senderId}+${chatMessage1.receiverId}"
+        receiverPathSring = "${chatMessage1.receiverId}+${chatMessage1.senderId}"
         Log.i(" sender oath  string ", senderPathString)
         Log.i(" receiver oath  string ", receiverPathSring)
         chatMessage =chatMessage1
@@ -29,10 +30,16 @@ object ChatService : ChatOperation {
 
 
    override fun updateLatestMessage() {
-        val senderLastMsg = lsestMessageRef.child(senderPathString)
-        senderLastMsg.setValue(chatMessage)
-        val receiverLastMsg = lsestMessageRef.child(receiverPathSring)
-        receiverLastMsg.setValue(chatMessage)
+        val senderLastMsg = lsestMessageRef
+                            .child("${chatMessage.senderId}")
+                            .child("${chatMessage.receiverId}")
+        val lastMessage = Chats(chatMessage.timeStamp, chatMessage.senderId, chatMessage.receiverId,
+        chatMessage.text)
+        senderLastMsg.setValue(lastMessage)
+        val receiverLastMsg = lsestMessageRef
+                              .child("${chatMessage.receiverId}")
+                             .child("${chatMessage.senderId}")
+        receiverLastMsg.setValue(lastMessage)
     }
 
     override fun getListOfChat() {
@@ -54,7 +61,7 @@ object ChatService : ChatOperation {
 
 
     override suspend fun getMessageList(senderId: String, receiverId: String) {
-        receiverPathSring = "$receiverId/$senderId"
+         receiverPathSring = "$receiverId+$senderId"
         println(" from id to $senderId going to $receiverId")
         Log.i("receiver path String ", receiverPathSring)
 
@@ -62,7 +69,13 @@ object ChatService : ChatOperation {
             .get().
             await()
         println(" Path restored in ${myTopPostsQuery.children} ")
-        chatmessgaes.value = myTopPostsQuery.children.map {it.getValue(ChatMessage::class.java)!! }
+       try {
+           chatmessgaes.value = myTopPostsQuery.children.map {it.getValue(ChatMessage::class.java)!! }
+       }
+       catch (e:Exception)
+       {
+           Log.i(" EXCEPTION ", e.message.toString())
+       }
     }
 
 }

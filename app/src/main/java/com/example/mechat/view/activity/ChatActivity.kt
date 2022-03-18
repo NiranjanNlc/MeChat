@@ -45,7 +45,7 @@ class ChatActivity : AppCompatActivity()
 
     private fun obserVeViewModel() {
         viewModal.messageList.observe(this) {
-            setSenderReceiver(intent.extras?.get("receiver") as Users)
+         //   setSenderReceiver(intent.extras?.get("receiver") as Users)
             initializeAdapter(it)
             initializeRecyclerView()
         }
@@ -69,6 +69,7 @@ class ChatActivity : AppCompatActivity()
         binding.sendMessage.setOnClickListener {
             sendngMessage()
         }
+       // viewModal.refreshMessgaeList()
     }
 
      private fun initializeRecyclerView() {

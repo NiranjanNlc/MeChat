@@ -23,7 +23,7 @@ class ChatListTest {
     @Test
     fun testToGetListOfChat(){
         runBlocking {
-            UserListService.getChatListFromDb()
+            UserListService.getListOfChats()
         }
         assert(UserListService.chatList.value!=null)
     }

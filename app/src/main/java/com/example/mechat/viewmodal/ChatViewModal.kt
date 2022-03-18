@@ -18,7 +18,7 @@ class ChatViewModal : ViewModel()
     var recieverId = MutableLiveData<String>()
     val messageList = ChatService.chatmessgaes
     init {
-        refreshMessgaeList()
+      //  refreshMessgaeList()
     }
     fun refreshMessgaeList()
     {
