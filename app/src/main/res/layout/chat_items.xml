@@ -3,7 +3,7 @@
     <data>
         <variable
             name="userChats"
-            type="com.example.mechat.modal.data.Users" />
+            type="com.example.mechat.modal.data.Chats" />
     </data>
 
 <LinearLayout
@@ -29,22 +29,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center">
-
-
         <TextView
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ChannelName"
+            android:text="@{userChats.interlocutor.userName}"
             android:padding="16dp"/>
 
         <TextView
             android:id="@+id/lastMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LastMessage"
+            android:text="@{userChats.text}"
             android:gravity="bottom"
             android:paddingTop="8dp"
+            android:paddingStart="16dp"
             android:paddingBottom="0dp"
             android:layout_gravity="bottom"/>
     </LinearLayout>

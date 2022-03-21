@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.bumptech.glide.Glide
 import com.example.mechat.databinding.ChatItemsBinding
 import com.example.mechat.databinding.UserItemsBinding
@@ -26,7 +27,9 @@ class ChatListAdapter constructor(val clickListener: OnChatClickListener ):
       class ChatListViewHolder(var items: ChatItemsBinding,private val clickListener:OnChatClickListener): RecyclerView.ViewHolder(items.root) {
 
         fun bind(chatItems: Chats) {
-        //    items.ChatItems= ChatItems
+         items.userChats= chatItems
+        items.profileImage.load(chatItems.interlocutor?.profilePic)
+
         }
         companion object {
             fun from(parent: ViewGroup, clickListener: OnChatClickListener): ChatListViewHolder {
@@ -69,7 +72,6 @@ class ChatListAdapter constructor(val clickListener: OnChatClickListener ):
         val ChatItems = getItem(position)
        // println( " see thid " + ChatItems.profilePic.toString())
         holder.bind(ChatItems)
-      //  Glide.with(context).load(ChatItems.profilePic).into(holder.items.profileImage)
         holder.items.executePendingBindings()
     }
 }

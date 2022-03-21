@@ -33,6 +33,7 @@ class ChatActivity : AppCompatActivity() {
         obserVeViewModel()
         viewModal.getLogineduseer()
         viewModal.refreshMessgaeList()
+        viewModal.setSenderReceiver()
     }
 
     private fun initializeAdapter(messages: List<ChatMessage>) {
@@ -49,7 +50,9 @@ class ChatActivity : AppCompatActivity() {
 
     private fun setSenderReceiver() {
         binding.username.text = receiver.userName
-        binding.viewmodal?.recieverId?.value = receiver.userId
+        binding.viewmodal?.receiverId?.value = receiver.userId
+        binding.viewmodal?.receiver?.value = receiver
+
         binding.backArrow.setOnClickListener {
             reverseBackToUserList()
         }

@@ -4,6 +4,7 @@ import android.util.JsonReader
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechat.modal.data.Chats
+import com.example.mechat.modal.data.Message
 import com.example.mechat.modal.data.Users
 import com.example.mechat.utils.FirebaseUtils
 import com.google.common.reflect.TypeToken
@@ -55,14 +56,11 @@ object UserListService
     {
         println(" $uid" )
         Log.i(" data manipulated chat","$uid")
-
         return try{
-
             val data =FirebaseUtils.database.child("latest-messages")
                 .child("${uid}/")
             //    .orderByChild("timestamp")
                 .get().await()
-
             Log.i(" data manipulated chat",data.toString())
             Log.i(" data manipulated chat",data.ref.toString())
             Log.i(" data d chat",data.getValue().toString())
@@ -73,7 +71,8 @@ object UserListService
             Log.i(" chat list ",chatListOnly.toString())
             val ter = Gson().toJson(chatListOnly)
             Log.i(" chat list ",ter)
-            Json.decodeFromString<List<Chats>>(ter)
+            //   Json.decodeFromString<List<Chats>>(ter)
+               Json.decodeFromString<List<Chats>>(ter)
         }catch (e : Exception)
         {
             Log.i( " eoor " ,"encountered during the operation $e.message")
