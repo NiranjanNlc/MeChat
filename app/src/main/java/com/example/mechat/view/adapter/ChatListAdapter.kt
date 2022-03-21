@@ -16,12 +16,11 @@ import com.example.mechat.view.adapter.ChatListAdapter.*
 
 class ChatListAdapter constructor(val clickListener: OnChatClickListener ):
     ListAdapter<Chats, ChatListViewHolder>(COMPARATOR)
-//   ListAdapter<Chats,ChatListAdapter.ChatListViewHolder>(COMPARATOR)
 {
 
     interface OnChatClickListener
     {
-        fun onClick(chats: Chats)
+        fun onClick(chats: Users)
     }
 
       class ChatListViewHolder(var items: ChatItemsBinding,private val clickListener:OnChatClickListener): RecyclerView.ViewHolder(items.root) {
@@ -41,7 +40,7 @@ class ChatListAdapter constructor(val clickListener: OnChatClickListener ):
 
         init {
             items.root.setOnClickListener {
-               // clickListener.onClick(items.ch!!)
+               clickListener.onClick(items.userChats?.interlocutor!!)
             }
         }
     }

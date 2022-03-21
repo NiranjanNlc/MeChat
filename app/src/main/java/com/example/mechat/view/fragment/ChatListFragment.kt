@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mechat.databinding.FragmentChatBinding
 import com.example.mechat.modal.data.Chats
+import com.example.mechat.modal.data.Users
 import com.example.mechat.view.activity.ChatActivity
 import com.example.mechat.view.adapter.ChatListAdapter
 import com.example.mechat.viewmodal.HomeViewModal
@@ -72,14 +73,14 @@ class ChatListFragment : Fragment(),ChatListAdapter.OnChatClickListener
         // loginedchats = viewModal.loginedchat.value!!
     }
 
-    override fun onClick(chats: Chats) {
+    override fun onClick(chat: Users) {
         val i = Intent(activity, ChatActivity ::class.java)
-        println(" Nlc chat here $chats.toString()")
-//        i.putExtra("chatId",chat.chatId)
-//        i.putExtra("chatName",chat.chatName)
-//        i.putExtra("chatProfile",chat.chatName)
-//        i.putExtra("receiver",chat)
-//        //   i.putExtra("loginchat",loginedchats)
+        println(" Nlc chat here $chat.toString()")
+        i.putExtra("chatId",chat.userId)
+        i.putExtra("chatName",chat.userName)
+        i.putExtra("chatProfile",chat.userName)
+        i.putExtra("receiver",chat)
+//          i.putExtra("loginchat",loginedchats)
         startActivity(i,null)
     }
 }
