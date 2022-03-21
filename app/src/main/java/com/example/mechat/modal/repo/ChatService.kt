@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.mechat.modal.data.ChatMessage
 import com.example.mechat.modal.data.Chats
-import com.example.mechat.modal.data.Message
 import com.example.mechat.modal.data.Users
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
