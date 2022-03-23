@@ -1,18 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
+    ext.kotlin_version = '1.6.20-RC2'
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0"
+        classpath "com.android.tools.build:gradle:7.0.4"
         //noinspection DifferentKotlinGradleVersion
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
         // The google-services plugin is required to parse the google-services.json file
-        classpath 'com.google.gms:google-services:4.3.5'
+        classpath 'com.google.gms:google-services:4.3.10'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath "org.jetbrains.kotlin:kotlin-serialization:1.5.21"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:1.5.31"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
     }
 }
@@ -25,5 +27,6 @@ ext{
     mockitoKotlinVersion = '3.3.3'
     mockkVersion = '3.3.3'
     mockitoVersion = '3.3.3'
+    $kotlin_version ='1.6.20-RC2'
 }
 

@@ -11,7 +11,7 @@ object SettingService {
 
     var profileImageUrl = MutableLiveData<String>()
     var user = MutableLiveData<Users>()
-    private val uid =FirebaseUtils.firebaseUser?.uid
+    private var uid =FirebaseUtils.firebaseUser?.uid
 
     fun saveImageFireBaseStorage(image: Intent?)
     {

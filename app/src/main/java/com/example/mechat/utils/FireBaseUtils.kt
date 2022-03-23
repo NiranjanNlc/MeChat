@@ -8,9 +8,9 @@ import com.google.firebase.storage.FirebaseStorage
 
 
 object FirebaseUtils {
-    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
-    val database = Firebase.database.getReferenceFromUrl("https://mechat-181d7-default-rtdb.firebaseio.com/")
-    val storage = FirebaseStorage.getInstance()
-    val sender = firebaseUser?.uid
+    var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    var firebaseUser: FirebaseUser? = firebaseAuth.currentUser
+    var database = Firebase.database.getReferenceFromUrl("https://mechat-181d7-default-rtdb.firebaseio.com/")
+    var storage = FirebaseStorage.getInstance()
+    var sender = firebaseUser?.uid
 }

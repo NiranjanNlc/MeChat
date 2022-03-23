@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 31
@@ -104,8 +105,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     //mot advoded to use gson
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
-
-
+    implementation "androidx.core:core-ktx:1.7.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 
 }
+//repositories {
+//    mavenCentral()
+//}
