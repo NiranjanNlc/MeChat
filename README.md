@@ -6,3 +6,5 @@ In this project , I used following :
 3. glide
 4. viewpager
 5. co-routine
+Here goes the screenshot after updating security rules :
+
